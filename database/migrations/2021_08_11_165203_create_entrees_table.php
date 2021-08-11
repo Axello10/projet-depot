@@ -16,7 +16,7 @@ class CreateEntreesTable extends Migration
         Schema::create('entrees', function (Blueprint $table) {
             $table->id();
             $table->integer('source_id');
-            $table->integer('type_id');
+            $table->integer('boisson_id');
             $table->integer('quantity');
             $table->bigInteger('price');
             $table->integer('user_id');

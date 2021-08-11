@@ -15,6 +15,12 @@ class CreateSortiesTable extends Migration
     {
         Schema::create('sorties', function (Blueprint $table) {
             $table->id();
+            $table->integer('client_id');
+            $table->integer('boisson_id');
+            $table->integer('quantity');
+            $table->bigInteger('price');
+            $table->integer('user_id');
+            $table->integer('vide_recu');
             $table->timestamps();
         });
     }

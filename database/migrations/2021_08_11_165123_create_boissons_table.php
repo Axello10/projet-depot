@@ -15,6 +15,7 @@ class CreateBoissonsTable extends Migration
     {
         Schema::create('boissons', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->timestamps();
         });
     }
