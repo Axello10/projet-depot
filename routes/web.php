@@ -11,15 +11,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/register', function() {
     echo "register here!";
-});
+})->name('register');
 
-Route::get('/auth', ['App\Http\Controllers\Auth\LoginController', 'authenticate']);
+Route::get('/auth', ['App\Http\Controllers\Auth\LoginController', 'authenticate'])->name('auth');
 
-Route::get('/login', ['App\Http\Controllers\Auth\LoginController', 'index']);
+Route::get('/login', ['App\Http\Controllers\Auth\LoginController', 'index'])->name('login');
 
 Route::get('/logout', function() {
     echo "get out of here!";
-});
+})->name('logout');
 
 /*
 Route::get('/forget-password', function() {
@@ -37,12 +37,9 @@ Route::get('/forget-password', function() {
  */
 
 
-
-Route::get('/', function () {
-    echo "home page!";
+Route::middleware('auth')->group(function() {
+    
+    Route::get('dashboard', function() {
+        echo "this is the dashboard!";
+    })->name('dashboard');
 });
-
-Route::get('dashboard', function() {
-    echo "this is the dashboard!";
-});
-
