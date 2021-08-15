@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    echo "home page!";
 });
 
 /**
@@ -19,7 +19,7 @@ Route::get('/register', function() {
 });
 
 Route::get('/login', function() {
-    echo "login here!";
+    return view('Auth.login');
 });
 
 Route::get('/logout', function() {
