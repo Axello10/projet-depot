@@ -3,8 +3,13 @@
 @section('content')
     <div class="">
         <h1>Indentify yourself...</h1>
-        <form action="">
-            <input type="button" value="kickass!">
+        @if ( $errors->any() )
+            {{ $errors }}
+        @endif
+        <form action="auth" method="POST">
+            <input type="text" name="username" id="username">
+            <input type="password" name="password" id="password">
+            <button type="submit">Connection</button>
         </form>
     </div>
 @endsection
