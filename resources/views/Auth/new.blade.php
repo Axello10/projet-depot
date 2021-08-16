@@ -10,7 +10,7 @@
                 @endforeach
             </ul>
         @endif
-        <form action="register" method="POST">
+        <form action="{{ route('users.store') }}" method="POST">
             <input type="text" name="username" id="username">
             <input type="text" name="fullname" id="fullname">
             <input type="email" name="email" id="email">

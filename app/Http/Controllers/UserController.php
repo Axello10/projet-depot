@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -24,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('Auth.new');
     }
 
     /**
@@ -35,7 +36,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        // to register a new user!
+        $user = $request->validate([
+            'username' => 'required|max:20|min:5|unique:users',
+            'fullname' => 'required|unique:users',
+            'password' => 'required|min:5'
+        ]);
+
+        User::create($request->all());
+
+        Auth::loginUsingId($request->id, true);
+
+        return redirect()->route('dashboard');
     }
 
     /**

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
  */
 
 
-Route::get('/register', function() { echo "registered"; })->name('register');
+// Route::get('/register', function() { echo "registered"; })->name('register');
 
 Route::get('/auth', ['App\Http\Controllers\Auth\LoginController', 'authenticate'])->name('auth');
 
@@ -20,7 +20,7 @@ Route::get('/logout', function() {
     echo "get out of here!";
 })->name('logout');
 
-
+Route::resource('/users', 'App\Http\Controllers\UserController');
 
 /**
  * 
