@@ -44,6 +44,8 @@ class UserController extends Controller
             'password' => 'required|min:5'
         ]);
 
+        $request['password'] = bcrypt($request->password);
+
         User::create($request->all());
 
         Auth::loginUsingId($request->id, true);

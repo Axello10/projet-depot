@@ -34,6 +34,6 @@ Route::resource('/users', 'App\Http\Controllers\UserController');
 Route::middleware('auth')->group(function() {
     
     Route::get('dashboard', function() {
-        echo "this is the dashboard!";
+        return view('app.dashboard');
     })->name('dashboard');
 });
