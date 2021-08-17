@@ -9,16 +9,21 @@
 <body>
     <header>
         <div class="">
-            <p class="logo">{{ $_ENV['APP_NAME'] }}</p>
+            <strong><p class="logo">{{ $_ENV['APP_NAME'] }}</p></strong>
         </div>
         <div class="links">
             <ul>
-                <li><a href="{{ route('users.create') }}">new account</a></li>
-                <li><a href="{{ route('login') }}">login</a></li>
-                <li><a href="{{ route('logout') }}">logout</a></li>
-                <li><a href="{{ route('dashboard') }}">dashboard</a></li>
+                @auth
+                    <li><a href="{{ route('logout') }}">logout</a></li>
+                    <li><a href="{{ route('dashboard') }}">dashboard</a></li>
+                @endauth
+                @guest
+                    <li><a href="{{ route('users.create') }}">new account</a></li>
+                    <li><a href="{{ route('login') }}">login</a></li>
+                @endguest
             </ul>
         </div>
+        <hr>
     </header>
     @yield('content')
 </body>
