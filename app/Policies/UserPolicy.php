@@ -52,7 +52,7 @@ class UserPolicy
      */
     public function update(User $user, User $model)
     {
-        return $$ù$user->role_id === 2;
+        
     }
 
     /**
