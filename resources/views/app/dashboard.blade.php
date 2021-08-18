@@ -7,10 +7,16 @@
         <li>role => {{ Auth::user()->role->name }}</li>
     </ul>
 
-    @if(Auth::user()->role_id === 1)
+    @can('update', Auth::user())
+        <p>oui j'ai reussi</p>
+    @else
+        <p>j'ai tout faux!</p>
+    @endcan
+
+    {{-- @if(Auth::user()->role_id === 1)
         <p>ooh tu peux mettre a jour un user!</p>
     @else
         <p>tu n'a aucun pouvoir :(</p>
-    @endif
+    @endif --}}
     
 @endsection
