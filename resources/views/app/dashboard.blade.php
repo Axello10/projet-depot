@@ -2,7 +2,7 @@
 @section('page', 'dashboard')
 @section('content')
 
-    you're logged in! as {{ Auth::user()->username }}
+    bienvenue, vous travaillez en tant que <em><strong>{{ Auth::user()->username }}</strong></em>
     <ul>
         <li>role => {{ Auth::user()->role->name }}</li>
     </ul>
