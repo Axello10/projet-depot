@@ -23,5 +23,5 @@ php artisan serve
     - super user => 1
     - admin      => 2
     - caissier   => 3
-    - employee   => 5
+    - employee   => 4
 
