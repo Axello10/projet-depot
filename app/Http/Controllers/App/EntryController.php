@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\App;
 
-use App\Models\Entree;
+use App\Http\Controllers\Controller;
+use App\Models\Entry;
 use Illuminate\Http\Request;
 
-class EntreesController extends Controller
+class EntryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,7 @@ class EntreesController extends Controller
      */
     public function index()
     {
-        
+        //
     }
 
     /**
@@ -41,10 +42,10 @@ class EntreesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Entree  $entree
+     * @param  \App\Models\Entry  $entry
      * @return \Illuminate\Http\Response
      */
-    public function show(Entree $entree)
+    public function show(Entry $entry)
     {
         //
     }
@@ -52,10 +53,10 @@ class EntreesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Entree  $entree
+     * @param  \App\Models\Entry  $entry
      * @return \Illuminate\Http\Response
      */
-    public function edit(Entree $entree)
+    public function edit(Entry $entry)
     {
         //
     }
@@ -64,10 +65,10 @@ class EntreesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Entree  $entree
+     * @param  \App\Models\Entry  $entry
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Entree $entree)
+    public function update(Request $request, Entry $entry)
     {
         //
     }
@@ -75,10 +76,10 @@ class EntreesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Entree  $entree
+     * @param  \App\Models\Entry  $entry
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Entree $entree)
+    public function destroy(Entry $entry)
     {
         //
     }

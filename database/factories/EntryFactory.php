@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Entrie;
+use App\Models\Entry;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class EntrieFactory extends Factory
+class EntryFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Entrie::class;
+    protected $model = Entry::class;
 
     /**
      * Define the model's default state.
