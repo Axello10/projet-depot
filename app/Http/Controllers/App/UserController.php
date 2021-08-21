@@ -26,11 +26,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        if ($this->authorize('create', Auth::user())) {
-            return view('Auth.new');            
-        }
+        $this->authorize('create', Auth::user());
 
-        return view('dashboard');
+        return view('Auth.new');
     }
 
     /**
@@ -41,7 +39,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-
+        $this->authorize('create', Auth::user());
         // to register a new user!
         $request->validate([
             'username' => 'required|max:20|min:5|unique:users',
@@ -66,7 +64,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        $this->authorize('view', Auth::user());
     }
 
     /**
@@ -77,7 +75,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        $this->authorize('update', Auth::user());
     }
 
     /**
@@ -89,7 +87,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $this->authorize('update', Auth::user());
     }
 
     /**
@@ -100,6 +98,6 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $this->authorize('delete', Auth::user());
     }
 }
