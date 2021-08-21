@@ -5,6 +5,7 @@ namespace App\Http\Controllers\App;
 use App\Http\Controllers\Controller;
 use App\Models\Entry;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EntryController extends Controller
 {
@@ -25,7 +26,9 @@ class EntryController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('create', Auth::user());
+
+        return view('app.new_entrie');
     }
 
     /**
@@ -36,7 +39,17 @@ class EntryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'vendor_id' => 'required',
+            'product_id' => 'required',
+            'quantity' => 'required|min:1',
+            'price' => 'required',
+            'empty' => 'required'
+        ]);
+
+        // verifier le nombre de vide si il est inferieur a la quantité il ajouter dans les dettes
+        // le prix dependra de la source si c'est notre depot le prix == 0
+        // le user_id est equivalent a celui de l'utilisateur connecte!
     }
 
     /**
