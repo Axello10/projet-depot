@@ -1,4 +1,23 @@
-Depot -- app
+# Depot App
+
+## Description
+---
+ une application web qui permet de gerer une affaire de depots, les entreer, les sorties, les employees, factures, etc...
+
+
+## Fonctionnement
+---
+- ### AUTORIZATION
+        - les autorisations des utilisateurs sont differents selon leurs roles dans le systeme. 
+        - on verifie les droits de l'utilisateur connecté.
+        - on verifie dans les liens.
+        - on verifie avant chaque operation.
+        - on verifie dans les controlleur et les moteurs de templates.
+
+- ### Authentification
+        - pour utilise le systeme vous devez etres connecté!
+        - pour ce il faut un compte relié a ce system
+        - une fois connecté on verifie vos autorisation.
 
 > let's build it!
 
@@ -26,4 +45,6 @@ php artisan serve
 
 
     - employee   => (simple )
+
+
 
