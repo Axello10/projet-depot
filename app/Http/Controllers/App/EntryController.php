@@ -50,6 +50,7 @@ class EntryController extends Controller
         // verifier le nombre de vide si il est inferieur a la quantité il ajouter dans les dettes
         // le prix dependra de la source si c'est notre depot le prix == 0
         // le user_id est equivalent a celui de l'utilisateur connecte!
+        // enfin enregistrer l'entree
     }
 
     /**
