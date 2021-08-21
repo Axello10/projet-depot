@@ -7,7 +7,15 @@
 
 ## Fonctionnement
 ---
-- ### AUTORIZATION
+
+- ### Roles
+
+    - super user => 1   (a tout les droits!)
+    - admin      => 2   (voir tout, tout creer(sauf un utilisateur), mettre a jour et supprimer c'est qui l'ajouter)
+    - caissier   => 3   (peut creer, mettre a jour, voir, supprimer c'est qui l'a ajouter)
+    - employee   => 4   (aucun droit sur le system!)
+
+- ### Autorisation
         - les autorisations des utilisateurs sont differents selon leurs roles dans le systeme. 
         - on verifie les droits de l'utilisateur connecté.
         - on verifie dans les liens.
@@ -38,13 +46,7 @@ php artisan db:seed
 ```
 php artisan serve
 ```
-### roles
-    - super user => 1   (a tout les droits!)
-    - admin      => 2   (voir tout, tout creer(sauf un utilisateur), mettre a jour et supprimer c'est qui l'ajouter)
-    - caissier   => 3   (peut creer, mettre a jour, voir, supprimer c'est qui l'a ajouter)
 
-
-    - employee   => (simple )
 
 
 
