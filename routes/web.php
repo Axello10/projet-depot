@@ -34,4 +34,6 @@ Route::middleware('auth')->group(function() {
     Route::get('dashboard', function() {
         return view('app.dashboard');
     })->name('dashboard');
+
+    Route::resource('entries', '');
 });
