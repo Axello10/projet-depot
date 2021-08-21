@@ -29,7 +29,7 @@ class UserPolicy
      */
     public function view(User $user, User $model)
     {
-        return $user->role_id === 1 || $user->role_id === 2 || $user->id === $model->id;
+        return $user->role_id === 1 || $user->role_id === 2;
     }
 
     /**

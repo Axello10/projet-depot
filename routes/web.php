@@ -30,11 +30,15 @@ Route::get('/logout', ['App\Http\Controllers\Auth\LogoutController', 'logout'])-
 
 Route::middleware('auth')->group(function() {
     
+    Route::get('/', function() {
+        return view('app.dashboard');
+    })->name('dashboard');
+
     Route::get('dashboard', function() {
         return view('app.dashboard');
     })->name('dashboard');
 
-    Route::resource('users', 'App\Http\Controllers\App\UserController');
+    Route::resource('users', 'App\Http\Controllers\App\UserController')->middleware('create');
 
     Route::resource('entries', 'App\Http\Controllers\App\EntryController');
 });
