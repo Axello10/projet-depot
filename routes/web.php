@@ -18,7 +18,6 @@ Route::get('/login', ['App\Http\Controllers\Auth\LoginController', 'index'])->na
 
 Route::get('/logout', ['App\Http\Controllers\Auth\LogoutController', 'logout'])->name('logout');
 
-Route::resource('/users', 'App\Http\Controllers\UserController');
 
 /**
  * 
@@ -35,5 +34,7 @@ Route::middleware('auth')->group(function() {
         return view('app.dashboard');
     })->name('dashboard');
 
-    Route::resource('entries', '');
+    Route::resource('users', 'App\Http\Controllers\App\UserController');
+
+    Route::resource('entries', 'App\Http\Controllers\App\EntryController');
 });
