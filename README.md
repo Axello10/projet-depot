@@ -25,5 +25,5 @@ php artisan serve
     - caissier   => 3   (peut creer, mettre a jour, voir, supprimer c'est qui l'a ajouter)
 
 
-    - employee   => 4
+    - employee   => (simple )
 
