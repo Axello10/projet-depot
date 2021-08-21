@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function() {
         return view('app.dashboard');
     })->name('dashboard');
 
-    Route::resource('users', 'App\Http\Controllers\App\UserController')->middleware('create');
+    Route::resource('users', 'App\Http\Controllers\App\UserController');
 
     Route::resource('entries', 'App\Http\Controllers\App\EntryController');
 });

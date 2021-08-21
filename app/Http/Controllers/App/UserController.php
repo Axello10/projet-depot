@@ -26,7 +26,11 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('Auth.new');
+        if ($this->authorize('create', Auth::user())) {
+            return view('Auth.new');            
+        }
+
+        return view('dashboard');
     }
 
     /**
@@ -37,9 +41,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         // to register a new user!
-        $user = $request->validate([
+        $request->validate([
             'username' => 'required|max:20|min:5|unique:users',
             'fullname' => 'required|unique:users',
             'password' => 'required|min:5'
