@@ -22,6 +22,13 @@
                 </ul>
             </li>
             <li>
+                <h2>produits</h2>
+                <ul>
+                    <li><a href="{{ route('products.index') }}">voir les produits</a></li>
+                    <li><a href="{{ route('products.create') }}">ajouter un produit</a></li>
+                </ul>
+            </li>
+            <li>
                 <h2>entrees</h2>
                 <ul>
                     <li><a href="{{ route('entries.create') }}">ajouter une entrees</a></li>

@@ -43,7 +43,7 @@ class ProductController extends Controller
 
         Product::create($request->all());
 
-        return redirect()->route('vendors.index')->with('message', 'produit bien ajouté');
+        return redirect()->route('products.index')->with('message', 'produit bien ajouté');
     }
 
     /**

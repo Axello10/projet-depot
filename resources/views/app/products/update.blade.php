@@ -14,9 +14,9 @@
         @method('put')
         <div class="">
             <label for="name">nom du produit</label>
-            <input type="text" name="name" id="name" value="{{ $vendor->name }}">
+            <input type="text" name="name" id="name" value="{{ $product->name }}">
         </div>
-        
+
         <button type="submit">modifier</button>
     </form>
 @endsection
