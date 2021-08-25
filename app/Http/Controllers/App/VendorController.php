@@ -99,6 +99,8 @@ class VendorController extends Controller
      */
     public function destroy(Vendor $vendor)
     {
-        $vendor->delete();
+        $vendor::destroy($vendor);
+
+        return back();
     }
 }
