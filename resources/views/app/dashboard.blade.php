@@ -3,10 +3,6 @@
 @section('content')
 
     <div class="dashboard-links">
-        bienvenue, vous travaillez en tant que <em><strong>{{ Auth::user()->username }}</strong></em>
-        <ul>
-            <li>role => {{ Auth::user()->role->name }}</li>
-        </ul>
         <ul>
             <li>
                 <h2>utilisateur</h2>

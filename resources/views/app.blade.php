@@ -16,13 +16,13 @@
                 @auth
                     <li><a href="{{ route('logout') }}">logout</a></li>
                     <li><a href="{{ route('dashboard') }}">dashboard</a></li>
+                    <li>bienvenue, vous travaillez en tant que <em><strong>{{ Auth::user()->username }}</strong></em></li>
                 @endauth
                 @guest
                     <li><a href="{{ route('users.create') }}">new account</a></li>
                     <li><a href="{{ route('login') }}">login</a></li>
                 @endguest
             </ul>
-            bienvenue, vous travaillez en tant que <em><strong>{{ Auth::user()->username }}
         </div>
         <hr>
     </header>
