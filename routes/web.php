@@ -45,4 +45,8 @@ Route::middleware('auth')->group(function() {
     Route::resource('vendors', 'App\Http\Controllers\App\VendorController');
 
     Route::resource('products', 'App\Http\Controllers\App\ProductController');
+
+    Route::resource('grades', 'App\Http\Controllers\App\GradeController');
+
+    Route::resource('clients', 'App\Http\Controllers\App\ClientController');
 });

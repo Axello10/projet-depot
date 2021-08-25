@@ -29,6 +29,13 @@
                 </ul>
             </li>
             <li>
+                <h2>grades</h2>
+                <ul>
+                    <li><a href="{{ route('grades.index') }}">voir les grades</a></li>
+                    <li><a href="{{ route('grades.create') }}">ajouter une grades</a></li>
+                </ul>
+            </li>
+            <li>
                 <h2>entrees</h2>
                 <ul>
                     <li><a href="{{ route('entries.create') }}">ajouter une entrees</a></li>
