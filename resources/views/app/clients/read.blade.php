@@ -2,7 +2,7 @@
 @section('page', 'clients')
 @section('content')
 
-    @if ( count($grades) <= 0)
+    @if ( count($clients) <= 0)
         <p>aucun client trouvé</p>
     @else
     <h2>liste de clients</h2>

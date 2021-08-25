@@ -22,6 +22,14 @@
                 </ul>
             </li>
             <li>
+                <h2>clients</h2>
+                <ul>
+                    <li><a href="{{ route('clients.index') }}">voir les clients</a></li>
+                    <li><a href="{{ route('clients.create') }}">ajouter un client</a></li>
+                </ul>
+            </li>
+            
+            <li>
                 <h2>produits</h2>
                 <ul>
                     <li><a href="{{ route('products.index') }}">voir les produits</a></li>

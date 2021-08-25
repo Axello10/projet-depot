@@ -40,7 +40,7 @@ class ClientController extends Controller
         $request->validate([
             'name' => 'required|min:4',
             'adress' => 'min:4',
-            'mobile_number' => 'integer|min:8|max:12'
+            'mobile_number' => 'integer|min:8'
         ]);
 
         Client::create($request->all());
@@ -83,7 +83,7 @@ class ClientController extends Controller
         $request->validate([
             'name' => 'required|min:4',
             'adress' => 'min:4',
-            'mobile_number' => 'integer|min:8|max:12'
+            'mobile_number' => 'integer|min:8'
         ]);
 
         $client->update($request->all());
