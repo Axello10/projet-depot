@@ -7,8 +7,9 @@
     @else
     <ul>
         @foreach ($vendors as $vd)
-         <strong>nom: <li>$vd->name</li></strong>
-         <strong>adress: <li>$vd->adress</li></strong>
+            <li> <strong> nom du vendeur </strong> : {{ $vd->name }} </li>
+            <li> <strong> adress </strong> : {{ $vd->adress }} </li>
+            <br>
         @endforeach
     </ul>
     @endif

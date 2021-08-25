@@ -4,8 +4,8 @@
     <h2>Ajouter un vendeur</h2>
     @if ($errors->any())
         <ul>
-            @foreach ($errors->all() as $err)
-                {{ $err }}
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
             @endforeach
         </ul>
     @endif
