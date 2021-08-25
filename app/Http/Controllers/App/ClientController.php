@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\App;
 
 use App\Http\Controllers\Controller;
-use App\Models\Grade;
+use App\Models\Client;
 use Illuminate\Http\Request;
 
-class GradeController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class GradeController extends Controller
      */
     public function index()
     {
-        $grades = Grade::all();
-        return view('app.grades.read')->with('grades', $grades);
+        $clients = Client::all();
+        return view('app.clients.read')->with('clients', $clients);
     }
 
     /**
@@ -26,7 +26,7 @@ class GradeController extends Controller
      */
     public function create()
     {
-        return view('app.grades.new');
+        return view('app.clients.new');
     }
 
     /**
@@ -38,103 +38,67 @@ class GradeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|min:4'
+            'name' => 'required|min:4',
+            'adress' => 'min:4',
+            'mobile_number' => 'integer|min:8|max:12'
         ]);
 
-        Grade::create($request->all());
+        Client::create($request->all());
 
-        return redirect()->route('grades.index')->with('message', 'niveau bien ajouté');
+        return redirect()->route('clients.index')->with('message', 'client bien ajouté');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Grade  $grade
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function show(Grade $grade)
+    public function show(Client $client)
     {
-        return view('app.grades.one')->with('grade', $grade);
+        return view('app.clients.one')->with('client', $client);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Grade  $grade
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function edit(Grade $grade)
+    public function edit(Client $client)
     {
-        return view('app.grades.update')
-        ->with('grade', $grade);
+        return view('app.clients.update')
+        ->with('client', $client);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Grade  $grade
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Grade $grade)
+    public function update(Request $request, Client $client)
     {
         $request->validate([
-            'name' => 'min:4'
+            'name' => 'required|min:4',
+            'adress' => 'min:4',
+            'mobile_number' => 'integer|min:8|max:12'
         ]);
 
-        $grade->update($request->all());
+        $client->update($request->all());
 
-        return redirect()->route('grades.index');
+        return redirect()->route('clients.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Grade  $grade
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Grade $grade)
+    public function destroy(Client $client)
     {
         //
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<?php
-
-namespace App\Models;
-
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class Grade extends Model
-{
-    use HasFactory;
-
-    protected $fillables = ['name'];
-}
-
-
-
-
-
-
-
-
-
-
-

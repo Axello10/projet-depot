@@ -1,7 +1,8 @@
 @extends('app')
-@section('page', $grade->name)
+@section('page', $client->name)
 @section('content')
 
-        <h2> nom de la grade : {{ $grade->name }} </h2>
+        <h2> nom du client : {{ $client->name }} </h2>
+        <p>{{ $client->adress }} | {{ $client->mobile_number }}</p>
     
 @endsection
