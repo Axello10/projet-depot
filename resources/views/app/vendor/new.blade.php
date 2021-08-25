@@ -1,5 +1,5 @@
 @extends('app')
-@section('page', 'Nouvelle Entree')
+@section('page', 'Nouveau vendeur')
 @section('content')
     <h2>Ajouter un vendeur</h2>
     @if ($errors->any())

@@ -56,7 +56,7 @@ class VendorController extends Controller
      */
     public function show(Vendor $vendor)
     {
-        //
+        return view('app.vendor.one')->with('vendor', $vendor);
     }
 
     /**
@@ -67,7 +67,7 @@ class VendorController extends Controller
      */
     public function edit(Vendor $vendor)
     {
-        //
+        return view('app.vendor.update');
     }
 
     /**
@@ -79,7 +79,15 @@ class VendorController extends Controller
      */
     public function update(Request $request, Vendor $vendor)
     {
-        //
+        $request->validate([
+            'name' => 'min:4',
+            'adress' => 'min:5',
+            'mobile_number' => 'integer|min:8'
+        ]);
+
+        $vendor->update($request->all());
+
+        return redirect()->route('vendors.index');
     }
 
     /**
@@ -90,6 +98,6 @@ class VendorController extends Controller
      */
     public function destroy(Vendor $vendor)
     {
-        //
+        $vendor->delete();
     }
 }
