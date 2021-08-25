@@ -26,7 +26,7 @@ class VendorController extends Controller
      */
     public function create()
     {
-        //
+        return view('app.vendor.new');
     }
 
     /**
@@ -37,7 +37,15 @@ class VendorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:4',
+            'adress' => 'required',
+            'mobile_number' => 'integer|min:8'
+        ]);
+
+        Vendor::create($request->all());
+
+        return redirect()->route('vendors.index')->with('message', 'vendeur bien ajouté');
     }
 
     /**

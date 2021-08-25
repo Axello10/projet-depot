@@ -18,6 +18,7 @@
                 <h2>vendeurs</h2>
                 <ul>
                     <li><a href="{{ route('vendors.index') }}">voir les vendeurs</a></li>
+                    <li><a href="{{ route('vendors.create') }}">ajouter un vendeur</a></li>
                 </ul>
             </li>
             <li>
