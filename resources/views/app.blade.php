@@ -22,6 +22,7 @@
                     <li><a href="{{ route('login') }}">login</a></li>
                 @endguest
             </ul>
+            bienvenue, vous travaillez en tant que <em><strong>{{ Auth::user()->username }}
         </div>
         <hr>
     </header>

@@ -19,6 +19,12 @@
                 </ul>
             </li>
             <li>
+                <h2>vendeurs</h2>
+                <ul>
+                    <li><a href="{{ route('vendors.index') }}">voir les vendeurs</a></li>
+                </ul>
+            </li>
+            <li>
                 <h2>entrees</h2>
                 <ul>
                     <li><a href="{{ route('entries.create') }}">ajouter une entrees</a></li>
