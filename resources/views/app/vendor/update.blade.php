@@ -9,19 +9,20 @@
             @endforeach
         </ul>
     @endif
-    <form action="{{ route('vendors.store') }}" method="POST">
+    <form action="{{ route('vendors.update', $vendor->id) }}" method="POST">
         @csrf
         @method('put')
         <div class="">
             <label for="name">nom du vendeur</label>
-            <input type="text" name="name" id="name">
+            <input type="text" name="name" id="name" value="{{ $vendor->name }}">
         </div>
         <div class="">
             <label for="adress">adresse du vendeur</label>
-            <input type="text" name="adress" id="adress"></div>
+            <input type="text" name="adress" id="adress" value="{{ $vendor->adress }}">
+        </div>
         <div class="">
             <label for="mobile_number">numero du vendeur</label>
-            <input type="text" name="mobile_number" id="mobile_number">
+            <input type="text" name="mobile_number" id="mobile_number" value="{{ $vendor->mobile_number }}">
         </div>
 
         <button type="submit">modifier</button>

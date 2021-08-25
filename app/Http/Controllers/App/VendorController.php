@@ -67,7 +67,8 @@ class VendorController extends Controller
      */
     public function edit(Vendor $vendor)
     {
-        return view('app.vendor.update');
+        return view('app.vendor.update')
+                ->with('vendor', $vendor);
     }
 
     /**
