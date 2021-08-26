@@ -1,7 +1,7 @@
 @extends('app')
-@section('page', 'Nouveau vide')
+@section('page', 'Nouveau dette de vide')
 @section('content')
-    <h2>Ajouter un vide</h2>
+    <h2>Ajouter une dette de vide</h2>
     @if ($errors->any())
         <ul>
             @foreach ($errors->all() as $error)
@@ -9,13 +9,13 @@
             @endforeach
         </ul>
     @endif
-    <form action="{{ route('empties.store') }}" method="POST">
+    <form action="{{ route('givebacks.store') }}" method="POST">
         @csrf
         <div class="">
-            <label for="client_id">nom du client</label>
-            <select name="client_id" id="client_id">
-                @foreach ($clients as $cl)
-                    <option value="{{ $cl->id }}">{{ $cl->name }}</option>
+            <label for="client_id">nom du vendeur</label>
+            <select name="vendeur_id" id="vendeur_id">
+                @foreach ($vendors as $vd)
+                    <option value="{{ $vd->id }}">{{ $vd->name }}</option>
                 @endforeach
             </select>
         </div>
