@@ -32,7 +32,7 @@ class GivebackController extends Controller
         $vendors = Vendor::all();
         $products = Product::all();
         $deposits = Deposit::all();
-        return view('app.empties.new')
+        return view('app.givebacks.new')
                 ->with('vendors', $vendors)
                 ->with('products', $products)
                 ->with('deposits', $deposits);
@@ -77,7 +77,14 @@ class GivebackController extends Controller
      */
     public function edit(Giveback $giveback)
     {
-        //
+        $vendors = Vendor::all();
+        $products = Product::all();
+        $deposits = Deposit::all();
+        return view('app.givebacks.update')
+            ->with('giveback', $giveback)
+            ->with('vendors', $vendors)
+            ->with('products', $products)
+            ->with('deposits', $deposits);
     }
 
     /**
@@ -89,14 +96,16 @@ class GivebackController extends Controller
      */
     public function update(Request $request, Giveback $giveback)
     {
-        $vendors = Vendor::all();
-        $products = Product::all();
-        $deposits = Deposit::all();
-        return view('app.empties.update')
-            ->with('giveback', $giveback)
-            ->with('vendors', $vendors)
-            ->with('products', $products)
-            ->with('deposits', $deposits);
+        $request->validate([
+            'vendor_id' => 'required',
+            'product_id' => 'required',
+            'quantity' => 'required',
+            'deposit_id' => 'required'
+        ]);
+
+        $giveback->update($request->all());
+
+        return redirect()->route('givebacks.index');
     }
 
     /**

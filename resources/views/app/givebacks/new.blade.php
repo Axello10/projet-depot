@@ -12,8 +12,8 @@
     <form action="{{ route('givebacks.store') }}" method="POST">
         @csrf
         <div class="">
-            <label for="client_id">nom du vendeur</label>
-            <select name="vendeur_id" id="vendeur_id">
+            <label for="vendor_id">nom du vendeur</label>
+            <select name="vendor_id" id="vendor_id">
                 @foreach ($vendors as $vd)
                     <option value="{{ $vd->id }}">{{ $vd->name }}</option>
                 @endforeach
