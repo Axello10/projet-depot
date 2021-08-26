@@ -71,8 +71,10 @@ class DepositController extends Controller
      */
     public function edit(Deposit $deposit)
     {
+        $grades = Grade::all();
         return view('app.deposits.update')
-        ->with('deposit', $deposit);
+        ->with('deposit', $deposit)
+        ->with('grades', $grades);
     }
 
     /**
