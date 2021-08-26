@@ -42,7 +42,7 @@
         </div>
         
         <div class="">
-            <label for="empty">vide recu</label>
+            <label for="empty">vide rendue</label>
             <input type="number" name="empty" id="empty" step="5">
         </div>
         
