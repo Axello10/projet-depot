@@ -10,6 +10,6 @@ class Giveback extends Model
     use HasFactory;
 
     protected $fillable = [
-        'client_id', 'product_id', 'quantity', 'deposit_id'
+        'vendor_id', 'product_id', 'quantity', 'deposit_id'
     ];
 }

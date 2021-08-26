@@ -15,7 +15,8 @@ class EmptieController extends Controller
      */
     public function index()
     {
-        //
+        $empties = Emptie::all();
+        return view('app.empties.read')->with('empties', $empties);
     }
 
     /**
@@ -25,7 +26,7 @@ class EmptieController extends Controller
      */
     public function create()
     {
-        //
+        return view('app.empties.new');
     }
 
     /**
@@ -36,7 +37,16 @@ class EmptieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'client_id' => 'required',
+            'product_id' => 'required',
+            'quantity' => 'required',
+            'deposit_id' => 'required'
+        ]);
+
+        Emptie::create($request->all());
+
+        return redirect()->route('empties.index')->with('message', 'vide bien ajouté');
     }
 
     /**
@@ -47,7 +57,7 @@ class EmptieController extends Controller
      */
     public function show(Emptie $emptie)
     {
-        //
+        return view('app.empties.one')->with('emptie', $emptie);
     }
 
     /**
@@ -58,7 +68,8 @@ class EmptieController extends Controller
      */
     public function edit(Emptie $emptie)
     {
-        //
+        return view('app.empties.update')
+        ->with('emptie', $emptie);
     }
 
     /**
@@ -70,7 +81,16 @@ class EmptieController extends Controller
      */
     public function update(Request $request, Emptie $emptie)
     {
-        //
+        $request->validate([
+            'client_id' => 'required',
+            'product_id' => 'required',
+            'quantity' => 'required',
+            'deposit_id' => 'required'
+        ]);
+
+        $emptie->update($request->all());
+
+        return redirect()->route('empties.index');
     }
 
     /**
