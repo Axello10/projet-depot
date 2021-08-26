@@ -7,15 +7,15 @@
     @else
     <h2>liste de depots</h2>
     <ul>
-        @foreach ($depots as $dp)
+        @foreach ($deposits as $dp)
             <div style="margin: 20px 0px">
                 <li> <strong> nom du depot </strong> : {{ $dp->name }} </li>
                 <div>
-                    <a href="{{ route('deposits.show', $gd->id) }}">plus de details</a>
+                    <a href="{{ route('deposits.show', $dp->id) }}">plus de details</a>
 
-                    <a href="{{ route('deposits.edit', $gd->id) }}">modifier</a>
+                    <a href="{{ route('deposits.edit', $dp->id) }}">modifier</a>
 
-                    <a href="{{ route('deposits.destroy', $gd->id) }}">supprimer</a>
+                    <a href="{{ route('deposits.destroy', $dp->id) }}">supprimer</a>
                 </div>
                 
             </div>

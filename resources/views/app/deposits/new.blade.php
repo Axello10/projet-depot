@@ -19,13 +19,13 @@
         <div class="">
             <label for="grade_id">type de depot</label>
             <select name="grade_id" id="grade_id">
-                @if(count($grades <= 0))
+                {{-- @if(count($grades <= 0))
                     <option>nothin</option>
-                @else
+                @else --}}
                     @foreach ($grades as $gd)
                         <option value="{{ $gd->id }}">{{ $gd->name }}</option>
                     @endforeach
-                @endif
+                {{-- @endif --}}
             </select>
         </div>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\App;
 
 use App\Http\Controllers\Controller;
 use App\Models\Deposit;
+use App\Models\Grade;
 use Illuminate\Http\Request;
 
 class DepositController extends Controller
@@ -27,7 +28,9 @@ class DepositController extends Controller
      */
     public function create()
     {
-        return view('app.deposits.new');
+        $grades = Grade::all();
+        return view('app.deposits.new')
+                ->with('grades', $grades);
     }
 
     /**
