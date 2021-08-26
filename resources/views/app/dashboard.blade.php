@@ -60,6 +60,14 @@
             </li>
 
             <li>
+                <h2>dettes de vides</h2>
+                <ul>
+                    <li><a href="{{ route('givebacks.index') }}">voir les dettes de vides</a></li>
+                    <li><a href="{{ route('givebacks.create') }}">ajouter une dette de vides</a></li>
+                </ul>
+            </li>
+
+            <li>
                 <h2>entrees</h2>
                 <ul>
                     <li><a href="{{ route('entries.create') }}">ajouter une entrees</a></li>

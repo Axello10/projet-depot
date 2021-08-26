@@ -1,21 +1,21 @@
 @extends('app')
-@section('page', 'clients')
+@section('page', 'vides')
 @section('content')
 
-    @if ( count($clients) <= 0)
-        <p>aucun client trouvé</p>
+    @if ( count($empties) <= 0)
+        <p>aucun vide trouvé</p>
     @else
-    <h2>liste de clients</h2>
+    <h2>liste de vides</h2>
     <ul>
-        @foreach ($clients as $cl)
+        @foreach ($empties as $pt)
             <div style="margin: 20px 0px">
-                <li> <strong> nom du client </strong> : {{ $cl->name }} </li>
+                <li> <strong> nom du client </strong> : {{ $pt->client_id }} </li>
                 <div>
-                    <a href="{{ route('clients.show', $cl->id) }}">plus de details</a>
+                    <a href="{{ route('empties.show', $pt->id) }}">plus de details</a>
 
-                    <a href="{{ route('clients.edit', $cl->id) }}">modifier</a>
+                    <a href="{{ route('empties.edit', $pt->id) }}">modifier</a>
 
-                    <a href="{{ route('clients.destroy', $cl->id) }}">supprimer</a>
+                    <a href="{{ route('empties.destroy', $pt->id) }}">supprimer</a>
                 </div>
                 
             </div>
