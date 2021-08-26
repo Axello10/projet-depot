@@ -4,6 +4,9 @@ namespace App\Http\Controllers\App;
 
 use App\Http\Controllers\Controller;
 use App\Models\Giveback;
+use App\Models\Vendor;
+use App\Models\Product;
+use App\Models\Deposit;
 use Illuminate\Http\Request;
 
 class GivebackController extends Controller
@@ -15,7 +18,8 @@ class GivebackController extends Controller
      */
     public function index()
     {
-        //
+        $givebacks = Giveback::all();
+        return view('app.givebacks.read')->with('givebacks', $givebacks);
     }
 
     /**
@@ -25,7 +29,13 @@ class GivebackController extends Controller
      */
     public function create()
     {
-        //
+        $vendors = Vendor::all();
+        $products = Product::all();
+        $deposits = Deposit::all();
+        return view('app.empties.new')
+                ->with('vendors', $vendors)
+                ->with('products', $products)
+                ->with('deposits', $deposits);
     }
 
     /**
@@ -36,7 +46,16 @@ class GivebackController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'vendor_id' => 'required',
+            'product_id' => 'required',
+            'quantity' => 'required',
+            'deposit_id' => 'required'
+        ]);
+
+        Giveback::create($request->all());
+
+        return redirect()->route('givebacks.index')->with('message', 'dette de vide bien ajouté');
     }
 
     /**
@@ -47,7 +66,7 @@ class GivebackController extends Controller
      */
     public function show(Giveback $giveback)
     {
-        //
+        return view('app.givebacks.one')->with('giveback', $giveback);
     }
 
     /**
@@ -70,7 +89,14 @@ class GivebackController extends Controller
      */
     public function update(Request $request, Giveback $giveback)
     {
-        //
+        $vendors = Vendor::all();
+        $products = Product::all();
+        $deposits = Deposit::all();
+        return view('app.empties.update')
+            ->with('giveback', $giveback)
+            ->with('vendors', $vendors)
+            ->with('products', $products)
+            ->with('deposits', $deposits);
     }
 
     /**
