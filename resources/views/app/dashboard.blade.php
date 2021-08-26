@@ -37,6 +37,13 @@
                 </ul>
             </li>
             <li>
+                <h2>depots</h2>
+                <ul>
+                    <li><a href="{{ route('deposits.index') }}">voir les depots</a></li>
+                    <li><a href="{{ route('deposits.create') }}">ajouter un depots</a></li>
+                </ul>
+            </li>
+            <li>
                 <h2>grades</h2>
                 <ul>
                     <li><a href="{{ route('grades.index') }}">voir les grades</a></li>

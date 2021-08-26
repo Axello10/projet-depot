@@ -1,21 +1,21 @@
 @extends('app')
-@section('page', 'grades')
+@section('page', 'depots')
 @section('content')
 
-    @if ( count($grades) <= 0)
-        <p>aucun grade trouvé</p>
+    @if ( count($deposits) <= 0)
+        <p>aucun depot trouvé</p>
     @else
-    <h2>liste de grades</h2>
+    <h2>liste de depots</h2>
     <ul>
-        @foreach ($grades as $gd)
+        @foreach ($depots as $dp)
             <div style="margin: 20px 0px">
-                <li> <strong> nom de la grade </strong> : {{ $gd->name }} </li>
+                <li> <strong> nom du depot </strong> : {{ $dp->name }} </li>
                 <div>
-                    <a href="{{ route('grades.show', $gd->id) }}">plus de details</a>
+                    <a href="{{ route('deposits.show', $gd->id) }}">plus de details</a>
 
-                    <a href="{{ route('grades.edit', $gd->id) }}">modifier</a>
+                    <a href="{{ route('deposits.edit', $gd->id) }}">modifier</a>
 
-                    <a href="{{ route('grades.destroy', $gd->id) }}">supprimer</a>
+                    <a href="{{ route('deposits.destroy', $gd->id) }}">supprimer</a>
                 </div>
                 
             </div>

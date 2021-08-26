@@ -50,5 +50,5 @@ Route::middleware('auth')->group(function() {
 
     Route::resource('clients', 'App\Http\Controllers\App\ClientController');
 
-    Route::resource('deposits', 'App\Http\Controllers\App\ClientController');
+    Route::resource('deposits', 'App\Http\Controllers\App\DepositController');
 });

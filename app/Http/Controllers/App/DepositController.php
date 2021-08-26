@@ -15,7 +15,9 @@ class DepositController extends Controller
      */
     public function index()
     {
-        //
+        $deposits = Deposit::all();
+        return view('app.deposits.read')
+                ->with('deposits', $deposits);
     }
 
     /**
@@ -25,7 +27,7 @@ class DepositController extends Controller
      */
     public function create()
     {
-        //
+        return view('app.deposits.new');
     }
 
     /**
@@ -36,7 +38,15 @@ class DepositController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:4',
+            'grade_id' => 'required',
+            'mobile_number' => 'integer|min:8'
+        ]);
+
+        Deposit::create($request->all());
+
+        return redirect()->route('deposits.index')->with('message', 'depot bien ajouté');
     }
 
     /**
@@ -47,7 +57,7 @@ class DepositController extends Controller
      */
     public function show(Deposit $deposit)
     {
-        //
+        return view('app.deposits.one')->with('deposit', $deposit);
     }
 
     /**
@@ -58,7 +68,8 @@ class DepositController extends Controller
      */
     public function edit(Deposit $deposit)
     {
-        //
+        return view('app.deposits.update')
+        ->with('deposit', $deposit);
     }
 
     /**
@@ -70,7 +81,15 @@ class DepositController extends Controller
      */
     public function update(Request $request, Deposit $deposit)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:4',
+            'grade_id' => 'required',
+            'mobile_number' => 'integer|min:8'
+        ]);
+
+        $deposit->update($request->all());
+
+        return redirect()->route('deposits.index');
     }
 
     /**
