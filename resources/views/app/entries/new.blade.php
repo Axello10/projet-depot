@@ -5,7 +5,7 @@
     <form action="{{ route('entries.store') }}" method="POST">
         @csrf
         <div class="">
-            <label for="vendor_id">fournisseur</label>
+            <label for="vendor_id">vendeur</label>
             <select name="vendor_id" id="vendor">
                 @foreach ($vendors as $vd)
                     <option value="{{ $vd->id }}">{{ $vd->name }}</option>
