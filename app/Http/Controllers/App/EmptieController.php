@@ -77,8 +77,14 @@ class EmptieController extends Controller
      */
     public function edit(Emptie $emptie)
     {
+        $clients = Client::all();
+        $products = Product::all();
+        $deposits = Deposit::all();
         return view('app.empties.update')
-        ->with('emptie', $emptie);
+            ->with('emptie', $emptie)
+            ->with('clients', $clients)
+            ->with('products', $products)
+            ->with('deposits', $deposits);
     }
 
     /**
