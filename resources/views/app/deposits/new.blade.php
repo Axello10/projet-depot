@@ -1,7 +1,7 @@
 @extends('app')
-@section('page', 'Nouveau Grade')
+@section('page', 'Nouveau Depot')
 @section('content')
-    <h2>Ajouter une grade</h2>
+    <h2>Ajouter un depot</h2>
     @if ($errors->any())
         <ul>
             @foreach ($errors->all() as $error)
@@ -9,7 +9,7 @@
             @endforeach
         </ul>
     @endif
-    <form action="{{ route('grades.store') }}" method="POST">
+    <form action="{{ route('deposits.store') }}" method="POST">
         @csrf
         <div class="">
             <label for="name">nom de la grades</label>
