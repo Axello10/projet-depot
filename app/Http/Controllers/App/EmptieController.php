@@ -64,9 +64,9 @@ class EmptieController extends Controller
      * @param  \App\Models\Emptie  $emptie
      * @return \Illuminate\Http\Response
      */
-    public function show(Emptie $emptie)
+    public function show(Emptie $empty)
     {
-        return view('app.empties.one')->with('emptie', $emptie);
+        return view('app.empties.one')->with('empty', $empty);
     }
 
     /**
@@ -75,13 +75,13 @@ class EmptieController extends Controller
      * @param  \App\Models\Emptie  $emptie
      * @return \Illuminate\Http\Response
      */
-    public function edit(Emptie $emptie)
+    public function edit(Emptie $empty)
     {
         $clients = Client::all();
         $products = Product::all();
         $deposits = Deposit::all();
         return view('app.empties.update')
-            ->with('emptie', $emptie)
+            ->with('emptie', $empty)
             ->with('clients', $clients)
             ->with('products', $products)
             ->with('deposits', $deposits);
@@ -94,7 +94,7 @@ class EmptieController extends Controller
      * @param  \App\Models\Emptie  $emptie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Emptie $emptie)
+    public function update(Request $request, Emptie $empty)
     {
         $request->validate([
             'client_id' => 'required',
@@ -103,7 +103,7 @@ class EmptieController extends Controller
             'deposit_id' => 'required'
         ]);
 
-        $emptie->update($request->all());
+        $empty->update($request->all());
 
         return redirect()->route('empties.index');
     }
