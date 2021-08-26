@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\App;
 
 use App\Http\Controllers\Controller;
+use App\Models\Client;
+use App\Models\Deposit;
 use App\Models\Emptie;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class EmptieController extends Controller
@@ -26,7 +29,13 @@ class EmptieController extends Controller
      */
     public function create()
     {
-        return view('app.empties.new');
+        $clients = Client::all();
+        $products = Product::all();
+        $deposits = Deposit::all();
+        return view('app.empties.new')
+                ->with('clients', $clients)
+                ->with('products', $products)
+                ->with('deposits', $deposits);
     }
 
     /**

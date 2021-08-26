@@ -15,6 +15,10 @@ class CreateEmptiesTable extends Migration
     {
         Schema::create('empties', function (Blueprint $table) {
             $table->id();
+            $table->integer('client_id');
+            $table->integer('product_id');
+            $table->integer('quantity');
+            $table->integer('deposit_id');
             $table->timestamps();
         });
     }

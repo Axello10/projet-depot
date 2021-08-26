@@ -15,6 +15,10 @@ class CreateGivebacksTable extends Migration
     {
         Schema::create('givebacks', function (Blueprint $table) {
             $table->id();
+            $table->integer('vendor_id');
+            $table->integer('product_id');
+            $table->integer('quantity');
+            $table->integer('deposit_id');
             $table->timestamps();
         });
     }

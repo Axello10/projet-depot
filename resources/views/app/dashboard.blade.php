@@ -50,6 +50,15 @@
                     <li><a href="{{ route('grades.create') }}">ajouter une grades</a></li>
                 </ul>
             </li>
+
+            <li>
+                <h2>vides</h2>
+                <ul>
+                    <li><a href="{{ route('empties.index') }}">voir les vides</a></li>
+                    <li><a href="{{ route('empties.create') }}">ajouter un vide</a></li>
+                </ul>
+            </li>
+
             <li>
                 <h2>entrees</h2>
                 <ul>
