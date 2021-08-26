@@ -15,6 +15,13 @@ class CreateEntryTable extends Migration
     {
         Schema::create('entry', function (Blueprint $table) {
             $table->id();
+            $table->integer('vendor_id');
+            $table->integer('product_id');
+            $table->integer('quantity');
+            $table->integer('price')->default(0);
+            $table->integer('user_id');
+            $table->integer('empty');
+            $table->integer('deposit_id');
             $table->timestamps();
         });
     }
