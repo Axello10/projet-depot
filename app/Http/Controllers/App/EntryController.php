@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\App;
 
 use App\Http\Controllers\Controller;
+use App\Models\Deposit;
 use App\Models\Entry;
+use App\Models\Product;
+use App\Models\Vendor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +19,10 @@ class EntryController extends Controller
      */
     public function index()
     {
-        //
+        $entries = Entry::all();
+
+        return view('app.entries.read')
+                ->with('entries', $entries);
     }
 
     /**
@@ -26,9 +32,14 @@ class EntryController extends Controller
      */
     public function create()
     {
-        $this->authorize('create', Auth::user());
 
-        return view('app.new_entrie');
+        $vendors = Vendor::all();
+        $products = Product::all();
+        $deposits = Deposit::all();
+        return view('app.entries.new')
+                ->with('vendors', $vendors)
+                ->with('products', $products)
+                ->with('deposits', $deposits);
     }
 
     /**
