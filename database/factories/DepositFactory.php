@@ -22,7 +22,9 @@ class DepositFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->city,
+            'grade_id' => $this->faker->numberBetween(1, 2),
+            'mobile_number' => $this->faker->phoneNumber
         ];
     }
 }

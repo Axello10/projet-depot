@@ -22,7 +22,7 @@ class GradeFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->jobTitle
         ];
     }
 }
