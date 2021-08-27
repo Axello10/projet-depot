@@ -17,7 +17,7 @@ class CreateVendorsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('adress');
-            $table->string('grade_id');
+            $table->integer('grade_id');
             $table->string('mobile_number')->nullable();
             $table->timestamps();
         });

@@ -82,19 +82,15 @@ class EntryController extends Controller
 
         $vendor = Vendor::findOrFail($request->vendor_id);
 
-        // echo json_encode($vendor);
+        echo json_encode($vendor);
 
-        if ($vendor['grade_id'] === 1 || $vendor['grade_id'] === 2) {
+        if ($vendor['grade_id'] == 1 || $vendor['grade_id'] === 2) {
             $data['price'] = 0;
         }
 
         Entrie::create($data);
 
         return redirect()->route('entries.index');
-
-        // le prix dependra de la source si c'est notre depot le prix == 0
-        // le user_id est equivalent a celui de l'utilisateur connecte!
-        // enfin enregistrer l'entree
     }
 
     /**
