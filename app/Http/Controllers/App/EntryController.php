@@ -5,6 +5,7 @@ namespace App\Http\Controllers\App;
 use App\Http\Controllers\Controller;
 use App\Models\Deposit;
 use App\Models\Entrie;
+use App\Models\Giveback;
 use App\Models\Product;
 use App\Models\Vendor;
 use Illuminate\Http\Request;
@@ -60,8 +61,29 @@ class EntryController extends Controller
         ]);
         
         // verifier si le nombre de vide est inferieur a la quantité il ajouter dans les dettes
-        
-        
+        // echo json_encode($request->all());
+        if ($request->empty < $request->quantity) {
+            $give = [
+                'vendor_id' => $request->vendor_id,
+                'product_id' => $request->product_id,
+                'quantity' => $request->quantity - $request->empty,
+                'deposit_id' => $request->deposit_id
+            ];
+
+            Giveback::create($give);
+        }
+
+        $request['user_id'] = Auth::user()->id;
+
+        $depot = Deposit::findOrFail($request->deposit_id);
+
+        if ($depot->grade_id === 1 || $depot->grade_id === 2) {
+            $request['price'] = 0;
+        }
+
+        Entrie::create($request->all());
+
+        return redirect()->route('entries.index');
 
         // le prix dependra de la source si c'est notre depot le prix == 0
         // le user_id est equivalent a celui de l'utilisateur connecte!

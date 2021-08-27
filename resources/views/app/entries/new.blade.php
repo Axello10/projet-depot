@@ -2,6 +2,13 @@
 @section('page', 'Nouvelle Entree')
 @section('content')
     <h2>Ajouter une entrée</h2>
+    @if ($errors->any())
+        <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>    
+        @endforeach
+        </ul>
+    @endif
     <form action="{{ route('entries.store') }}" method="POST">
         @csrf
         <div class="">
@@ -24,12 +31,12 @@
         
         <div class="">
             <label for="quantity">quantité</label>
-            <input type="number" name="quantity" id="quantity" step="5">
+            <input type="number" name="quantity" id="quantity">
         </div>
         
         <div class="">
             <label for="price">prix totale</label>
-            <input type="number" name="price" id="price" step="10">
+            <input type="number" name="price" id="price">
         </div>
 
         <div class="">
@@ -43,7 +50,7 @@
         
         <div class="">
             <label for="empty">vide rendue</label>
-            <input type="number" name="empty" id="empty" step="5">
+            <input type="number" name="empty" id="empty">
         </div>
         
         <button type="submit">ajouter</button>

@@ -29,6 +29,13 @@
     - pour ce il faut un compte relié a ce system
     - une fois connecté on verifie vos autorisation.
 
+fournisseurs
+
+1 => depot principale
+2 => depot simple
+3 => depot ou source externe
+
+
 > let's build it!
 
 ## installation
