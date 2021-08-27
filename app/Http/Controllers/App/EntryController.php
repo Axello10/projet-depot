@@ -71,19 +71,24 @@ class EntryController extends Controller
             ];
 
             Giveback::create($give);
+        } 
+        
+        else {
+            $data = $request->all();
+            $data['empty'] = $request->quantity;
         }
 
-        $request['user_id'] = Auth::user()->id;
+        $data['user_id'] = Auth::user()->id;
 
         $vendor = Vendor::findOrFail($request->vendor_id);
 
         // echo json_encode($vendor);
 
         if ($vendor['grade_id'] === 1 || $vendor['grade_id'] === 2) {
-            $request->price = 0;
+            $data['price'] = 0;
         }
 
-        Entrie::create($request->all());
+        Entrie::create($data);
 
         return redirect()->route('entries.index');
 
