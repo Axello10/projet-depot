@@ -8,6 +8,7 @@ use App\Models\Entrie;
 use App\Models\Giveback;
 use App\Models\Product;
 use App\Models\Vendor;
+use Dotenv\Parser\Entry;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -178,6 +179,7 @@ class EntryController extends Controller
      */
     public function destroy(Entrie $entry)
     {
-        //
+        $entry->delete();
+        return back();
     }
 }

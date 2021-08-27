@@ -16,6 +16,13 @@
                     <a href="{{ route('entries.edit', $et->id) }}">modifier</a>
 
                     <a href="{{ route('entries.destroy', $et->id) }}">supprimer</a>
+
+                    <form action="{{ route('entries.destroy', $et->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="supprimer">
+                    </form>
+
                 </div>
                 
             </div>
