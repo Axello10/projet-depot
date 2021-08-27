@@ -2,20 +2,20 @@
 @section('page', 'depots')
 @section('content')
 
-    @if ( count($deposits) <= 0)
+    @if ( count($entries) <= 0)
         <p>aucun depot trouvé</p>
     @else
     <h2>liste de depots</h2>
     <ul>
-        @foreach ($deposits as $dp)
+        @foreach ($entries as $et)
             <div style="margin: 20px 0px">
-                <li> <strong> nom du depot </strong> : {{ $dp->name }} </li>
+                <li> <strong> nom du depot </strong> : {{ $et->vendor_id }} </li>
                 <div>
-                    <a href="{{ route('deposits.show', $dp->id) }}">plus de details</a>
+                    <a href="{{ route('entries.show', $et->id) }}">plus de details</a>
 
-                    <a href="{{ route('deposits.edit', $dp->id) }}">modifier</a>
+                    <a href="{{ route('entries.edit', $et->id) }}">modifier</a>
 
-                    <a href="{{ route('deposits.destroy', $dp->id) }}">supprimer</a>
+                    <a href="{{ route('entries.destroy', $et->id) }}">supprimer</a>
                 </div>
                 
             </div>

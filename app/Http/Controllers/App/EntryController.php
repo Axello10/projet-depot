@@ -4,7 +4,7 @@ namespace App\Http\Controllers\App;
 
 use App\Http\Controllers\Controller;
 use App\Models\Deposit;
-use App\Models\Entry;
+use App\Models\Entrie;
 use App\Models\Product;
 use App\Models\Vendor;
 use Illuminate\Http\Request;
@@ -19,7 +19,7 @@ class EntryController extends Controller
      */
     public function index()
     {
-        $entries = Entry::all();
+        $entries = Entrie::all();
 
         return view('app.entries.read')
                 ->with('entries', $entries);
@@ -71,10 +71,10 @@ class EntryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Entry  $entry
+     * @param  \App\Models\Entrie  $entry
      * @return \Illuminate\Http\Response
      */
-    public function show(Entry $entry)
+    public function show(Entrie $entry)
     {
         //
     }
@@ -82,10 +82,10 @@ class EntryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Entry  $entry
+     * @param  \App\Models\Entrie  $entry
      * @return \Illuminate\Http\Response
      */
-    public function edit(Entry $entry)
+    public function edit(Entrie $entry)
     {
         //
     }
@@ -94,10 +94,10 @@ class EntryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Entry  $entry
+     * @param  \App\Models\Entrie  $entry
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Entry $entry)
+    public function update(Request $request, Entrie $entry)
     {
         //
     }
@@ -105,10 +105,10 @@ class EntryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Entry  $entry
+     * @param  \App\Models\Entrie $entry
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Entry $entry)
+    public function destroy(Entrie $entry)
     {
         //
     }

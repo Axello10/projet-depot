@@ -2,11 +2,16 @@
 @section('page', 'mettre a jour une dette de vide')
 @section('content')
     
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            {{ $error }}
+        @endforeach
+    @endif
     <form action="{{ route('givebacks.update', $giveback->id) }}" method="post">
         @csrf
         @method('put')
         <div class="">
-            <select name="giveback_id" id="giveback_id">
+            <select name="vendor_id" id="vendor_id">
                 @foreach ($vendors as $vd)
                     <option value="{{ $vd->id }}">{{ $vd->name }}</option>
                 @endforeach
@@ -21,7 +26,7 @@
             </select>
         </div>
 
-        <input type="number" name="quantity" id="quantity">
+        <input type="number" name="quantity" id="quantity" value="{{ $giveback->quantity }}">
 
         <div class="">
             <select name="deposit_id" id="deposit_id">
