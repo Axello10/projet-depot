@@ -15,6 +15,15 @@
             <label for="name">nom du vendeur</label>
             <input type="text" name="name" id="name">
         </div>
+
+        <div class="">
+            <select name="grade_id" id="grade_id">
+                @foreach ($grades as $gd)
+                    <option value="{{ $gd->id }}">{{ $gd->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
         <div class="">
             <label for="adress">adresse du vendeur</label>
             <input type="text" name="adress" id="adress"></div>
