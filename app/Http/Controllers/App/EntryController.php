@@ -20,7 +20,7 @@ class EntryController extends Controller
      */
     public function index()
     {
-        $entries = Entrie::all();
+        $entries = Entrie::orderBy('created_at', 'desc')->get();
 
         return view('app.entries.read')
                 ->with('entries', $entries);
@@ -101,7 +101,9 @@ class EntryController extends Controller
      */
     public function show(Entrie $entry)
     {
-        //
+        
+        return view('app.entries.one')
+                ->with('entrie', $entry);
     }
 
     /**
@@ -112,7 +114,14 @@ class EntryController extends Controller
      */
     public function edit(Entrie $entry)
     {
-        //
+        $vendors = Vendor::all();
+        $products = Product::all();
+        $deposits = Deposit::all();
+        return view('app.entries.update')
+                ->with('entrie', $entry)
+                ->with('vendors', $vendors)
+                ->with('products', $products)
+                ->with('deposits', $deposits);
     }
 
     /**
@@ -124,7 +133,41 @@ class EntryController extends Controller
      */
     public function update(Request $request, Entrie $entry)
     {
-        //
+        $request->validate([
+            'quantity' => 'min:1',
+        ]);
+        
+        // verifier si le nombre de vide est inferieur a la quantité il ajouter dans les dettes
+        // echo json_encode($request->all());
+        if ($request->empty < $request->quantity) {
+            $give = [
+                'vendor_id' => $request->vendor_id,
+                'product_id' => $request->product_id,
+                'quantity' => $request->quantity - $request->empty,
+                'deposit_id' => $request->deposit_id
+            ];
+
+            Giveback::create($give);
+        } 
+        
+        else {
+            $data = $request->all();
+            $data['empty'] = $request->quantity;
+        }
+
+        $data['user_id'] = Auth::user()->id;
+
+        $vendor = Vendor::findOrFail($request->vendor_id);
+
+        echo json_encode($vendor);
+
+        if ($vendor['grade_id'] == 1 || $vendor['grade_id'] === 2) {
+            $data['price'] = 0;
+        }
+
+        $entry->update($data);
+
+        return redirect()->route('entries.index');
     }
 
     /**

@@ -1,15 +1,15 @@
 @extends('app')
-@section('page', 'depots')
+@section('page', 'entree')
 @section('content')
 
     @if ( count($entries) <= 0)
-        <p>aucun depot trouvé</p>
+        <p>aucun entree trouvé</p>
     @else
-    <h2>liste de depots</h2>
+    <h2>liste de entree</h2>
     <ul>
         @foreach ($entries as $et)
             <div style="margin: 20px 0px">
-                <li> <strong> nom du depot </strong> : {{ $et->vendor_id }} </li>
+                <li> <strong> nom du produit </strong> : {{ $et->product_id }} </li>
                 <div>
                     <a href="{{ route('entries.show', $et->id) }}">plus de details</a>
 

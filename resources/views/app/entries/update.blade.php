@@ -1,7 +1,7 @@
 @extends('app')
-@section('page', 'mettre a jour un depot')
+@section('page', 'mettre a jour une entree')
 @section('content')
-    <h2>metter a jour un depot</h2>
+    <h2>metter a jour une entree</h2>
     @if ($errors->any())
         <ul>
             @foreach ($errors->all() as $error)
@@ -9,26 +9,49 @@
             @endforeach
         </ul>
     @endif
-    <form action="{{ route('deposits.update', $deposit->id) }}" method="POST">
+    <form action="{{ route('entries.update', $entrie->id) }}" method="POST">
         @csrf
         @method('put')
         <div class="">
-            <label for="name">nom du depot</label>
-            <input type="text" name="name" id="name" value="{{ $deposit->name }}">
-        </div>
-
-        <div class="">
-            <label for="grade_id">type de depot</label>
-            <select name="grade_id" id="grade_id">
-                @foreach ($grades as $gd)
-                    <option value="{{ $gd->id }}">{{ $gd->name }}</option>
+            <label for="vendor_id">vendeur</label>
+            <select name="vendor_id" id="vendor">
+                @foreach ($vendors as $vd)
+                    <option value="{{ $vd->id }}">{{ $vd->name }}</option>
                 @endforeach
             </select>
         </div>
+        
+        <div class="">
+            <label for="product">nom du produit</label>
+            <select name="product_id" id="product">
+                @foreach ($products as $pd)
+                    <option value="{{ $pd->id }}">{{ $pd->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        
+        <div class="">
+            <label for="quantity">quantité</label>
+            <input type="number" name="quantity" id="quantity" value="{{ $entrie->quantity }}">
+        </div>
+        
+        <div class="">
+            <label for="price">prix totale</label>
+            <input type="number" name="price" id="price" value="{{ $entrie->quantity }}">
+        </div>
 
         <div class="">
-            <label for="name">numero du gérant</label>
-            <input type="number" name="mobile_number" id="mobile_number" value="{{ $deposit->mobile_number }}">
+            <label for="deposit_id">nom du depot</label>
+            <select name="deposit_id" id="deposit_id">
+                @foreach ($deposits as $dp)
+                    <option value="{{ $dp->id }}">{{ $dp->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        
+        <div class="">
+            <label for="empty">vide rendue</label>
+            <input type="number" name="empty" id="empty" value="{{ $entrie->empty }}">
         </div>
 
         <button type="submit">modifier</button>
