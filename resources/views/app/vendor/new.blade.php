@@ -17,6 +17,7 @@
         </div>
 
         <div class="">
+            <label for="grade">type de vendeur</label>
             <select name="grade_id" id="grade_id">
                 @foreach ($grades as $gd)
                     <option value="{{ $gd->id }}">{{ $gd->name }}</option>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\App;
 
 use App\Http\Controllers\Controller;
+use App\Models\Grade;
 use App\Models\Vendor;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,9 @@ class VendorController extends Controller
      */
     public function create()
     {
-        return view('app.vendor.new');
+        $grades = Grade::all();
+        return view('app.vendor.new')
+                ->with('grades', $grades);
     }
 
     /**
@@ -67,8 +70,10 @@ class VendorController extends Controller
      */
     public function edit(Vendor $vendor)
     {
+        $grades = Grade::all();
         return view('app.vendor.update')
-                ->with('vendor', $vendor);
+                ->with('vendor', $vendor)
+                ->with('grades', $grades);
     }
 
     /**

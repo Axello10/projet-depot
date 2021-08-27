@@ -75,10 +75,12 @@ class EntryController extends Controller
 
         $request['user_id'] = Auth::user()->id;
 
-        $depot = Deposit::findOrFail($request->deposit_id);
+        $vendor = Vendor::findOrFail($request->vendor_id);
 
-        if ($depot->grade_id === 1 || $depot->grade_id === 2) {
-            $request['price'] = 0;
+        // echo json_encode($vendor);
+
+        if ($vendor['grade_id'] === 1 || $vendor['grade_id'] === 2) {
+            $request->price = 0;
         }
 
         Entrie::create($request->all());
