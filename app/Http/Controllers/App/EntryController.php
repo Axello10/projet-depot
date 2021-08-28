@@ -158,6 +158,8 @@ class EntryController extends Controller
             $data['empty'] = $request->quantity;
         }
 
+        $data = $request->all();
+
         $data['user_id'] = Auth::user()->id;
 
         $vendor = Vendor::findOrFail($request->vendor_id);

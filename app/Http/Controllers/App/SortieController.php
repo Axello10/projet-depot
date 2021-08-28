@@ -3,8 +3,13 @@
 namespace App\Http\Controllers\App;
 
 use App\Http\Controllers\Controller;
+use App\Models\Client;
 use App\Models\Sortie;
+use App\Models\Product;
+use App\Models\Deposit;
+use App\Models\Emptie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SortieController extends Controller
 {
@@ -15,7 +20,10 @@ class SortieController extends Controller
      */
     public function index()
     {
-        //
+        $sorties = Sortie::orderBy('created_at', 'desc')->get();
+
+        return view('app.sorties.read')
+                ->with('sorties', $sorties);
     }
 
     /**
@@ -25,7 +33,13 @@ class SortieController extends Controller
      */
     public function create()
     {
-        //
+        $clients = Client::all();
+        $products = Product::all();
+        $deposits = Deposit::all();
+        return view('app.sorties.new')
+                ->with('clients', $clients)
+                ->with('products', $products)
+                ->with('deposits', $deposits);
     }
 
     /**
@@ -36,7 +50,46 @@ class SortieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'client_id' => 'required',
+            'product_id' => 'required',
+            'quantity' => 'required|min:1',
+            'price' => 'required',
+            'empty' => 'required',
+            'deposit_id' => 'required'
+        ]);
+        
+        // verifier si le nombre de vide est inferieur a la quantité il ajouter dans les dettes
+        // echo json_encode($request->all());
+        if ($request->empty < $request->quantity) {
+            $empti = [
+                'client_id' => $request->client_id,
+                'product_id' => $request->product_id,
+                'quantity' => $request->quantity - $request->empty,
+                'deposit_id' => $request->deposit_id
+            ];
+
+            Emptie::create($empti);
+        } 
+        
+        else {
+            $data = $request->all();
+            $data['empty'] = $request->quantity;
+        }
+
+        $data = $request->all();
+
+        $data['user_id'] = Auth::user()->id;
+
+        $client = Client::findOrFail($request->client_id);
+
+        if ($client['grade_id'] == 1 || $client['grade_id'] === 2) {
+            $data['price'] = 0;
+        }
+
+        Sortie::create($data);
+
+        return redirect()->route('sorties.index');
     }
 
     /**
@@ -47,7 +100,8 @@ class SortieController extends Controller
      */
     public function show(Sortie $sortie)
     {
-        //
+        return view('app.sorties.one')
+                ->with('sortie', $sortie);
     }
 
     /**
@@ -58,7 +112,14 @@ class SortieController extends Controller
      */
     public function edit(Sortie $sortie)
     {
-        //
+        $clients = Client::all();
+        $products = Product::all();
+        $deposits = Deposit::all();
+        return view('app.entries.update')
+                ->with('sortie', $sortie)
+                ->with('clients', $clients)
+                ->with('products', $products)
+                ->with('deposits', $deposits);
     }
 
     /**
@@ -70,7 +131,41 @@ class SortieController extends Controller
      */
     public function update(Request $request, Sortie $sortie)
     {
-        //
+        $request->validate([
+            'quantity' => 'min:1',
+        ]);
+        
+        // verifier si le nombre de vide est inferieur a la quantité il ajouter dans les dettes
+        // echo json_encode($request->all());
+        if ($request->empty < $request->quantity) {
+            $empti = [
+                'client_id' => $request->client_id,
+                'product_id' => $request->product_id,
+                'quantity' => $request->quantity - $request->empty,
+                'deposit_id' => $request->deposit_id
+            ];
+
+            Emptie::create($empti);
+        } 
+        
+        else {
+            $data = $request->all();
+            $data['empty'] = $request->quantity;
+        }
+
+        $data = $request->all();
+
+        $data['user_id'] = Auth::user()->id;
+
+        $client = Client::findOrFail($request->client_id);
+
+        if ($client['grade_id'] == 1 || $client['grade_id'] === 2) {
+            $data['price'] = 0;
+        }
+
+        $sortie->update($data);
+
+        return redirect()->route('sorties.index');
     }
 
     /**
@@ -81,6 +176,6 @@ class SortieController extends Controller
      */
     public function destroy(Sortie $sortie)
     {
-        //
+        $sortie->delete();
     }
 }
