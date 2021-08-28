@@ -98,10 +98,10 @@ class SortieController extends Controller
      * @param  \App\Models\Sortie  $sortie
      * @return \Illuminate\Http\Response
      */
-    public function show(Sortie $sortie)
+    public function show(Sortie $sorty)
     {
         return view('app.sorties.one')
-                ->with('sortie', $sortie);
+                ->with('sortie', $sorty);
     }
 
     /**
@@ -110,13 +110,13 @@ class SortieController extends Controller
      * @param  \App\Models\Sortie  $sortie
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sortie $sortie)
+    public function edit(Sortie $sorty)
     {
         $clients = Client::all();
         $products = Product::all();
         $deposits = Deposit::all();
-        return view('app.entries.update')
-                ->with('sortie', $sortie)
+        return view('app.sorties.update')
+                ->with('sortie', $sorty)
                 ->with('clients', $clients)
                 ->with('products', $products)
                 ->with('deposits', $deposits);
@@ -129,7 +129,7 @@ class SortieController extends Controller
      * @param  \App\Models\Sortie  $sortie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sortie $sortie)
+    public function update(Request $request, Sortie $sorty)
     {
         $request->validate([
             'quantity' => 'min:1',
@@ -151,6 +151,9 @@ class SortieController extends Controller
         else {
             $data = $request->all();
             $data['empty'] = $request->quantity;
+
+            $empt = Emptie::where('id', $request->id)->get();
+            $empt->destroy($empt);
         }
 
         $data = $request->all();
@@ -163,7 +166,7 @@ class SortieController extends Controller
             $data['price'] = 0;
         }
 
-        $sortie->update($data);
+        $sorty->update($data);
 
         return redirect()->route('sorties.index');
     }
@@ -174,8 +177,8 @@ class SortieController extends Controller
      * @param  \App\Models\Sortie  $sortie
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sortie $sortie)
+    public function destroy(Sortie $sorty)
     {
-        $sortie->delete();
+        $sorty->delete();
     }
 }

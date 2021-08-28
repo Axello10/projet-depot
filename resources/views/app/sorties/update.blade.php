@@ -32,12 +32,12 @@
         
         <div class="">
             <label for="quantity">quantité</label>
-            <input type="number" name="quantity" id="quantity" value="{{ $entrie->quantity }}">
+            <input type="number" name="quantity" id="quantity" value="{{ $sortie->quantity }}">
         </div>
         
         <div class="">
             <label for="price">prix totale</label>
-            <input type="number" name="price" id="price" value="{{ $entrie->quantity }}">
+            <input type="number" name="price" id="price" value="{{ $sortie->quantity }}">
         </div>
 
         <div class="">
@@ -51,7 +51,7 @@
         
         <div class="">
             <label for="empty">vide rendue</label>
-            <input type="number" name="empty" id="empty" value="{{ $entrie->empty }}">
+            <input type="number" name="empty" id="empty" value="{{ $sortie->empty }}">
         </div>
 
         <button type="submit">modifier</button>

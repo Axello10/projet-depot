@@ -23,6 +23,15 @@
         </div>
 
         <div class="">
+            <label for="grade_id">type de client</label>
+            <select name="grade_id" id="grade_id">
+                @foreach ($grades as $gd)
+                    <option value="{{ $gd->id }}">{{ $gd->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="">
             <label for="mobile_number">numero du client</label>
             <input type="text" name="mobile_number" id="mobile_number" value="{{ $client->mobile_number }}">
         </div>
