@@ -4,6 +4,7 @@ namespace App\Http\Controllers\App;
 
 use App\Http\Controllers\Controller;
 use App\Models\Client;
+use App\Models\Grade;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -26,7 +27,9 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('app.clients.new');
+        $grades = Grade::all();
+        return view('app.clients.new')
+                ->with('grades', $grades);
     }
 
     /**
@@ -40,6 +43,7 @@ class ClientController extends Controller
         $request->validate([
             'name' => 'required|min:4',
             'adress' => 'min:4',
+            'grade_id' => 'required',
             'mobile_number' => 'integer|min:8'
         ]);
 
@@ -67,8 +71,10 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
+        $grades = Grade::all();
         return view('app.clients.update')
-        ->with('client', $client);
+            ->with('client', $client)
+            ->with('grades', $grades);
     }
 
     /**
@@ -81,7 +87,7 @@ class ClientController extends Controller
     public function update(Request $request, Client $client)
     {
         $request->validate([
-            'name' => 'required|min:4',
+            'name' => 'min:4',
             'adress' => 'min:4',
             'mobile_number' => 'integer|min:8'
         ]);
@@ -99,6 +105,6 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        //
+        $client->delete();
     }
 }

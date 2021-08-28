@@ -14,6 +14,22 @@
                     @endcan
                 </ul>
             </li>
+
+            <li>
+                <h2>entrees</h2>
+                <ul>
+                    <li><a href="{{ route('entries.create') }}">ajouter une entrees</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <h2>sorties</h2>
+                <ul>
+                    <li><a href="{{ route('sorties.index') }}">voir les sorties</a></li>
+                    <li><a href="{{ route('sorties.create') }}">ajouter une sortie</a></li>
+                </ul>
+            </li>
+
             <li>
                 <h2>vendeurs</h2>
                 <ul>
@@ -64,13 +80,6 @@
                 <ul>
                     <li><a href="{{ route('givebacks.index') }}">voir les dettes de vides</a></li>
                     <li><a href="{{ route('givebacks.create') }}">ajouter une dette de vides</a></li>
-                </ul>
-            </li>
-
-            <li>
-                <h2>entrees</h2>
-                <ul>
-                    <li><a href="{{ route('entries.create') }}">ajouter une entrees</a></li>
                 </ul>
             </li>
         </ul>
