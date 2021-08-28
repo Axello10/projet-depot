@@ -79,11 +79,13 @@ class EntryController extends Controller
             $data['empty'] = $request->quantity;
         }
 
+        $data = $request->all();
+
         $data['user_id'] = Auth::user()->id;
 
         $vendor = Vendor::findOrFail($request->vendor_id);
 
-        echo json_encode($vendor);
+        // echo json_encode($vendor);
 
         if ($vendor['grade_id'] == 1 || $vendor['grade_id'] === 2) {
             $data['price'] = 0;
