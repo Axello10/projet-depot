@@ -12,4 +12,5 @@ class Emptie extends Model
     protected $fillable = [
         'client_id', 'product_id', 'quantity', 'deposit_id'
     ];
+
 }
