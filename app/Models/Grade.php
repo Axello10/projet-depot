@@ -10,4 +10,12 @@ class Grade extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    public function client() {
+        return $this->hasOne(Client::class);
+    }
+
+    public function deposit() {
+        return $this->hasOne(Deposit::class);
+    }
 }

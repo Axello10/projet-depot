@@ -12,4 +12,8 @@ class Client extends Model
     protected $fillable = [
         'name', 'adress', 'mobile_number', 'grade_id'
     ];
+
+    public function grade() {
+        return $this->belongsTo(Grade::class);
+    }
 }

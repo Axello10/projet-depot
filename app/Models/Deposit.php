@@ -12,4 +12,8 @@ class Deposit extends Model
     protected $fillable = [
         'name', 'grade_id', 'mobile_number'
     ];
+
+    public function grade() {
+        return $this->belongsTo(Grade::class);
+    }
 }
