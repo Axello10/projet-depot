@@ -17,4 +17,9 @@ class Client extends Model
         return $this->belongsTo(Grade::class);
     }
 
+    public function emptie()
+    {
+        return $this->hasOne(Client::class);
+    }
+
 }
