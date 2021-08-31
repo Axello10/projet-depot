@@ -19,7 +19,7 @@ class Client extends Model
 
     public function emptie()
     {
-        return $this->hasOne(Client::class);
+        return $this->hasOne(Emptie::class);
     }
 
 }

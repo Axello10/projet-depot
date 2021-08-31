@@ -66,12 +66,10 @@ class EmptieController extends Controller
      */
     public function show(Emptie $empty)
     {
-        // $client = Emptie::find(1)
-        //                         ->client()
-        //                         ->where('id', $empty->client_id)
-        //                         ->first();
+        $client = Emptie::find($empty->client_id)->client;
         return view('app.empties.one')
-                ->with('empty', $empty);
+                ->with('empty', $empty)
+                ->with('client', $client);
     }
 
     /**

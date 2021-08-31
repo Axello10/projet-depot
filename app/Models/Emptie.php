@@ -15,7 +15,7 @@ class Emptie extends Model
 
     public function client()
     {
-        return $this->belongsTo(Emptie::class);
+        return $this->belongsTo(Client::class);
     }
 
 }
