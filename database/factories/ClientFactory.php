@@ -24,6 +24,7 @@ class ClientFactory extends Factory
         return [
             'name' => $this->faker->company,
             'adress' => $this->faker->address,
+            'grade_id' => $this->faker->numberBetween(1, 4),
             'mobile_number' => $this->faker->phoneNumber()
         ];
     }
