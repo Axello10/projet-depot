@@ -13,7 +13,4 @@ class Deposit extends Model
         'name', 'grade_id', 'mobile_number'
     ];
 
-    public function grade() {
-        return $this->belongsTo(Grade::class);
-    }
 }

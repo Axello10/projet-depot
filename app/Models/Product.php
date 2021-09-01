@@ -11,8 +11,4 @@ class Product extends Model
 
     protected $fillable = ['name'];
 
-    public function emptie()
-    {
-        return $this->hasOne(Emptie::class);
-    }
 }
