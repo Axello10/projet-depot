@@ -11,4 +11,8 @@ class Product extends Model
 
     protected $fillable = ['name', 'price'];
 
+    public function emptie()
+    {
+        return $this->hasMany(Emptie::class);
+    }
 }

@@ -13,4 +13,9 @@ class Deposit extends Model
         'name', 'grade_id', 'mobile_number'
     ];
 
+    public function emptie()
+    {
+        return $this->hasMany(Emptie::class);
+    }
+
 }
