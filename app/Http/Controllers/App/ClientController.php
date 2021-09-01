@@ -4,6 +4,7 @@ namespace App\Http\Controllers\App;
 
 use App\Http\Controllers\Controller;
 use App\Models\Client;
+use App\Models\Emptie;
 use App\Models\Grade;
 use Illuminate\Http\Request;
 

@@ -13,4 +13,9 @@ class Client extends Model
         'name', 'adress', 'mobile_number', 'grade_id'
     ];
 
+    public function emptie()
+    {
+        return $this->hasMany(Emptie::class);
+    }
+
 }

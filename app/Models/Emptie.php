@@ -13,4 +13,8 @@ class Emptie extends Model
         'client_id', 'product_id', 'quantity', 'deposit_id'
     ];
 
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
 }
