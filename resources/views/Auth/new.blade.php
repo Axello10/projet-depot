@@ -16,6 +16,14 @@
             <input type="text" name="fullname" id="fullname">
             <input type="email" name="email" id="email">
             <input type="file" name="image" id="image">
+            <div class="">
+                <label for="deposit_id">depot associe</label>
+                <select name="deposit_id" id="deposit_id">
+                    @foreach ($deposits as $dp)
+                    <option value="{{ $dp->id }}">{{ $dp->name }}</option>                    
+                    @endforeach
+                </select>
+            </div>
             <input type="password" name="password" id="password">
             <button type="submit">Connection</button>
         </form>
