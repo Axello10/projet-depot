@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\Deposit;
 
 class UserController extends Controller
 {
@@ -27,8 +28,9 @@ class UserController extends Controller
     public function create()
     {
         $this->authorize('create', Auth::user());
-
-        return view('Auth.new');
+        $deposits = Deposit::all();
+        return view('Auth.new')
+                ->with('deposits', $deposits);
     }
 
     /**
@@ -44,7 +46,8 @@ class UserController extends Controller
         $request->validate([
             'username' => 'required|max:20|min:5|unique:users',
             'fullname' => 'required|unique:users',
-            'password' => 'required|min:5'
+            'password' => 'required|min:5',
+            'deposit_id' => 'required'
         ]);
 
         $request['password'] = bcrypt($request->password);
