@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->integer('role_id')->default(4);
             $table->string('username');
             $table->string('image_url')->nullable();
+            $table->integer('deposit_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
