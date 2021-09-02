@@ -68,10 +68,10 @@ class EmptieController extends Controller
     {
         $client = Emptie::find($empty->client_id)->client;
         $product = Emptie::find($empty->product_id)->product;
-        $deposit = Emptie::find($empty->deposit_id)->deposit;
+        // $deposit = Emptie::find($empty->deposit_id)->deposit;
         return view('app.empties.one')
                 ->with('empty', $empty)
-                ->with('deposit', $deposit)
+                // ->with('deposit', $deposit)
                 ->with('product', $product)
                 ->with('client', $client);
     }

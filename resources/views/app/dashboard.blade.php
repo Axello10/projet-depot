@@ -9,6 +9,7 @@
                 <ul>
                     @can('create', Auth::user())
                         <li><a href="{{ route('users.create') }}">ajouter un utilisateur</a></li>
+                        <li><a href="{{ route('users.index') }}">voir les utilisateurs</a></li>
                     @else
                         <p>t'es pas autorisé!</p>
                     @endcan
