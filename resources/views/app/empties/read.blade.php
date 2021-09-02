@@ -9,7 +9,7 @@
     <ul>
         @foreach ($empties as $pt)
             <div style="margin: 20px 0px">
-                <li> <strong> nom du client </strong> : {{ $client->name }} 
+                <li> <strong> nom du client </strong> : {{ $pt->client_id }} 
                 <p></p>
                 </li>
                 <div>
