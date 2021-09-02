@@ -9,7 +9,9 @@
     <ul>
         @foreach ($empties as $pt)
             <div style="margin: 20px 0px">
-                <li> <strong> nom du client </strong> : {{ $pt->client_id }} </li>
+                <li> <strong> nom du client </strong> : {{ $client->name }} 
+                <p></p>
+                </li>
                 <div>
                     <a href="{{ route('empties.show', $pt->id) }}">plus de details</a>
 

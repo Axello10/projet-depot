@@ -10,6 +10,7 @@
         @foreach ($clients as $cl)
             <div style="margin: 20px 0px">
                 <li> <strong> nom du client </strong> : {{ $cl->name }} </li>
+
                 <div>
                     <a href="{{ route('clients.show', $cl->id) }}">plus de details</a>
 
