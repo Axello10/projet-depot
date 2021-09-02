@@ -18,8 +18,15 @@ class EmptieController extends Controller
      */
     public function index()
     {
-        $empties = Emptie::all();
-        return view('app.empties.read')->with('empties', $empties);
+        // $empties = Emptie::all();
+        
+        $ep = Emptie::find(2)->client;
+        
+        $client = $ep->name;
+        
+
+        return $client;
+        // return view('app.empties.read')->with('empties', $empties);
     }
 
     /**
