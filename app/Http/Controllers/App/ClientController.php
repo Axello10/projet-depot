@@ -18,7 +18,10 @@ class ClientController extends Controller
     public function index()
     {
         $clients = Client::all();
-        return view('app.clients.read')->with('clients', $clients);
+
+        echo json_encode($clients);
+
+        // return view('app.clients.read')->with('clients', $clients);
     }
 
     /**
