@@ -4,7 +4,6 @@
 ---
  une application web qui permet de gerer une affaire de depots, les entreer, les sorties, les employees, factures, etc...
 
-
 ## Fonctionnement
 ---
 
@@ -55,7 +54,3 @@ php artisan db:seed
 ```
 php artisan serve
 ```
-
-
-
-

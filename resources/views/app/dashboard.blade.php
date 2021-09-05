@@ -19,6 +19,7 @@
             <li>
                 <h2>entrees</h2>
                 <ul>
+                    <li><a href="{{ route('entries.index') }}">voir les entrees</a></li>
                     <li><a href="{{ route('entries.create') }}">ajouter une entrees</a></li>
                 </ul>
             </li>
