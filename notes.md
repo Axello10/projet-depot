@@ -14,4 +14,4 @@ il ya une sortie simple et simple vers les client connus!
 
 
 
-quand on creer un nouveau depot directement on creer un vendeur ou fournisseur ou corespondant!
+quand on creer un nouveau depot directement on creer un vendeur ou fournisseur ou corespondant et aussi l'ajoute dans la liste des client!

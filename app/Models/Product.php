@@ -25,4 +25,9 @@ class Product extends Model
     {
         return $this->hasMany(Entrie::class);
     }
+
+    public function sortie()
+    {
+        return $this->hasMany(Sortie::class);
+    }
 }

@@ -18,4 +18,8 @@ class Client extends Model
         return $this->hasMany(Emptie::class);
     }
 
+    public function sortie()
+    {
+        return $this->hasMany(Sortie::class);
+    }
 }
