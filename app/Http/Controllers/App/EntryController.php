@@ -82,9 +82,10 @@ class EntryController extends Controller
 
         $data['user_id'] = Auth::user()->id;
 
-        $vendor = Vendor::findOrFail($request->vendor_id);
+        $data['price'] = Product::findOrFail($request->product_id)
+                                    ->price_in * $request->quantity;
 
-        // echo json_encode($vendor);
+        $vendor = Vendor::findOrFail($request->vendor_id);
 
         if ($vendor['grade_id'] == 1 || $vendor['grade_id'] === 2) {
             $data['price'] = 0;
@@ -161,9 +162,10 @@ class EntryController extends Controller
 
         $data['user_id'] = Auth::user()->id;
 
-        $vendor = Vendor::findOrFail($request->vendor_id);
+        $data['price'] = Product::findOrFail($request->product_id)
+                                    ->price_in * $request->quantity;
 
-        echo json_encode($vendor);
+        $vendor = Vendor::findOrFail($request->vendor_id);
 
         if ($vendor['grade_id'] == 1 || $vendor['grade_id'] === 2) {
             $data['price'] = 0;
