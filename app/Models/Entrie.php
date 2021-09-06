@@ -10,7 +10,12 @@ class Entrie extends Model
     use HasFactory;
 
     protected $fillable = [
-        'vendor_id', 'product_id', 'quantity', 'price', 'user_id',
+        'vendor_id', 'product_id', 'quantity', 'user_id',
         'empty', 'deposit_id'
     ];
+
+    public function vendor()
+    {
+        return $this->belongsTo(Vendor::class);
+    }
 }

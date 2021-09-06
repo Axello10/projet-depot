@@ -56,7 +56,6 @@ class EntryController extends Controller
             'vendor_id' => 'required',
             'product_id' => 'required',
             'quantity' => 'required|min:1',
-            'price' => 'required',
             'empty' => 'required',
             'deposit_id' => 'required'
         ]);
