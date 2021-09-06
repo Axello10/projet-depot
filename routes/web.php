@@ -58,4 +58,16 @@ Route::middleware('auth')->group(function() {
     Route::resource('empties', 'App\Http\Controllers\App\EmptieController');
 
     Route::resource('givebacks', 'App\Http\Controllers\App\GivebackController');
+
+
+    /**
+     * 
+     * ===========================
+     * more routes!
+     * ===========================
+     * 
+     */
+
+    Route::get('dashboard/all', 'App\Http\Controllers\AppController@index');
 });
+

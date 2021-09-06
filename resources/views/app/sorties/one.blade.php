@@ -2,6 +2,7 @@
 @section('page', "sortie")
 @section('content')
 
-        <h2> nom du produit : {{ $sortie->product_id }} </h2>
-    
+        <h2> nom du produit : {{ $sortie->product->name }} | </h2>
+        <p>nom du client : {{ $sortie->client->name }} | </p>
+        <p>nom du depot : {{ $sortie->deposit->name }}</p>
 @endsection
