@@ -18,4 +18,8 @@ class Deposit extends Model
         return $this->hasMany(Emptie::class);
     }
 
+    public function giveback()
+    {
+        return $this->hasMany(Giveback::class);
+    }
 }

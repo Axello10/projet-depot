@@ -10,4 +10,9 @@ class Vendor extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'adress', 'grade_id', 'mobile_number'];
+
+    public function giveback()
+    {
+        return $this->hasMany(Giveback::class);
+    }
 }

@@ -15,4 +15,9 @@ class Product extends Model
     {
         return $this->hasMany(Emptie::class);
     }
+
+    public function giveback()
+    {
+        return $this->hasMany(Product::class);
+    }
 }
