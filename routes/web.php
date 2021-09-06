@@ -3,7 +3,14 @@
 use Illuminate\Support\Facades\Route;
 
 
-// Route::get('/register', function() { echo "registered"; })->name('register');
+/**
+ * 
+ * 
+ * -----------------------------------------------
+ * auth routes
+ * -----------------------------------------------
+ * 
+ */
 
 Route::get('/auth', ['App\Http\Controllers\Auth\LoginController', 'authenticate'])->name('auth');
 
@@ -18,6 +25,7 @@ Route::get('/logout', ['App\Http\Controllers\Auth\LogoutController', 'logout'])-
  * ---------------------------------------
  * app routes
  * ---------------------------------------
+ * 
  */
 
 

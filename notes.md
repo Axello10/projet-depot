@@ -11,3 +11,7 @@ prix total sortiie
 pour les dettes ajouter le prix manuelement.
 
 il ya une sortie simple et simple vers les client connus!
+
+
+
+quand on creer un nouveau depot directement on creer un vendeur ou fournisseur ou corespondant!
