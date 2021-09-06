@@ -15,6 +15,16 @@
             <label for="name">nom du produit</label>
             <input type="text" name="name" id="name">
         </div>
+
+        {{-- <div class="">
+            <label for="price">prix d'entree du produit</label>
+            <input type="number" name="name" id="name">
+        </div>
+
+        <div class="">
+            <label for="price">prix de sortie du produit</label>
+            <input type="text" name="name" id="name">
+        </div> --}}
         
         <button type="submit">ajouter</button>
     </form>
