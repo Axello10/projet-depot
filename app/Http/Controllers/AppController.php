@@ -28,11 +28,18 @@ class AppController extends Controller
             $users[$i] = Entrie::find($i)->user;
             $products[$i] = Entrie::find($i)->product;
         }
-        return [
-            ['les vendeurs....', $vendors],
-            ['les depots....', $deposits],
-            ['les utilisateurs....', $users],
-            ['les produits....', $products]
-        ];
+        // return [
+        //     ['les vendeurs....', $vendors],
+        //     ['les depots....', $deposits],
+        //     ['les utilisateurs....', $users],
+        //     ['les produits....', $products]
+        // ];
+
+        return view('app.main.all')
+                ->with('entries', Entrie::all())
+                ->with('vendors', $vendors)
+                ->with('deposits', $deposits)
+                ->with('users', $users)
+                ->with('products', $products);
     }
 }
