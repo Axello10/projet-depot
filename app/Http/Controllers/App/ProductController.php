@@ -29,6 +29,7 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', [Auth::user(), Product::class]);
         return view('app.products.new');
     }
 

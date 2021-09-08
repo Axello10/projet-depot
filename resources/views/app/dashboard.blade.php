@@ -49,12 +49,12 @@
             
             <li>
                 <h2>produits</h2>
-                @can('viewAny', Auth::user(), Product::class)
+                @can('viewAny', [Auth::user(), Product::class])
                 <ul>
                     <li><a href="{{ route('products.index') }}">voir les produits</a></li>
                     {{-- <li><a href="{{ route('products.create') }}">ajouter un produit</a></li> --}}
                 </ul>
-                @elsecan('create', Auth::user(), Product::class)
+                @elsecan('create', Product::class)
                     <li><a href="{{ route('products.create') }}">ajouter un produit</a></li>
                 @else
                     <p>pas autorisé!</p>

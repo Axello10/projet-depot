@@ -18,7 +18,7 @@ class ProductPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->id === 1 || $user->id === 2 || $user->id === 3;
+        return $user->role_id === 1 || $user->role_id === 2 || $user->role_id === 3;
     }
 
     /**
@@ -30,7 +30,7 @@ class ProductPolicy
      */
     public function view(User $user, Product $product)
     {
-        return $user->id === 1 || $user->id === 2 || $user->id === 3;
+        return $user->role_id === 1 or $user->role_id === 2 or $user->role_id === 3;
     }
 
     /**
@@ -41,7 +41,7 @@ class ProductPolicy
      */
     public function create(User $user)
     {
-        return $user->id === 1 || $user->id === 2 || $user->id === 3;
+        return $user->role_id === 1 || $user->role_id === 2 || $user->role_id === 3;
     }
 
     /**
