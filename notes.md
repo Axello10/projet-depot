@@ -1,4 +1,17 @@
 - authentication *
+
+client
+deposit
+emptie
+entrie
+giveback
+grade
+role
+sortie
+vendor
+
+
+
 - autorization pour les utilisateur *
 - roles *
 - CRUD vendor, product

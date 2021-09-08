@@ -5,9 +5,11 @@ namespace App\Http\Controllers\App;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', Auth::user());
         $products = Product::all();
         return view('app.products.read')->with('products', $products);
     }
@@ -38,10 +41,15 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|min:4'
+            'name' => 'required|min:4',
+            'price_in' => 'required|min:1',
+            'price_out' => 'required|min:1'
         ]);
 
-        Product::create($request->all());
+        $data = $request->all();
+        $data['user_id'] = Auth::user()->id;
+
+        Product::create($data);
 
         return redirect()->route('products.index')->with('message', 'produit bien ajouté');
     }
@@ -79,10 +87,15 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $request->validate([
-            'name' => 'min:4'
+            'name' => 'min:4',
+            'price_in' => 'min:1',
+            'price_out' => 'min:1'
         ]);
 
-        $product->update($request->all());
+        $data = $request->all();
+        $data['user_id'] = Auth::user()->id;
+
+        $product->update($data);
 
         return redirect()->route('products.index');
     }

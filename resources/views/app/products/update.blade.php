@@ -17,6 +17,16 @@
             <input type="text" name="name" id="name" value="{{ $product->name }}">
         </div>
 
+        <div class="">
+            <label for="price_in">prix d'entree du produit</label>
+            <input type="number" name="price_in" id="price_in" value="{{ $product->price_in }}">
+        </div>
+
+        <div class="">
+            <label for="price_out">prix de sortie du produit</label>
+            <input type="number" name="price_out" id="price_out" value="{{ $product->price_out }}">
+        </div>
+
         <button type="submit">modifier</button>
     </form>
 @endsection

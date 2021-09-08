@@ -18,7 +18,7 @@ class ProductPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->id == 1 || $user->id == 2 || $user->id == 3;
+        return $user->id === 1 || $user->id === 2 || $user->id === 3;
     }
 
     /**
@@ -30,7 +30,7 @@ class ProductPolicy
      */
     public function view(User $user, Product $product)
     {
-        return $user->id == 1 || $user->id == 2 || $user->id == 3;
+        return $user->id === 1 || $user->id === 2 || $user->id === 3;
     }
 
     /**
@@ -41,7 +41,7 @@ class ProductPolicy
      */
     public function create(User $user)
     {
-        return $user->id == 1 || $user->id == 2 || $user->id == 3;
+        return $user->id === 1 || $user->id === 2 || $user->id === 3;
     }
 
     /**
@@ -53,7 +53,7 @@ class ProductPolicy
      */
     public function update(User $user, Product $product)
     {
-        return $user->id == 1 || $user->id == 2 || $user->id == $product->user_id;
+        return $user->id === 1 || $user->id === 2 || $user->id === $product->user_id;
     }
 
     /**
@@ -65,7 +65,7 @@ class ProductPolicy
      */
     public function delete(User $user, Product $product)
     {
-        return $user->id == 1 || $user->id == 2;
+        return $user->id === 1 || $user->id === 2;
     }
 
     /**

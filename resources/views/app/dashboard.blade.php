@@ -7,7 +7,7 @@
             <li>
                 <h2>utilisateur</h2>
                 <ul>
-                    @can('create', User::class)
+                    @can('create', Auth::user())
                         <li><a href="{{ route('users.create') }}">ajouter un utilisateur</a></li>
                         <li><a href="{{ route('users.index') }}">voir les utilisateurs</a></li>
                     @else
@@ -52,10 +52,12 @@
                 @can('viewAny', Auth::user(), Product::class)
                 <ul>
                     <li><a href="{{ route('products.index') }}">voir les produits</a></li>
-                    <li><a href="{{ route('products.create') }}">ajouter un produit</a></li>
+                    {{-- <li><a href="{{ route('products.create') }}">ajouter un produit</a></li> --}}
                 </ul>
+                @elsecan('create', Auth::user(), Product::class)
+                    <li><a href="{{ route('products.create') }}">ajouter un produit</a></li>
                 @else
-                    pas autorisé!
+                    <p>pas autorisé!</p>
                 @endcan
             </li>
             <li>
