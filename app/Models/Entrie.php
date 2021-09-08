@@ -12,7 +12,7 @@ class Entrie extends Model
 
     protected $fillable = [
         'vendor_id', 'product_id', 'quantity', 'user_id',
-        'empty', 'deposit_id'
+        'empty', 'deposit_id', 'price'
     ];
 
     public function vendor()

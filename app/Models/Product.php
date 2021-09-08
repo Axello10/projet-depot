@@ -30,4 +30,9 @@ class Product extends Model
     {
         return $this->hasMany(Sortie::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

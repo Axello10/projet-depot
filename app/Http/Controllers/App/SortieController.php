@@ -54,7 +54,6 @@ class SortieController extends Controller
             'client_id' => 'required',
             'product_id' => 'required',
             'quantity' => 'required|min:1',
-            'price' => 'required',
             'empty' => 'required',
             'deposit_id' => 'required'
         ]);
@@ -80,6 +79,8 @@ class SortieController extends Controller
         $data = $request->all();
 
         $data['user_id'] = Auth::user()->id;
+
+        $data['price'] = Product::findOrFail($request->product_id)->price_out * $request->quantity;
 
         $client = Client::findOrFail($request->client_id);
 
@@ -159,6 +160,8 @@ class SortieController extends Controller
         $data = $request->all();
 
         $data['user_id'] = Auth::user()->id;
+
+        $data['price'] = Product::findOrFail($request->product_id)->price_out * $request->quantity;
 
         $client = Client::findOrFail($request->client_id);
 

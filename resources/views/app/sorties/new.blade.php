@@ -33,11 +33,6 @@
             <label for="quantity">quantité</label>
             <input type="number" name="quantity" id="quantity">
         </div>
-        
-        <div class="">
-            <label for="price">prix totale</label>
-            <input type="number" name="price" id="price">
-        </div>
 
         <div class="">
             <label for="deposit_id">nom du depot</label>
