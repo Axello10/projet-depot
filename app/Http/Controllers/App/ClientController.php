@@ -16,13 +16,9 @@ class ClientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $clients = Client::all();
-        $client = Client::find(8);
-        
-        echo json_encode($client->empties);            
-
-        // return view('app.clients.read')->with('clients', $clients);
+    {        
+        $clients = Client::all();   
+        return view('app.clients.read')->with('clients', $clients);
     }
 
     /**
