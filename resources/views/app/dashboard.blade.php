@@ -3,6 +3,13 @@
 @section('content')
 
     <div class="dashboard-links">
+        <h1>Liens important!</h1>
+        <ul><li>
+            <a href="{{ route('products') }}">produit</a>
+            <a href=""></a>
+            <a href=""></a>
+            <a href=""></a>
+        </li></ul>
         <ul>
             <li>
                 <h2>utilisateur</h2>
@@ -49,12 +56,12 @@
             
             <li>
                 <h2>produits</h2>
-                @can('viewAny', [Auth::user(), Product::class])
+                @can(['viewAny'], [Auth::user(), Product::class])
                 <ul>
                     <li><a href="{{ route('products.index') }}">voir les produits</a></li>
                     {{-- <li><a href="{{ route('products.create') }}">ajouter un produit</a></li> --}}
                 </ul>
-                @elsecan('create', Product::class)
+                @elsecan('create', [Auth::user(), App\Models\product::class])
                     <li><a href="{{ route('products.create') }}">ajouter un produit</a></li>
                 @else
                     <p>pas autorisé!</p>

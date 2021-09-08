@@ -68,6 +68,6 @@ Route::middleware('auth')->group(function() {
      * 
      */
 
-    Route::get('dashboard/all', 'App\Http\Controllers\AppController@index');
+    Route::get('dashboard/products', 'App\Http\Controllers\AppController@products')->name('products');
 });
 
