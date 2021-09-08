@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->integer('price_in');
             $table->integer('price_out');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
