@@ -16,5 +16,8 @@ class AppController extends Controller
         foreach ($entries as $et) {
             $products[] = $et->product;
         }
+
+        return view('app.main.products')
+                ->with('data', $products);
     }
 }
