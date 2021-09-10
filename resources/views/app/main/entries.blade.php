@@ -30,6 +30,4 @@
                     @endforeach
                 </tbody>
             </table>
-
-
     @endif
