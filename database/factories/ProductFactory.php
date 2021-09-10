@@ -25,7 +25,8 @@ class ProductFactory extends Factory
             'name' => $this->faker->domainName,
             'price_in' => $this->faker->numberBetween(25000, 100000),
             'price_out' => $this->faker->numberBetween(25000, 100000),
-            'user_id' => $this->faker->numberBetween(1, 10)
+            'user_id' => $this->faker->numberBetween(1, 10),
+            'quantity' => $this->faker->numberBetween(1, 150)
         ];
     }
 }

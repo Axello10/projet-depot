@@ -11,13 +11,9 @@ class AppController extends Controller
 {
     public function products()
     {
-        $entries = Entrie::all();
-        
-        foreach ($entries as $et) {
-            $products[] = $et->product;
-        }
+        $products = Product::all();
 
         return view('app.main.products')
-                ->with('data', $products);
+                ->with('products', $products);
     }
 }
