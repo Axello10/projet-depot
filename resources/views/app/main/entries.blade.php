@@ -13,7 +13,7 @@
                         <td><strong>prix total</strong></td>
                         <td><strong>nom du depot</strong></td>
                         <td><strong>quantité</strong></td>
-                        {{-- <td><strong>fournisseur</strong></td> --}}
+                        <td><strong>fournisseur</strong></td>
                         <td><strong>utilisateur</strong></td>
                     </tr>
                 </thead>
@@ -24,7 +24,7 @@
                         <td>{{ $pd->price }}</td>
                         <td>{{ $pd->deposit->name }}</td>
                         <td>{{ $pd->quantity }}</td>
-                        {{-- <td>{{ $pd->vendor->name }}</td> --}}
+                        <td>{{ $pd->vendor->name }}</td>
                         <td>{{ $pd->user->fullname }}</td>
                     </tr>   
                     @endforeach
