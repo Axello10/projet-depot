@@ -69,5 +69,7 @@ Route::middleware('auth')->group(function() {
      */
 
     Route::get('dashboard/products', 'App\Http\Controllers\AppController@products')->name('products');
+
+    Route::get('dashboard/entries', 'App\Http\Controllers\AppController@entries')->name('entries');
 });
 

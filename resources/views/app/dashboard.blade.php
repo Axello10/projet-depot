@@ -6,7 +6,7 @@
         <h1>Liens important!</h1>
         <ul><li>
             <a href="{{ route('products') }}">produit</a>
-            <a href=""></a>
+            <a href="{{ route('entries') }}">entree</a>
             <a href=""></a>
             <a href=""></a>
         </li></ul>

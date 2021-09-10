@@ -16,4 +16,12 @@ class AppController extends Controller
         return view('app.main.products')
                 ->with('products', $products);
     }
+
+    public function entries()
+    {
+        $entries = Entrie::all();
+
+        return view('app.main.entries')
+                ->with('entries', $entries);
+    }
 }
