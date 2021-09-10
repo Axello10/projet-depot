@@ -1,15 +1,15 @@
 @extends('app')
-@section('page', 'grades')
+@section('page', 'Nouveau produit relie au depot')
 @section('content')
 
-    @if ( count($grades) <= 0)
-        <p>aucun grade trouvé</p>
+    @if ( count($depotproducts) <= 0)
+        <p>aucun produit trouvé</p>
     @else
-    <h2>liste de grades</h2>
+    <h2>liste de tout les produit</h2>
     <ul>
-        @foreach ($grades as $gd)
+        @foreach ($depotproducts as $gd)
             <div style="margin: 20px 0px">
-                <li> <strong> nom de la grade </strong> : {{ $gd->name }} </li>
+                <li> <strong> nom du produit </strong> : {{ $gd->product_id }} </li>
                 <div>
                     <a href="{{ route('grades.show', $gd->id) }}">plus de details</a>
 

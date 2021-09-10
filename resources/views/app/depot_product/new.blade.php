@@ -1,7 +1,7 @@
 @extends('app')
-@section('page', 'Nouveau Grade')
+@section('page', 'Nouveau produit relie au depot')
 @section('content')
-    <h2>Ajouter une grade</h2>
+    <h2>Ajouter un produit au depot : <em>{{ Auth::user()->deposit->name }}</em></h2>
     @if ($errors->any())
         <ul>
             @foreach ($errors->all() as $error)
@@ -9,11 +9,15 @@
             @endforeach
         </ul>
     @endif
-    <form action="{{ route('grades.store') }}" method="POST">
+    <form action="{{ route('depotproducts.store') }}" method="POST">
         @csrf
         <div class="">
-            <label for="name">nom de la grades</label>
-            <input type="text" name="name" id="name">
+            <label for="name">nom du produit</label>
+            <select name="product_id" id="product_id">
+                @foreach ($products as $product)
+                    <option value="{{ $product->id }}">{{ $product->name }}</option>
+                @endforeach
+            </select>
         </div>
         
         <button type="submit">ajouter</button>

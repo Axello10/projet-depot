@@ -1,9 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\App;
 
+use App\Http\Controllers\Controller;
+use App\Models\Deposit;
 use App\Models\DepotProduct;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DepotController extends Controller
 {
@@ -14,7 +18,8 @@ class DepotController extends Controller
      */
     public function index()
     {
-        //
+        return view('app.depot_product.read')
+                ->with('depotproducts', DepotProduct::OrderBy('created_at', 'desc')->get());
     }
 
     /**
@@ -24,7 +29,8 @@ class DepotController extends Controller
      */
     public function create()
     {
-        //
+        return view('app.depot_product.new')
+                ->with('products', Product::all());
     }
 
     /**
@@ -35,7 +41,18 @@ class DepotController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'product_id' => 'required|min:1'
+        ]);
+
+        $data = $request->all();
+
+        $data['user_id'] = Auth::user()->id;
+        $data['deposit_id'] = Auth::user()->deposit->id;
+
+        DepotProduct::create($data);
+
+        return redirect()->route('depotproducts.index');
     }
 
     /**

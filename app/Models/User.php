@@ -62,4 +62,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Sortie::class);
     }
+
+    public function deposit()
+    {
+        return $this->belongsTo(Deposit::class);
+    }
 }
