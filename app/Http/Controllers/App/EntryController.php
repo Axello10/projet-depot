@@ -93,7 +93,9 @@ class EntryController extends Controller
 
         $product = Product::findOrFail($request->product_id);
 
-        if ()
+        if ($product->quantity === 0) {
+            return back()->withErrors('vous avez passez assez dans le stock!');
+        }
 
         $pd_update = [
             'quantity' => $product->quantity + $request->quantity

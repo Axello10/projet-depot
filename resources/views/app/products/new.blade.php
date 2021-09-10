@@ -25,6 +25,11 @@
             <label for="price_out">prix de sortie du produit</label>
             <input type="number" name="price_out" id="price_out">
         </div>
+
+        <div class="">
+            <label for="quantity">quantité du produit</label>
+            <input type="number" name="quantity" id="quantity">
+        </div>
         
         <button type="submit">ajouter</button>
     </form>

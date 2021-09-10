@@ -44,7 +44,8 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required|min:4',
             'price_in' => 'required|min:1',
-            'price_out' => 'required|min:1'
+            'price_out' => 'required|min:1',
+            'quantity' => 'required|min:1'
         ]);
 
         $data = $request->all();
@@ -90,7 +91,8 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'min:4',
             'price_in' => 'min:1',
-            'price_out' => 'min:1'
+            'price_out' => 'min:1',
+            'quantity' => 'min:1'
         ]);
 
         $data = $request->all();
