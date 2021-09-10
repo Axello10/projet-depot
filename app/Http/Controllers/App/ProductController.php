@@ -92,7 +92,6 @@ class ProductController extends Controller
             'name' => 'min:4',
             'price_in' => 'min:1',
             'price_out' => 'min:1',
-            'quantity' => 'min:1'
         ]);
 
         $data = $request->all();
