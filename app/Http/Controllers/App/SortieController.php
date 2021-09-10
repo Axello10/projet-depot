@@ -91,7 +91,7 @@ class SortieController extends Controller
         $product = Product::findOrFail($request->product_id);
 
         if ($product->quantity === 0) {
-            return back()->withErrors(['vous avez pas assez de $product->name dans le stock!']);
+            return back()->withErrors(['vous avez pas assez de '.$product->name.' dans le stock!']);
         }
 
         $pd_update = [
