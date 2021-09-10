@@ -9,19 +9,23 @@
             <table border="1px">
                 <thead>
                     <tr>
-                        <td><strong>name</strong></td>
-                        <td><strong>prix d'entree</strong></td>
-                        <td><strong>prix de sortie</strong></td>
+                        <td><strong>nom du produit</strong></td>
+                        <td><strong>prix total</strong></td>
+                        <td><strong>nom du depot</strong></td>
                         <td><strong>quantité</strong></td>
+                        {{-- <td><strong>fournisseur</strong></td> --}}
+                        <td><strong>utilisateur</strong></td>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($entries as $pd)     
+                    @foreach ($entries as $pd)
                     <tr>
-                        <td>{{ $pd->name }}</td>
-                        <td>{{ $pd->price_in }}</td>
-                        <td>{{ $pd->price_out }}</td>
+                        <td>{{ $pd->product->name }}</td>
+                        <td>{{ $pd->price }}</td>
+                        <td>{{ $pd->deposit->name }}</td>
                         <td>{{ $pd->quantity }}</td>
+                        {{-- <td>{{ $pd->vendor->name }}</td> --}}
+                        <td>{{ $pd->user->fullname }}</td>
                     </tr>   
                     @endforeach
                 </tbody>
