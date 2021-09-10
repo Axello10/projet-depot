@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Login</title>
+    <title>{{ $_ENV['APP_NAME'] }} - Connection</title>
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 <!-- fin -->
@@ -62,72 +62,28 @@
   
 <body class="text-center">
     
-<main class="form-signin">
-  <h4>commencez par vous connectez</h4>
-  <form action="auth" method="GET">
-    <h1 class="mb-4">{{ $_ENV['APP_NAME'] }}</h1>
-    <div class="form-floating">
-      <input type="text" class="form-control" id="floatingInput" placeholder="nom d'utilisateur" name="username">
-      <label for="floatingInput">Identifiant</label>
-    </div> 
-    <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="******" name="password">
-      <label for="floatingPassword">Mot de passe</label>
-    </div>
-    <button class="mb-2 w-100 btn btn-lg btn-primary " type="submit">Se connecter</button>
-  </form>
-</main>
+    <main class="form-signin">
+      <h4>commencez par vous connectez</h4>
+      @if ($errors->any())
+        <ul>
+            @foreach ($errors->all() as $error)
+                {{ $error }}
+            @endforeach
+        </ul>
+      @endif
+      <form action="auth" method="GET">
+        <h1 class="mb-4">{{ $_ENV['APP_NAME'] }}</h1>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="floatingInput" placeholder="nom d'utilisateur" name="username">
+          <label for="floatingInput">Identifiant</label>
+        </div> 
+        <div class="form-floating">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="******" name="password">
+          <label for="floatingPassword">Mot de passe</label>
+        </div>
+        <button class="mb-2 w-100 btn btn-lg btn-primary " type="submit">Se connecter</button>
+      </form>
+    </main>
     
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-{{-- 
-
-@if ($errors->any())
-        <ul style="list-style: none">
-            @foreach ($errors->all() as $error)
-                <li style="color: red">{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
-
-  <form action="auth" method="GET">
-    
-      <h1 class="mb-4">Se Connecter</h1>
-      <div class="form-floating">
-      <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="username">
-      <label for="floatingInput">nom d'utilisateur</label>
-    </div>
-    <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="******" name="password">
-      <label for="floatingPassword">Mot de passe</label>
-    </div>
-    <br>
-    <button class="mb-2 w-100 btn btn-lg btn-primary " type="submit">Se connecter</button>
-  </form>
-</main>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-  </body>
-</html> --}}
