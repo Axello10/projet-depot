@@ -88,6 +88,18 @@ class SortieController extends Controller
             $data['price'] = 0;
         }
 
+        $product = Product::findOrFail($request->product_id);
+
+        if ($product->quantity === 0) {
+            return back()->withErrors(['vous avez pas assez de $product->name dans le stock!']);
+        }
+
+        $pd_update = [
+            'quantity' => $product->quantity - $request->quantity
+        ];
+
+        Product::where('id', $request->product_id)->update($pd_update);
+
         Sortie::create($data);
 
         return redirect()->route('sorties.index');
