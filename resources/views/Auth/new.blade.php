@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Registrer</title>
+<title>{{ $_ENV['APP_NAME'] }} - Ajouter un utilisateur</title>
 <!-- importation Bootstrap  -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -103,106 +103,50 @@
             @endforeach
         </ul>
     @endif
-    <form action="" method="post">
-		<h2>S'inscrire</h2>
-		<p>Veuillez completer ce formulaire pour créer votre compte!</p>
+    <form action="{{ route('users.store') }}" method="POST">
+        @csrf
+		<h1>Ajouter un utilisateur...</h1>
+		<p>Veuillez completer ce formulaire pour créer un compte!</p>
 		<hr>
         <div class="form-group">
 			<div class="row">
-				<div class="col-xs-6"><input type="text" class="form-control" name="" placeholder="Nom utilisateur" required="required"></div>
-				<div class="col-xs-6"><input type="text" class="form-control" name="" placeholder="Nom complet" required="required"></div>
-			</div>        	
+				<div class="col-xs-6">
+                    <label for="deposit">nom de l'utilisateur</label>
+                    <input class="form-control" placeholder="Nom utilisateur" type="text" name="username">
+                </div>
+				<div class="col-xs-6">
+                    <label for="deposit">nom complet</label>
+                    <input class="form-control" placeholder="Nom complet" type="text" name="fullname">
+                </div>
+			</div>
         </div>
         <div class="form-group">
+            <label for="email">email de l'utilisateur</label>
         	<input type="email" class="form-control" name="email" placeholder="Email" required="required">
         </div>
-		<div class="form-group">
-            <input type="password" class="form-control" name="" placeholder="Mot de passe" required="required">
+        <div class="form-group">
+            <label for="deposit">nom du depot</label>
+            <select name="deposit_id" id="deposit_id">
+                @foreach ($deposits as $dp)
+                <option value="{{ $dp->id }}">{{ $dp->name }}</option>                    
+                @endforeach
+            </select>
         </div>
+        
+
 		<div class="form-group">
-            <input type="password" class="form-control" name="" placeholder="Confirmer le mot de passe" required="required">
-        </div>        
+            <label for="password">mot de passe</label>
+            <input type="password" class="form-control" name="password">
+        </div>
+
         <div class="form-group">
 			<label class="checkbox-inline"><input type="checkbox" required="required"> Je confirmes
 		</div>
 		<div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg">S'inscrire</button>
+            <button type="submit" class="btn btn-primary btn-lg">ajouter l'utilisateur</button>
         </div>
     </form>
-	<div class="hint-text">Vous avez un compte? <a href="#">Connectez-vous ici</a></div>
+	<div class="hint-text">Vous avez un compte? <a href="{{ route('login') }}">Connectez-vous ici</a></div>
 </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="">
-        <h1>Ajouter un utilisateur...</h1>
-        
-        <form action="{{ route('users.store') }}" method="POST">
-            @csrf
-            <div class="">
-                <label for="username">username</label>
-                <input type="text" name="username" id="username">
-            </div>
-            <div class="">
-                <label for="fullname">fullname</label>
-                <input type="text" name="fullname" id="fullname">
-            </div>
-            <div class="">
-                <label for="email">email</label>
-                <input type="email" name="email" id="email">
-            </div>
-            <div class="">
-                <label for="image">profile pic</label>
-                <input type="file" name="image" id="image">
-            </div>
-            <div class="">
-                <label for="deposit_id">depot associe</label>
-                <select name="deposit_id" id="deposit_id">
-                    @foreach ($deposits as $dp)
-                    <option value="{{ $dp->id }}">{{ $dp->name }}</option>                    
-                    @endforeach
-                </select>
-            </div>
-            <div class="">
-                <label for="password">password</label>
-                <input type="password" name="password" id="password">
-            </div>
-            <button type="submit">Ajouter</button>
-        </form>
-    </div>
-@endsection

@@ -31,7 +31,7 @@ quand on creer un nouveau depot directement on creer un vendeur ou fournisseur o
 
 
 
-
+stocker la photo d'utilisateur!!!! ou mettre une par defaut!
 
 
 product model devrait avoir une colonne quantité qui contient le nombre de casier de chaque produit dans le stock, et a chaque entree ou sortie on met a jour le model product en ajoutant ou retirant des casier!
