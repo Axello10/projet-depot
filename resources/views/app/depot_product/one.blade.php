@@ -1,7 +1,7 @@
 @extends('app')
-@section('page', $grade->name)
+@section('page', $depotproducts->product_id)
 @section('content')
 
-        <h2> nom de la grade : {{ $grade->name }} </h2>
+        <h2> nom du produit : {{ $depotproducts->product_id }} </h2>
     
 @endsection

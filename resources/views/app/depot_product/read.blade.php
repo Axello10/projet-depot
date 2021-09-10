@@ -11,11 +11,11 @@
             <div style="margin: 20px 0px">
                 <li> <strong> nom du produit </strong> : {{ $gd->product_id }} </li>
                 <div>
-                    <a href="{{ route('grades.show', $gd->id) }}">plus de details</a>
+                    <a href="{{ route('depotproducts.show', $gd->id) }}">plus de details</a>
 
-                    <a href="{{ route('grades.edit', $gd->id) }}">modifier</a>
+                    <a href="{{ route('depotproducts.edit', $gd->id) }}">modifier</a>
 
-                    <a href="{{ route('grades.destroy', $gd->id) }}">supprimer</a>
+                    <a href="{{ route('depotproducts.destroy', $gd->id) }}">supprimer</a>
                 </div>
                 
             </div>

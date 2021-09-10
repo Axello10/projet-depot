@@ -74,7 +74,7 @@ class DepotController extends Controller
      */
     public function edit(DepotProduct $depotProduct)
     {
-        //
+        
     }
 
     /**
@@ -86,7 +86,18 @@ class DepotController extends Controller
      */
     public function update(Request $request, DepotProduct $depotProduct)
     {
-        //
+        $request->validate([
+            'product_id' => 'required|min:1'
+        ]);
+
+        $data = $request->all();
+
+        $data['user_id'] = Auth::user()->id;
+        $data['deposit_id'] = Auth::user()->deposit->id;
+
+        $depotProduct->update($data);
+
+        return redirect()->route('depotproducts.index');
     }
 
     /**
