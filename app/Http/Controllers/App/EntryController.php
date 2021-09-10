@@ -93,9 +93,13 @@ class EntryController extends Controller
 
         $product = Product::findOrFail($request->product_id);
 
-        if ($product->update(['quantity' => $product->quantity + $request->quantity])) {
-            return redirect('/');
-        }
+        if ()
+
+        $pd_update = [
+            'quantity' => $product->quantity + $request->quantity
+        ];
+
+        Product::where('id', $request->product_id)->update($pd_update);
 
         Entrie::create($data);
 
