@@ -91,6 +91,12 @@ class EntryController extends Controller
             $data['price'] = 0;
         }
 
+        $product = Product::findOrFail($request->product_id);
+
+        if ($product->update(['quantity' => $product->quantity + $request->quantity])) {
+            return redirect('/');
+        }
+
         Entrie::create($data);
 
         return redirect()->route('entries.index');
