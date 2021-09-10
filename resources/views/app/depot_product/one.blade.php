@@ -1,7 +1,7 @@
 @extends('app')
-@section('page', $depotproducts->product_id)
+@section('page', $product->product_id)
 @section('content')
 
-        <h2> nom du produit : {{ $depotproducts->product_id }} </h2>
+        <h2> nom du produit : {{ $product->product_id }} </h2>
     
 @endsection

@@ -63,7 +63,8 @@ class DepotController extends Controller
      */
     public function show(DepotProduct $depotProduct)
     {
-        //
+        return view('app.depot_product.one')
+                ->with('product', $depotProduct);
     }
 
     /**
@@ -74,7 +75,8 @@ class DepotController extends Controller
      */
     public function edit(DepotProduct $depotProduct)
     {
-        
+        return view('app.depot_product.update')
+                ->with('product', $depotProduct);
     }
 
     /**
@@ -108,6 +110,6 @@ class DepotController extends Controller
      */
     public function destroy(DepotProduct $depotProduct)
     {
-        //
+        $depotProduct->delete();
     }
 }

@@ -1,7 +1,7 @@
 @extends('app')
-@section('page', 'mettre a jour un grade')
+@section('page', 'mettre a jour un produit relie au depot')
 @section('content')
-    <h2>metter a jour un grade</h2>
+    <h2>metter a jour produit relie au depot</h2>
     @if ($errors->any())
         <ul>
             @foreach ($errors->all() as $error)
