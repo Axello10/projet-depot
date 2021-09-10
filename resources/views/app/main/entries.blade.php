@@ -1,5 +1,5 @@
 @extends('app')
-@section('page', 'Page des Produits')
+@section('page', 'Page des entrees')
 @section('content')
     <h2>all entries info---</h2>
 
