@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DepotProduct;
 use App\Models\Entrie;
 use App\Models\Product;
 use App\Models\Sortie;
@@ -23,5 +24,19 @@ class AppController extends Controller
 
         return view('app.main.entries')
                 ->with('entries', $entries);
+    }
+
+    public function allproduct()
+    {
+        $all = DepotProduct::all();
+        return $all->product->name;
+    }
+
+    public function exits()
+    {
+        $all = Sortie::OrderBy('created_at', 'desc')->get();
+
+        return view('app.main.exits')
+                ->with('exits', $all);
     }
 }
