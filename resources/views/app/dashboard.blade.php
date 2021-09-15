@@ -7,7 +7,7 @@
         <ul><li>
             <a href="{{ route('products') }}">produit</a>
             <a href="{{ route('entries') }}">entree</a>
-            <a href=""></a>
+            <a href="{{ route('exits') }}">sortie</a>
             <a href=""></a>
         </li></ul>
         <ul>

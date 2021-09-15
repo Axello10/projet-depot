@@ -76,6 +76,6 @@ Route::middleware('auth')->group(function() {
 
     Route::get('allproduct', 'App\Http\Controllers\AppController@allproduct')->name('allproduct');
 
-    Route::get('exits', 'App\Http\Controllers\AppController@exits')->name('allproduct');
+    Route::get('exits', 'App\Http\Controllers\AppController@exits')->name('exits');
 });
 
