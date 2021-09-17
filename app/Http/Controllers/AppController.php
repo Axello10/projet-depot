@@ -6,6 +6,7 @@ use App\Models\Deposit;
 use App\Models\Entrie;
 use App\Models\Product;
 use App\Models\Sortie;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class AppController extends Controller

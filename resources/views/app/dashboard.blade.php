@@ -14,7 +14,7 @@
             @if (Auth::user()->role_id === 1 || Auth::user()->role_id === 2)
                 <li><a href="{{ route('deposits.index') }}">produit par depot</a></li>                
             @elseif (Auth::user()->role_id === 3)
-                <li><a href="{{ route('deposits.show', Auth::user()->deposit_id) }}">produit dans le stock</a></li>                
+                <li><a href="{{ route('deposits.show', Auth::user()->deposit_id) }}">produit dans le stock</a></li>
             @endif
 
         </ul>

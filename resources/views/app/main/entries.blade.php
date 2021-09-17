@@ -15,6 +15,7 @@
                         <td><strong>quantité</strong></td>
                         <td><strong>fournisseur</strong></td>
                         <td><strong>utilisateur</strong></td>
+                        <td><strong>mois</strong></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,7 +27,8 @@
                         <td>{{ $pd->quantity }}</td>
                         <td>{{ $pd->vendor->name }}</td>
                         <td>{{ $pd->user->fullname }}</td>
-                    </tr>   
+                        <td>{{ $pd->created_at->format('d M') }}</td>
+                    </tr>
                     @endforeach
                 </tbody>
             </table>
