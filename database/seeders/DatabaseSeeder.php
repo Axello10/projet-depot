@@ -24,6 +24,6 @@ class DatabaseSeeder extends Seeder
         // \App\Models\Sortie::factory(20)->create();
         // \App\Models\Emptie::factory(20)->create();
         // \App\Models\Giveback::factory(10)->create();
-        // \App\Models\DepotProduct::factory(20)->create();
+        // \App\Models\DepositProduct::factory(20)->create();
     }
 }

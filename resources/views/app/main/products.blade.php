@@ -28,6 +28,6 @@
             </table>
              --}}
             @foreach ($products as $pd)
-                {{ $pd->deposits->name }}
+                {{ $pd->id }} <a href="{{ route('products.show', $pd->id) }}">click</a>
             @endforeach
     @endif

@@ -3,6 +3,9 @@
 @section('content')
 
         <h2> nom de la grade : {{ $deposit->name }} </h2>
-        <strong>type du depot : {{ $deposit->grade->name }}</strong>
-    
+        <ul>
+                @foreach ($deposit->products as $pd)
+                    {{ $pd->name }}
+                @endforeach
+        </ul>
 @endsection

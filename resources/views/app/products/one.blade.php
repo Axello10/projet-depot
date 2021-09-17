@@ -6,4 +6,5 @@
         <p>prix d'achat : {{ $product->price_in }}</p>
         <p>prix de sortie : {{ $product->price_out }}</p>
         <p>ajouté par : {{ $product->user->fullname }}</p>
+        <p>appartient au depot: {{ $product->deposits->name }}</p>
 @endsection
