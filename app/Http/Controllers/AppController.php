@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Deposit;
-use App\Models\DepotProduct;
 use App\Models\Entrie;
 use App\Models\Product;
 use App\Models\Sortie;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AppController extends Controller
 {
@@ -29,10 +28,13 @@ class AppController extends Controller
 
     public function allproduct()
     {
-        // $all = DepotProduct::all();
-        // $all = Deposit::find(4);
-        return view('app.main.depot_product');
-                // ->with('all', $all)
+        if(Auth::user()->role_id === 1 || Auth::user()->role_id === 2) {
+            $all = Deposit::all();
+            return view('app.main.depot_product')
+                ->with('all', $all);
+        }
+
+        return view('errors.403');
     }
 
     public function exits()

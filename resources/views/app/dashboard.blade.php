@@ -4,14 +4,21 @@
 
     <div class="dashboard-links">
         <h1>Liens important!</h1>
-        <ul><li>
-            <a href="{{ route('products') }}">produit</a>
-            <a href="{{ route('entries') }}">entree</a>
-            <a href="{{ route('exits') }}">sortie</a>
-            <a href=""></a>
-        </li></ul>
+        {{-- @if (Auth::user()->role_id === 2)
+            
+        @endif --}}
         <ul>
-            <li>
+            <li><a href="{{ route('products') }}">tout les produit</a></li>
+            <li><a href="{{ route('entries') }}">entree</a></li>
+            <li><a href="{{ route('exits') }}">sortie</a></li>
+            @if (Auth::user()->role_id === 1 || Auth::user()->role_id === 2)
+                <li><a href="{{ route('allproduct') }}">produit par depot</a></li>                
+            @else
+                <li><a href="{{ route('dashboard') }}">produit dans le stock</a></li>                
+            @endif
+
+        </ul>
+            
                 <h2>utilisateur</h2>
                 <ul>
                     @can('create', Auth::user())

@@ -3,8 +3,9 @@
 @section('content')
     
     @foreach ($all as $all)
-        {{ $all::find(4) }}        
+        @foreach ($all->products as $ap)
+            {{ $ap->name }}
+        @endforeach        
     @endforeach
-
 
 @endsection
