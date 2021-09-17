@@ -15,7 +15,7 @@
                         <td><strong>quantité</strong></td>
                         <td><strong>fournisseur</strong></td>
                         <td><strong>utilisateur</strong></td>
-                        <td><strong>mois</strong></td>
+                        <td><strong>jour et mois</strong></td>
                     </tr>
                 </thead>
                 <tbody>

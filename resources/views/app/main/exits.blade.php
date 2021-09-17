@@ -1,7 +1,7 @@
 @extends('app')
 @section('page', 'page des sorties')
 @section('content')
-
+<h2>La liste des recentes sorties</h2>
 @if (count($exits) <= 0)
     <p>vous n'avez rien sortie pour l'instant</p>
 @else
@@ -14,6 +14,7 @@
             <td><strong>quantité</strong></td>
             <td><strong>client</strong></td>
             <td><strong>utilisateur</strong></td>
+            <td><strong>jour et mois</strong></td>
         </tr>
     </thead>
     <tbody>
@@ -25,6 +26,7 @@
             <td>{{ $pd->quantity }}</td>
             <td>{{ $pd->client->name }}</td>
             <td>{{ $pd->user->fullname }}</td>
+            <td>{{ $pd->created_at->format('d M Y') }}</td>
         </tr>   
         @endforeach
     </tbody>

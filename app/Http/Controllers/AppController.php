@@ -27,7 +27,11 @@ class AppController extends Controller
 
     public function exits()
     {
-        $all = Sortie::OrderBy('created_at', 'desc')->get();
+        if (Auth::user()->role_id === 1 || Auth::user()->role_id === 2) {
+            $all = Sortie::OrderBy('created_at', 'desc')->get();
+        } else if (Auth::user()->role_id === 3) {
+            $all = Sortie::where('id', Auth::user()->deposit_id)->OrderBy('created_at', 'desc')->get();
+        }
 
         return view('app.main.exits')
                 ->with('exits', $all);

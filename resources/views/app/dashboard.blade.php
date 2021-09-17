@@ -8,7 +8,7 @@
             
         @endif --}}
         <ul>
-            <li><a href="{{ route('products') }}">tout les produit</a></li>
+            <li><a href="{{ route('products.index') }}">tout les produit</a></li>
             <li><a href="{{ route('entries') }}">entree</a></li>
             <li><a href="{{ route('exits') }}">sortie</a></li>
             @if (Auth::user()->role_id === 1 || Auth::user()->role_id === 2)
