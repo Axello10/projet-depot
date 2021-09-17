@@ -14,15 +14,28 @@ class AppController extends Controller
     public function entries()
     {
         if (Auth::user()->role_id === 1 || Auth::user()->role_id === 2) {
-            $entries = Entrie::all();
+            $entries = Entrie::OrderBy('created_at', 'desc')->get();
         } else if (Auth::user()->role_id === 3) {
             $entries = Entrie::where('id', Auth::user()->deposit_id)->OrderBy('created_at', 'desc')->get();
         }
         
         return view('app.main.entries')
-                ->with('entries', $entries);
+        ->with('entries', $entries);
     }
+    
 
+    public function exits()
+    {
+        $all = Sortie::OrderBy('created_at', 'desc')->get();
+
+        return view('app.main.exits')
+                ->with('exits', $all);
+    }
+    
+    
+    
+    
+    
     // public function allproduct()
     // {
     //     if(Auth::user()->role_id === 1 || Auth::user()->role_id === 2 || Auth::user()->role_id === 3) {
@@ -34,12 +47,5 @@ class AppController extends Controller
     //     return view('errors.403');
     // }
 
-    public function exits()
-    {
-        $all = Sortie::OrderBy('created_at', 'desc')->get();
-
-        return view('app.main.exits')
-                ->with('exits', $all);
-    }
 
 }
