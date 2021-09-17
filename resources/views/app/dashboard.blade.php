@@ -12,11 +12,9 @@
             <li><a href="{{ route('entries') }}">entree</a></li>
             <li><a href="{{ route('exits') }}">sortie</a></li>
             @if (Auth::user()->role_id === 1 || Auth::user()->role_id === 2)
-                <li><a href="{{ route('dashboard') }}">produit par depot</a></li>                
+                <li><a href="{{ route('deposits.index') }}">produit par depot</a></li>                
             @elseif (Auth::user()->role_id === 3)
-                <li><a href="{{ route('allproduct') }}">produit dans le stock</a></li>                
-            @else
-
+                <li><a href="{{ route('deposits.show', Auth::user()->deposit_id) }}">produit dans le stock</a></li>                
             @endif
 
         </ul>
