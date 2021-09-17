@@ -70,12 +70,19 @@ Route::middleware('auth')->group(function() {
      * 
      */
 
-    Route::get('dashboard/products', 'App\Http\Controllers\AppController@products')->name('products');
-
+    /// page pour la liste des produits vendue
+     Route::get('dashboard/products', 'App\Http\Controllers\AppController@products')->name('products');
+    
+    /// page pour les entrees
     Route::get('dashboard/entries', 'App\Http\Controllers\AppController@entries')->name('entries');
-
+    
+    /// page pour les sortie
+    Route::get('dashboard/exits', 'App\Http\Controllers\AppController@exits')->name('exits');
+    
+    /// page pour les produits correspondant au depot au quel un utilisateur est associé
     Route::get('dashboard/allproduct', 'App\Http\Controllers\AppController@allproduct')->name('allproduct');
-
-    Route::get('exits', 'App\Http\Controllers\AppController@exits')->name('exits');
+    
+    /// page pour la liste des depots et designant chaqun les produits dispo 
+    Route::get('dashboard/deposit', 'App\Http\Controllers\AppController@depotproduct')->name('depotproduct');
 });
 

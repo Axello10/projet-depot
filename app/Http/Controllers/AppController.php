@@ -44,4 +44,9 @@ class AppController extends Controller
         return view('app.main.exits')
                 ->with('exits', $all);
     }
+
+    public function depotproduct()
+    {
+        
+    }
 }
