@@ -7,9 +7,18 @@
         <p>prix de sortie : {{ $product->price_out }}</p>
         <p>ajouté par : {{ $product->user->fullname }}</p>
         <ul>
-                @foreach ($product->deposits as $pd)
-                <p>appartient au depot: {{ $pd->name }}</p>            
-        @endforeach
+        <ul>
+            @if (count($product->deposits) <= 0)
+                non disponible!
+            @else
+            @foreach ($product->deposits as $pd)
+                
+                    <li><strong>{{ $pd->name }}</strong></li>
+                
+            @endforeach
+            @endif
+            
+            </ul>
         </ul>
         
 
