@@ -35,4 +35,9 @@ class Product extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function deposits()
+    {
+        return $this->belongsToMany(Deposit::class);
+    }
 }

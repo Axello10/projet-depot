@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Deposit;
 use App\Models\DepotProduct;
 use App\Models\Entrie;
 use App\Models\Product;
@@ -29,6 +30,7 @@ class AppController extends Controller
     public function allproduct()
     {
         $all = DepotProduct::all();
+        $all = Deposit
         return $all->product->name;
     }
 

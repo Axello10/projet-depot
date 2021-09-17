@@ -32,4 +32,9 @@ class Deposit extends Model
     {
         return $this->hasMany(Sortie::class);
     }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class);
+    }
 }

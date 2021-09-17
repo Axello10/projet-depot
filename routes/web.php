@@ -74,7 +74,7 @@ Route::middleware('auth')->group(function() {
 
     Route::get('dashboard/entries', 'App\Http\Controllers\AppController@entries')->name('entries');
 
-    Route::get('allproduct', 'App\Http\Controllers\AppController@allproduct')->name('allproduct');
+    Route::get('dashboard/allproduct', 'App\Http\Controllers\AppController@allproduct')->name('allproduct');
 
     Route::get('exits', 'App\Http\Controllers\AppController@exits')->name('exits');
 });
