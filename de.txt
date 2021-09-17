@@ -1,3 +1,30 @@
+protected $fillable = ['deposit_id', 'product_id', 'user_id'];
+
+migration
+
+$table->id();
+            $table->integer('deposit_id');
+            $table->integer('product_id');
+            $table->integer('user_id');
+            $table->timestamps();
+
+factory
+
+return [
+            'deposit_id' => $this->faker->numberBetween(1, 10),
+            'product_id' => $this->faker->numberBetween(1, 10),
+            'user_id' => $this->faker->numberBetween(1, 10)
+        ];
+
+
+
+
+
+
+
+controller
+
+
 <?php
 
 namespace App\Http\Controllers\App;

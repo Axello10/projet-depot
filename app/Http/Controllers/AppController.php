@@ -29,9 +29,10 @@ class AppController extends Controller
 
     public function allproduct()
     {
-        $all = DepotProduct::all();
-        $all = Deposit
-        return $all->product->name;
+        // $all = DepotProduct::all();
+        // $all = Deposit::find(4);
+        return view('app.main.depot_product');
+                // ->with('all', $all)
     }
 
     public function exits()

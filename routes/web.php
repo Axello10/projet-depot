@@ -59,8 +59,6 @@ Route::middleware('auth')->group(function() {
 
     Route::resource('givebacks', 'App\Http\Controllers\App\GivebackController');
 
-    Route::resource('depotproducts', 'App\Http\Controllers\App\DepotController');
-
 
     /**
      * 
