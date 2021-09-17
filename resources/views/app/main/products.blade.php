@@ -6,7 +6,7 @@
     @if (count($products) <= 0)
         <p>rien a voir ici</p>
     @else
-            {{-- <table border="1px">
+            <table border="1px">
                 <thead>
                     <tr>
                         <td><strong>name</strong></td>
@@ -26,8 +26,5 @@
                     @endforeach
                 </tbody>
             </table>
-             --}}
-            @foreach ($products as $pd)
-                {{ $pd->id }} <a href="{{ route('products.show', $pd->id) }}">click</a>
-            @endforeach
+
     @endif
