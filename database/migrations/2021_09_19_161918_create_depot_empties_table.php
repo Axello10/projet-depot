@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDepositProductsTable extends Migration
+class CreateDepotEmptiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateDepositProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('deposit_product', function (Blueprint $table) {
+        Schema::create('depot_emptie', function (Blueprint $table) {
             $table->id();
             $table->integer('deposit_id');
-            $table->integer('product_id');
+            $table->integer('emptie_id');
             $table->integer('user_id');
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CreateDepositProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('deposit_product');
+        Schema::dropIfExists('depot_emptie');
     }
 }
