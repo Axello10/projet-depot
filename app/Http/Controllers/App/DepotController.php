@@ -76,7 +76,8 @@ class DepotController extends Controller
     public function edit(DepositProduct $depositProduct)
     {
         return view('app.depot_product.update')
-                ->with('product', $depositProduct);
+                ->with('oneproduct', $depositProduct)
+                ->with('products', Product::all());
     }
 
     /**

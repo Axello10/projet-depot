@@ -9,9 +9,9 @@
                 <p>pas de produits dans le stock!</p>
             @else
                 @foreach ($deposit->products as $pd)
-                    {{ $pd->name }}
+                    {{ $pd->name }}<a href="{{ route('depotproducts.edit', $pd->id) }}">modifier le produit dans le stock</a>
                     @if($pd->quantity <= 0)
-                        no disponible (0)
+                        non disponible (0)
                     @endif
                 @endforeach
             @endif

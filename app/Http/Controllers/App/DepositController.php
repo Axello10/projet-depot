@@ -60,7 +60,8 @@ class DepositController extends Controller
      */
     public function show(Deposit $deposit)
     {
-        return view('app.deposits.one')->with('deposit', $deposit);
+        return view('app.deposits.one')
+                ->with('deposit', $deposit);
     }
 
     /**
