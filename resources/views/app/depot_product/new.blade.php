@@ -20,6 +20,11 @@
             </select>
         </div>
         
+        <div class="">
+            <label for="quantity">quantité</label>
+            <input type="number" name="quantity" id="">
+        </div>
+
         <button type="submit">ajouter</button>
     </form>
 @endsection

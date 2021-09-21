@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="dashboard-links">
-        <h1>Liens important!</h1>
+        <h1>Tableau De Bord</h1>
         {{-- @if (Auth::user()->role_id === 2)
             
         @endif --}}
@@ -19,7 +19,8 @@
             @endif
 
         </ul>
-            
+        {{-- <ul>
+            <li>
                 <h2>utilisateur</h2>
                 <ul>
                     @can('create', Auth::user())
@@ -68,7 +69,7 @@
                 <ul>
                     <li><a href="{{ route('products.index') }}">voir les produits</a></li>
                     {{-- <li><a href="{{ route('products.create') }}">ajouter un produit</a></li> --}}
-                </ul>
+                {{-- </ul>
                 @elsecan('create', [Auth::user(), App\Models\product::class])
                     <li><a href="{{ route('products.create') }}">ajouter un produit</a></li>
                 @else
@@ -105,7 +106,7 @@
                     <li><a href="{{ route('givebacks.create') }}">ajouter une dette de vides</a></li>
                 </ul>
             </li>
-        </ul>
+        </ul> --}}
     </div>
 
 @endsection

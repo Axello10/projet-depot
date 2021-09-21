@@ -52,7 +52,7 @@ class DepotController extends Controller
 
         DepositProduct::create($data);
 
-        return redirect()->route('depotproducts.index');
+        return redirect()->back();
     }
 
     /**
