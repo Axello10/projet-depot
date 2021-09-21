@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\App;
 
 use App\Models\DepotEmptie;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DepotEmptieController extends Controller
 {

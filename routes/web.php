@@ -84,5 +84,8 @@ Route::middleware('auth')->group(function() {
     
     /// page pour la liste des depots et designant chaqun les produits dispo 
     Route::get('dashboard/deposit', 'App\Http\Controllers\AppController@depotproduct')->name('depotproduct');
+
+    /// page pour les vides correspondant au depot au quel un utilisateur est associé
+    Route::get('dashboard/emptie', 'App\Http\Controllers\AppController@emptie');
 });
 

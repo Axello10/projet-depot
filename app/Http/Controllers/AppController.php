@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Deposit;
+use App\Models\DepotEmptie;
 use App\Models\Entrie;
 use App\Models\Product;
 use App\Models\Sortie;
@@ -37,20 +38,8 @@ class AppController extends Controller
                 ->with('exits', $all);
     }
     
-    
-    
-    
-    
-    // public function allproduct()
-    // {
-    //     if(Auth::user()->role_id === 1 || Auth::user()->role_id === 2 || Auth::user()->role_id === 3) {
-    //         $all = Deposit::where('id', Auth::user()->deposit_id)->OrderBy('created_at', 'desc')->get();
-    //         return view('app.main.depot_product')
-    //             ->with('all', $all);
-    //     }
-
-    //     return view('errors.403');
-    // }
-
-
+    public function emptie()
+    {
+        return DepotEmptie::all();
+    }
 }
