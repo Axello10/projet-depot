@@ -24,6 +24,7 @@ class DepositProductFactory extends Factory
         return [
             'deposit_id' => $this->faker->numberBetween(1, 10),
             'product_id' => $this->faker->numberBetween(1, 10),
+            'quantity' => $this->faker->numberBetween(20, 100),
             'user_id' => $this->faker->numberBetween(1, 10)
         ];
     }
