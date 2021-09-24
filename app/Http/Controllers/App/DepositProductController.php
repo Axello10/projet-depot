@@ -15,7 +15,8 @@ class DepositProductController extends Controller
      */
     public function index()
     {
-        //
+        return view('app.depot_product.read')
+                ->with('depotproducts', DepositProduct::OrderBy('created_at', 'desc')->get());
     }
 
     /**
