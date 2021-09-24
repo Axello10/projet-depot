@@ -9,7 +9,7 @@
             @endforeach
         </ul>
     @endif
-    <form action="{{ route('depotproducts.update') }}" method="POST">
+    <form action="{{ route('depotproducts.update', $products->id) }}" method="POST">
         @csrf
         @method('put')
         <h3>vous modifiez le produit {{ $prod->name }} (seulement la quantité)</h3>
