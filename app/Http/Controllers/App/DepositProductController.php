@@ -74,9 +74,13 @@ class DepositProductController extends Controller
      * @param  \App\Models\DepositProduct  $depositProduct
      * @return \Illuminate\Http\Response
      */
-    public function edit(DepositProduct $depositProduct)
+    public function edit($id)
     {
-        //
+        $products = DepositProduct::findOrFail($id);
+        $prod = Product::find($products->product_id);
+        return view('app.depot_product.update')
+                ->with('products', $products)
+                ->with('prod', $prod);
     }
 
     /**
@@ -86,9 +90,22 @@ class DepositProductController extends Controller
      * @param  \App\Models\DepositProduct  $depositProduct
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DepositProduct $depositProduct)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'quantity' => 'required|min:1'
+        ]);
+
+        $data = $request->all();
+
+        $data['user_id'] = Auth::user()->id;
+        $data['deposit_id'] = Auth::user()->deposit->id;
+
+        $depositProduct = DepositProduct::findOrFail($id);
+
+        $depositProduct->update($data);
+
+        return redirect()->route('depotproducts.index');
     }
 
     /**
@@ -97,8 +114,10 @@ class DepositProductController extends Controller
      * @param  \App\Models\DepositProduct  $depositProduct
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DepositProduct $depositProduct)
+    public function destroy($id)
     {
-        //
+        $depositProduct = DepositProduct::findOrFail($id);
+        $depositProduct->delete();
+        return back();
     }
 }

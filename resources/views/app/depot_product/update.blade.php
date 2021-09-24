@@ -9,22 +9,15 @@
             @endforeach
         </ul>
     @endif
-    <form action="" method="POST">
+    <form action="{{ route('depotproducts.update') }}" method="POST">
         @csrf
         @method('put')
-        <div class="">
-            <label for="name">nom du produit</label>
-            <select name="product_id" id="product_id">
-                {{-- @foreach ($products as $pt) --}}
-                    <option value="{{ $products->id }}" >{{ $products->name }}</option>
-                {{-- @endforeach --}}
-            </select>
-        </div>
+        <h3>vous modifiez le produit {{ $prod->name }} (seulement la quantité)</h3>
         
-        {{-- <div class="">
-            <label for="quantity">quantité</label>
-            <input type="number" name="quantity" id="" value="{{ $product->quantity }}">
-        </div> --}}
+        <div class="">
+            <label for="quantity">Quantité</label>
+            <input type="number" name="quantity" value="{{ $products->quantity }}">
+        </div>
 
         <button type="submit">modifier</button>
     </form>
