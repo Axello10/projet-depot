@@ -1,3 +1,61 @@
+migration
+
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateDepositProductsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('deposit_products', function (Blueprint $table) {
+            $table->id();
+            $table->integer('deposit_id');
+            $table->integer('product_id');
+            $table->integer('quantity');
+            $table->integer('user_id');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('deposit_products');
+    }
+}
+
+
+
+
+
+
+==============================
+
+
+controlllllllllererrrr
+
+
+===============================
+
+
+
+
+
+
+
+
 <?php
 
 namespace App\Http\Controllers\App;
@@ -76,9 +134,9 @@ class DepotController extends Controller
      */
     public function edit(DepositProduct $depositProduct)
     {
+        // $products = Product::all();
         return view('app.depot_product.update')
-                ->with('oneproduct', $depositProduct)
-                ->with('products', Product::all());
+                ->with('products', $depositProduct);
     }
 
     /**
@@ -113,5 +171,81 @@ class DepotController extends Controller
     public function destroy(DepositProduct $depositProduct)
     {
         $depositProduct->delete();
+    }
+}
+
+
+
+=======================================
+
+models 
+
+=======================================
+
+
+
+
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class DepositProduct extends Model
+{
+    use HasFactory;
+
+    protected $fillable = ['deposit_id', 'product_id', 'user_id', 'quantity'];
+}
+
+
+
+
+
+
+
+
+=========================================
+
+Factories
+
+=========================================
+
+
+
+
+
+
+
+<?php
+
+namespace Database\Factories;
+
+use App\Models\DepositProduct;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class DepositProductFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = DepositProduct::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'deposit_id' => $this->faker->numberBetween(1, 10),
+            'product_id' => $this->faker->numberBetween(1, 10),
+            'quantity' => $this->faker->numberBetween(20, 100),
+            'user_id' => $this->faker->numberBetween(1, 10)
+        ];
     }
 }

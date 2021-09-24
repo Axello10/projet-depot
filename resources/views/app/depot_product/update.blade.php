@@ -13,13 +13,12 @@
         @csrf
         @method('put')
         <div class="">
-            {{ $oneproduct }}
-            {{-- <label for="name">nom du produit</label>
+            <label for="name">nom du produit</label>
             <select name="product_id" id="product_id">
-                @foreach ($products as $pt)
-                    <option value="{{ $pt->id }}" {{($pt->id === ) ? "selected" : "" }}>{{ $pt->name }}</option>
-                @endforeach
-            </select> --}}
+                {{-- @foreach ($products as $pt) --}}
+                    <option value="{{ $products->id }}" >{{ $products->name }}</option>
+                {{-- @endforeach --}}
+            </select>
         </div>
         
         {{-- <div class="">
@@ -30,3 +29,11 @@
         <button type="submit">modifier</button>
     </form>
 @endsection
+
+
+
+
+
+
+
+{{-- {{($pt->id === ) ? "selected" : "" }} --}}
