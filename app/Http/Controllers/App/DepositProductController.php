@@ -4,7 +4,9 @@ namespace App\Http\Controllers\App;
 
 use App\Http\Controllers\Controller;
 use App\Models\DepositProduct;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DepositProductController extends Controller
 {
@@ -26,7 +28,8 @@ class DepositProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('app.depot_product.new')
+                ->with('products', Product::all());
     }
 
     /**
@@ -37,7 +40,19 @@ class DepositProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'product_id' => 'required|min:1',
+            'quantity' => 'required|min:1'
+        ]);
+
+        $data = $request->all();
+
+        $data['user_id'] = Auth::user()->id;
+        $data['deposit_id'] = Auth::user()->deposit->id;
+
+        DepositProduct::create($data);
+
+        return redirect()->route('deposits.index');
     }
 
     /**
@@ -46,9 +61,11 @@ class DepositProductController extends Controller
      * @param  \App\Models\DepositProduct  $depositProduct
      * @return \Illuminate\Http\Response
      */
-    public function show(DepositProduct $depositProduct)
+    public function show($id)
     {
-        //
+        $depopro = DepositProduct::findOrFail($id);
+        return view('app.depot_product.one')
+                ->with('deproduct', $depopro);
     }
 
     /**
