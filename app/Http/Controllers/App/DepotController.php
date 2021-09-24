@@ -42,7 +42,8 @@ class DepotController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'product_id' => 'required|min:1'
+            'product_id' => 'required|min:1',
+            'quantity' => 'required|min:1'
         ]);
 
         $data = $request->all();
@@ -52,7 +53,7 @@ class DepotController extends Controller
 
         DepositProduct::create($data);
 
-        return redirect()->back();
+        return redirect()->route('deposits.index');
     }
 
     /**

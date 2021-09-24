@@ -9,5 +9,5 @@ class DepositProduct extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['deposit_id', 'product_id', 'user_id'];
+    protected $fillable = ['deposit_id', 'product_id', 'user_id', 'quantity'];
 }
