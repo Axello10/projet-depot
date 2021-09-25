@@ -17,8 +17,9 @@ class DepositProductController extends Controller
      */
     public function index()
     {
-        return view('app.depot_product.read')
-                ->with('depotproducts', DepositProduct::OrderBy('created_at', 'desc')->get());
+        // return view('app.depot_product.read')
+        //         ->with('depotproducts', DepositProduct::OrderBy('created_at', 'desc')->get());
+        return DepositProduct::OrderBy('created_at', 'desc')->get();
     }
 
     /**
@@ -61,11 +62,10 @@ class DepositProductController extends Controller
      * @param  \App\Models\DepositProduct  $depositProduct
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(DepositProduct $depotproduct)
     {
-        $depopro = DepositProduct::findOrFail($id);
         return view('app.depot_product.one')
-                ->with('deproduct', $depopro);
+                ->with('deproduct', $depotproduct);
     }
 
     /**
@@ -76,11 +76,10 @@ class DepositProductController extends Controller
      */
     public function edit($id)
     {
-        $products = DepositProduct::findOrFail($id);
-        $prod = Product::find($products->product_id);
+        $prod = Product::findOrFail($id);
         return view('app.depot_product.update')
-                ->with('products', $products)
                 ->with('prod', $prod);
+        // return [Product::findOrFail($id), DepositProduct::where('id', Product::findOrFail($id)->id)->first()];
     }
 
     /**
