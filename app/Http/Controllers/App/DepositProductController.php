@@ -101,20 +101,19 @@ class DepositProductController extends Controller
         $data['user_id'] = Auth::user()->id;
         $data['deposit_id'] = Auth::user()->deposit->id;
 
-        $depositProduct = DepositProduct::where('product_id', $id)->first();
+        $depositProduct = DepositProduct::findOrFail($request->depositproduct);
         
         $product = Product::findOrFail($id);
         
-        // $product = Product::findOrFail($depositProduct->product_id);
-
         $pro['quantity'] = $request->quantity;
 
         $product->update($pro);
         
-        return ['quantité' => $pro, 'produit associe' => $product, 'les données associe' => $data];
-        // $depositProduct->update($data);
+        // return ['quantité' => $pro, 'produit associe' => $product, 'les données associe' => $data];
+        
+        $depositProduct->update($data);
 
-        // return redirect()->route('depotproducts.index');
+        return redirect()->route('depotproducts.index');
     }
 
     /**

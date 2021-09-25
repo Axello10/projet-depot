@@ -14,6 +14,8 @@
         @method('put')
     
         <h3>vous modifiez le produit {{ $prod->name }} (seulement la quantité)</h3>
+
+        <input type="hidden" name="depositproduct" value="{{ $product->id }}">
         
         <div class="">
             <label for="quantity">Quantité</label>
