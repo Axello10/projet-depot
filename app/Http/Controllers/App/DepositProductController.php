@@ -17,9 +17,8 @@ class DepositProductController extends Controller
      */
     public function index()
     {
-        // return view('app.depot_product.read')
-        //         ->with('depotproducts', DepositProduct::OrderBy('created_at', 'desc')->get());
-        return DepositProduct::OrderBy('created_at', 'desc')->get();
+        return view('app.depot_product.read')
+                ->with('depotproducts', DepositProduct::OrderBy('created_at', 'desc')->get());
     }
 
     /**
@@ -76,10 +75,12 @@ class DepositProductController extends Controller
      */
     public function edit($id)
     {
-        $prod = Product::findOrFail($id);
+        $deProd = DepositProduct::findOrFail($id);
+        $product = Product::where('id', $deProd->product_id)->first();
         return view('app.depot_product.update')
-                ->with('prod', $prod);
-        // return [Product::findOrFail($id), DepositProduct::where('id', Product::findOrFail($id)->id)->first()];
+                ->with('prod', $product)
+                ->with('product', $deProd);
+        return ['product' => $product, 'depotProduct' => $deProd];
     }
 
     /**
@@ -100,11 +101,20 @@ class DepositProductController extends Controller
         $data['user_id'] = Auth::user()->id;
         $data['deposit_id'] = Auth::user()->deposit->id;
 
-        $depositProduct = DepositProduct::findOrFail($id);
+        $depositProduct = DepositProduct::where('product_id', $id)->first();
+        
+        $product = Product::findOrFail($id);
+        
+        // $product = Product::findOrFail($depositProduct->product_id);
 
-        $depositProduct->update($data);
+        $pro['quantity'] = $request->quantity;
 
-        return redirect()->route('depotproducts.index');
+        $product->update($pro);
+        
+        return ['quantité' => $pro, 'produit associe' => $product, 'les données associe' => $data];
+        // $depositProduct->update($data);
+
+        // return redirect()->route('depotproducts.index');
     }
 
     /**
