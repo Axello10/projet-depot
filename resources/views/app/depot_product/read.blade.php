@@ -6,7 +6,7 @@
         <p>aucun produit trouvé</p>
     @else
     <h2>liste de tout les produit reliés aux depots</h2>
-    {{ $depotproducts }}
+    
     <ul>
         @foreach ($depotproducts as $gd)
             <div style="margin: 20px 0px">

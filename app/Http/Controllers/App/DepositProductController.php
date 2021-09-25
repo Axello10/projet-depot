@@ -108,9 +108,7 @@ class DepositProductController extends Controller
         $pro['quantity'] = $request->quantity;
 
         $product->update($pro);
-        
-        // return ['quantité' => $pro, 'produit associe' => $product, 'les données associe' => $data];
-        
+                
         $depositProduct->update($data);
 
         return redirect()->route('depotproducts.index');
