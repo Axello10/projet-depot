@@ -17,7 +17,7 @@ class CreateDepositsTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('grade_id');
-            $table->string('mobile_number');
+            $table->string('mobile_number')->unique();
             $table->timestamps();
         });
     }

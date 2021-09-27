@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\App;
 
 use App\Http\Controllers\Controller;
+use App\Models\Client;
 use App\Models\Deposit;
 use App\Models\Grade;
+use App\Models\Vendor;
 use Illuminate\Http\Request;
 
 class DepositController extends Controller
@@ -44,10 +46,12 @@ class DepositController extends Controller
         $request->validate([
             'name' => 'required|min:4',
             'grade_id' => 'required',
-            'mobile_number' => 'integer|min:8'
+            'mobile_number' => 'required|integer|min:8'
         ]);
 
         Deposit::create($request->all());
+        Client::create($request->all());
+        Vendor::create($request->all());
 
         return redirect()->route('deposits.index')->with('message', 'depot bien ajouté');
     }
@@ -94,6 +98,8 @@ class DepositController extends Controller
         ]);
 
         $deposit->update($request->all());
+        Client::where('mobile_number', $deposit->mobile_number)->update($request->only('name', 'grade_id', 'mobile_number'));
+        Vendor::where('mobile_number', $deposit->mobile_number)->update($request->only('name', 'grade_id', 'mobile_number'));
 
         return redirect()->route('deposits.index');
     }
@@ -106,6 +112,6 @@ class DepositController extends Controller
      */
     public function destroy(Deposit $deposit)
     {
-        //
+        $deposit->delete();
     }
 }
