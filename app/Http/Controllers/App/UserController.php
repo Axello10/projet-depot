@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Deposit;
+use App\Models\Role;
 
 class UserController extends Controller
 {
@@ -86,7 +87,9 @@ class UserController extends Controller
         $this->authorize('update', Auth::user());
 
         return view('app.users.update')
-                ->with('user', $user);
+                ->with('user', $user)
+                ->with('deposits', Deposit::all())
+                ->with('roles', Role::all());
     }
 
     /**
@@ -101,17 +104,15 @@ class UserController extends Controller
         $this->authorize('update', Auth::user());
 
         $request->validate([
-            'username' => 'required|max:20|min:5|unique:users',
-            'fullname' => 'required|unique:users',
-            'password' => 'required|min:5',
+            'username' => 'required|max:20|min:5',
+            'fullname' => 'required',
+            'password' => 'min:5',
             'deposit_id' => 'required'
         ]);
 
         $request['password'] = bcrypt($request->password);
 
-        User::create($request->all());
-
-        Auth::loginUsingId($request->id, true);
+        $user->update($request->all());
 
         return redirect()->route('dashboard');
     }
