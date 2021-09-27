@@ -98,8 +98,8 @@ class DepositController extends Controller
         ]);
 
         $deposit->update($request->all());
-        Client::where('mobile_number', $deposit->mobile_number)->update($request->only('name', 'grade_id', 'mobile_number'));
-        Vendor::where('mobile_number', $deposit->mobile_number)->update($request->only('name', 'grade_id', 'mobile_number'));
+        Client::where('mobile_number', $deposit->mobile_number)->update($request->only('name', 'grade_id', 'mobile_number', 'adress'));
+        Vendor::where('mobile_number', $deposit->mobile_number)->update($request->only('name', 'grade_id', 'mobile_number', 'adress'));
 
         return redirect()->route('deposits.index');
     }
