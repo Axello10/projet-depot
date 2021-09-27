@@ -84,6 +84,9 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $this->authorize('update', Auth::user());
+
+        return view('app.users.update')
+                ->with('user', $user);
     }
 
     /**
@@ -96,6 +99,21 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $this->authorize('update', Auth::user());
+
+        $request->validate([
+            'username' => 'required|max:20|min:5|unique:users',
+            'fullname' => 'required|unique:users',
+            'password' => 'required|min:5',
+            'deposit_id' => 'required'
+        ]);
+
+        $request['password'] = bcrypt($request->password);
+
+        User::create($request->all());
+
+        Auth::loginUsingId($request->id, true);
+
+        return redirect()->route('dashboard');
     }
 
     /**
