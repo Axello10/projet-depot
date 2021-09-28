@@ -66,6 +66,8 @@ class DepositController extends Controller
     {
         return view('app.deposits.one')
                 ->with('deposit', $deposit);
+
+        return $deposit->products;
     }
 
     /**
