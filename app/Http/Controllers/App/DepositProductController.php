@@ -5,6 +5,7 @@ namespace App\Http\Controllers\App;
 use App\Http\Controllers\Controller;
 use App\Models\DepositProduct;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -62,7 +63,7 @@ class DepositProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(DepositProduct $depotproduct)
-    {
+    {   
         return view('app.depot_product.one')
                 ->with('deproduct', $depotproduct);
     }
@@ -76,11 +77,11 @@ class DepositProductController extends Controller
     public function edit($id)
     {
         $deProd = DepositProduct::findOrFail($id);
-        $product = Product::where('id', $deProd->product_id)->get();
-        // return view('app.depot_product.update')
-        //         ->with('prod', $product)
-        //         ->with('product', $deProd);
-        return ['product' => $product, 'depotProduct' => $deProd];
+        $product = Product::findOrFail($deProd->product_id);
+        return view('app.depot_product.update')
+                ->with('product', $product)
+                ->with('depotproduct', $deProd);
+        // return ['product' => $product, 'depotProduct' => $deProd];
     }
 
     /**
@@ -111,7 +112,7 @@ class DepositProductController extends Controller
                 
         $depositProduct->update($data);
 
-        return redirect()->route('depotproducts.index');
+        return redirect()->back();
     }
 
     /**
