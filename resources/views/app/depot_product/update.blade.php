@@ -15,21 +15,19 @@
     
         <h3>vous modifiez le produit {{ $product->name }} (seulement la quantité)</h3>
 
+        <p>choisissez le type de modification a faire <strong>*important!</strong></p>
+        <select name="choice" id="">
+            <option value="add">augmenter</option>
+            <option value="subtract">diminuer</option>
+        </select>
+
         <input type="hidden" name="depositproduct" value="{{ $product->id }}">
         
         <div class="">
             <label for="quantity">Quantité</label>
             <input type="number" name="quantity" value="{{ $depotproduct->quantity }}">
         </div>
-
+        
         <button type="submit">modifier</button>
     </form>
 @endsection
-
-
-
-
-
-
-
-{{-- {{($pt->id === ) ? "selected" : "" }} --}}

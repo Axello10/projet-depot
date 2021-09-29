@@ -77,11 +77,10 @@ class DepositProductController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
-        $deProd = DepositProduct::where('product_id', $product->id)->get();
-        // return view('app.depot_product.update')
-        //         ->with('product', $product)
-        //         ->with('depotproduct', $deProd);
-        return ['product' => $product, 'depotProduct' => $deProd];
+        $deProd = DepositProduct::where('product_id', $product->id)->first();
+        return view('app.depot_product.update')
+                ->with('product', $product)
+                ->with('depotproduct', $deProd);
     }
 
     /**
@@ -105,14 +104,21 @@ class DepositProductController extends Controller
         $depositProduct = DepositProduct::findOrFail($request->depositproduct);
         
         $product = Product::findOrFail($id);
+        if ($request->choice === "add") {
+            $pro['quantity'] = $request->quantity + $product->quantity;
+            $data['quantity'] = $request->quantity + $data['quantity'];
+        } else if ($request->choice === "subtract") {
+            $pro['quantity'] = $request->quantity - $product->quantity;
+            $data['quantity'] = $request->quantity - $data['quantity'];
+        }
         
-        $pro['quantity'] = $request->quantity;
-
-        $product->update($pro);
+        // $depositProduct->update($data);
+        
+        // $product->update($pro);
                 
-        $depositProduct->update($data);
-
+        return ['data' => $data, 'produit' => $product, 'depot produit' => $depositProduct];
         return redirect()->back();
+
     }
 
     /**
