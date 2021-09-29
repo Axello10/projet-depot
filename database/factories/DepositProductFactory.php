@@ -22,7 +22,9 @@ class DepositProductFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'deposit_id' => $this->faker->numberBetween(1,10),
+            'product_id' => $this->faker->numberBetween(1,10),
+            'user_id' => $this->faker->numberBetween(1,10)
         ];
     }
 }

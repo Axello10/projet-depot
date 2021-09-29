@@ -76,12 +76,12 @@ class DepositProductController extends Controller
      */
     public function edit($id)
     {
-        $deProd = DepositProduct::findOrFail($id);
-        $product = Product::findOrFail($deProd->product_id);
-        return view('app.depot_product.update')
-                ->with('product', $product)
-                ->with('depotproduct', $deProd);
-        // return ['product' => $product, 'depotProduct' => $deProd];
+        $product = Product::findOrFail($id);
+        $deProd = DepositProduct::where('product_id', $product->id)->get();
+        // return view('app.depot_product.update')
+        //         ->with('product', $product)
+        //         ->with('depotproduct', $deProd);
+        return ['product' => $product, 'depotProduct' => $deProd];
     }
 
     /**

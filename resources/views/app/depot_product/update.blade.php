@@ -19,7 +19,7 @@
         
         <div class="">
             <label for="quantity">Quantité</label>
-            <input type="number" name="quantity" value="{{ $product->quantity }}">
+            <input type="number" name="quantity" value="{{ $depotproduct->quantity }}">
         </div>
 
         <button type="submit">modifier</button>

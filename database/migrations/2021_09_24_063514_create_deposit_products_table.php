@@ -15,6 +15,10 @@ class CreateDepositProductsTable extends Migration
     {
         Schema::create('deposit_products', function (Blueprint $table) {
             $table->id();
+            $table->integer('deposit_id');
+            $table->integer('product_id');
+            $table->integer('user_id');
+            $table->integer('quantity')->nullable();
             $table->timestamps();
         });
     }
