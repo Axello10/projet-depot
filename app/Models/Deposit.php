@@ -37,4 +37,9 @@ class Deposit extends Model
     {
         return $this->belongsToMany(Product::class, 'deposit_products');
     }
+
+    public function empties()
+    {
+        return $this->belongsToMany(Emptie::class, 'depot_empties');
+    }
 }

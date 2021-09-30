@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Models;
+// namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Database\Eloquent\Factories\HasFactory;
+// use Illuminate\Database\Eloquent\Model;
 
-class DepotEmptie extends Model
-{
-    use HasFactory;
+// class DepotEmptie extends Model
+// {
+//     use HasFactory;
 
-    public $fillable = ['deposit_id', 'emptie_id', 'user_id'];
-}
+//     public $fillable = ['deposit_id', 'emptie_id', 'user_id', 'quantity'];
+// }

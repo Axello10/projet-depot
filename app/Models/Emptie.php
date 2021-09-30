@@ -23,8 +23,8 @@ class Emptie extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public function deposit()
+    public function deposits()
     {
-        return $this->belongsTo(Deposit::class);
+        return $this->belongsToMany(Deposit::class, 'depot_empties');
     }
 }

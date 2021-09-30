@@ -61,6 +61,7 @@ Route::middleware('auth')->group(function() {
 
     Route::resource('depotproducts', 'App\Http\Controllers\App\DepositProductController');
 
+    // Route::resource('dempties', 'App\Http\Controllers\App\DepotEmptieController');
 
     /**
      * 
