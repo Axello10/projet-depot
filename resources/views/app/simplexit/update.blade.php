@@ -1,7 +1,7 @@
 @extends('app')
-@section('page', 'mettre a jour une sortie')
+@section('page', 'mettre a jour une simple sortie')
 @section('content')
-    <h2>metter a jour une sortie</h2>
+    <h2>metter a jour une simple sortie</h2>
     @if ($errors->any())
         <ul>
             @foreach ($errors->all() as $error)
@@ -9,44 +9,27 @@
             @endforeach
         </ul>
     @endif
-    <form action="{{ route('sorties.update', $sortie->id) }}" method="POST">
+    <form action="{{ route('simplexits.update', $simplexit->id) }}" method="POST">
         @csrf
         @method('put')
         <div class="">
-            <label for="client_id">nom du client</label>
-            <select name="client_id" id="client_id">
-                @foreach ($clients as $cl)
-                    <option value="{{ $cl->id }}">{{ $cl->name }}</option>
+            <label for="product_id">nom du produit</label>
+            <select name="product_id" id="">
+                @foreach ($products as $product)
+                    <option value="{{ $product->id }}" {{ ($product->id == $simplexit->product_id) ? "selected" : "" }} >{{ $product->name }} - {{ $product->price_out }} Fbu</option>
                 @endforeach
             </select>
         </div>
         
-        <div class="">
-            <label for="product">nom du produit</label>
-            <select name="product_id" id="product">
-                @foreach ($products as $pd)
-                    <option value="{{ $pd->id }}">{{ $pd->name }}</option>
-                @endforeach
-            </select>
-        </div>
-        
-        <div class="">
-            <label for="quantity">quantité</label>
-            <input type="number" name="quantity" id="quantity" value="{{ $sortie->quantity }}">
-        </div>
+        <p>choississez l'action a faire sur la quantité</p>
+        <select name="choice" id="">
+            <option value="add">augmentez</option>
+            <option value="substract">diminuer</option>
+        </select>
 
         <div class="">
-            <label for="deposit_id">nom du depot</label>
-            <select name="deposit_id" id="deposit_id">
-                @foreach ($deposits as $dp)
-                    <option value="{{ $dp->id }}">{{ $dp->name }}</option>
-                @endforeach
-            </select>
-        </div>
-        
-        <div class="">
-            <label for="empty">vide rendue</label>
-            <input type="number" name="empty" id="empty" value="{{ $sortie->empty }}">
+            <label for="quantity">quantité</label>
+            <input type="number" name="quantity" id="" value="{{ $simplexit->quantity }}">
         </div>
 
         <button type="submit">modifier</button>

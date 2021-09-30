@@ -1,7 +1,7 @@
 @extends('app')
 @section('page', 'Sortie simple')
 @section('content')
-    <h2>Ajouter une sortie</h2>
+    <h2>Ajouter une simple sortie</h2>
     @if ($errors->any())
         <ul>
         @foreach ($errors->all() as $error)
