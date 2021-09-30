@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\App;
 
 use App\Http\Controllers\Controller;
+use App\Models\Deposit;
 use App\Models\DepositProduct;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
@@ -31,7 +32,6 @@ class SimpleExitController extends Controller
         $depot = DepositProduct::where('deposit_id', Auth::user()->deposit_id)->get();
 
         $products = [];
-
         for($i = 0; $i < count($depot); $i++) {
             $products[$i] = Product::findOrFail($depot[$i]->product_id);
         }
@@ -59,17 +59,21 @@ class SimpleExitController extends Controller
             return back()->withErrors(['errors' => 'reka gufyina!']);
         }
         // le prix egale a quantité par le produit
-        // $product = Product::findOrFail($deproduct->product_id);
-        // $data = $request->all();
-        // $data['price'] = $request->quantity * $product->price_out;
-        // // diminuer la quantité du produit dans le stocke du depot et dans la totale des produit
-        // $product_quantity = ['quantity' => $product->quantity - $request->quantity];
-        // $o =  $product->update($product_quantity);
+        $product = Product::findOrFail($deproduct->product_id);
+        $data = $request->all();
+        $data['price'] = $request->quantity * $product->price_out;
+        $data['user_id'] = Auth::user()->id;
+        $data['deposit_id'] = Auth::user()->deposit_id;
+        
+        // diminuer la quantité du produit dans le stocke du depot 
+        $product_quantity = ['quantity' => $product->quantity - $request->quantity];
+        $product->update($product_quantity);
+        
+        // diminuer la quantité dans la totale des produit
+        $deprod_quantity = ['quantity' => $deproduct->quantity - $request->quantity];
+        $deproduct->update($deprod_quantity);
 
-        // $deprod_quantity = ['quantity' => $deproduct->quantity - $request->quantity];
-        // $p = $deproduct->update($deprod_quantity);
-
-        return ['product' => $deproduct];
+        SimpleExit::create($data);
 
         return redirect()->route('simplexits.index');
     }
@@ -80,9 +84,16 @@ class SimpleExitController extends Controller
      * @param  \App\Models\SimpleExit  $simpleExit
      * @return \Illuminate\Http\Response
      */
-    public function show(SimpleExit $simpleExit)
+    public function show($id)
     {
-        //
+        $simpleExit = SimpleExit::findOrFail($id);
+        $product = Product::findOrFail($simpleExit->product_id);
+        $deposit = Deposit::findOrFail($simpleExit->deposit_id);
+        
+        return view('app.simplexit.one')
+                ->with('simplexit', $simpleExit)
+                ->with('product', $product)
+                ->with('deposit', $deposit);
     }
 
     /**
