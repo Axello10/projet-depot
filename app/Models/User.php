@@ -67,4 +67,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Deposit::class);
     }
+
+    public function employe()
+    {
+        return $this->hasOne(Employe::class);
+    }
 }

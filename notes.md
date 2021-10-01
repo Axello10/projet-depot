@@ -70,13 +70,18 @@ pour mettre a jour un produit il faut saisir le nombre a augmenter ou soustraire
 
 
 
+un employee est d'abord un user mais avec:
+    -un salaire
+    -un adress
+
+voir les action, le depot appartenant, son role dans le sys
 
 
 
 
 
+regroupe les elements par mois ou anne
 
-
-
-
-
+groupBy(function($val) {
+                    return Carbon::parse($val->created_at)->format('Y');
+                });

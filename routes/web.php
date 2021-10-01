@@ -63,6 +63,8 @@ Route::middleware('auth')->group(function() {
 
     Route::resource('simplexits', 'App\Http\Controllers\App\SimpleExitController');
 
+    Route::resource('employes', 'App\Http\Controllers\App\EmployeController');
+
     /**
      * 
      * ===========================
