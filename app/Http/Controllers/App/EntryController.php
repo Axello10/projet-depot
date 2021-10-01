@@ -108,7 +108,8 @@ class EntryController extends Controller
 
         foreach($products as $prod) {
             if ($prod->name === $product->name) {
-                return ['msg' => 'allready in!'];
+                // update the products table
+                // update the depotproduct table
             }
             $depotproduct = [
                 'deposit_id' => $request->deposit_id,
