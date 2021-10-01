@@ -83,7 +83,6 @@ class EmployeController extends Controller
     public function update(Request $request, Employe $employe)
     {
         $request->validate([
-            'user_id' => 'unique:employes',
             'salary' => 'required|min:1'
         ]);
 
