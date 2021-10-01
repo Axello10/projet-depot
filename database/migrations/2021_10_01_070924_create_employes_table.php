@@ -18,7 +18,7 @@ class CreateEmployesTable extends Migration
             $table->integer('user_id');
             $table->integer('salary');
             $table->string('adress')->nullable();
-            $table->integer('mobile_number')->nullable();
+            $table->string('mobile_number')->nullable();
             $table->timestamps();
         });
     }
