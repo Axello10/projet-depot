@@ -22,6 +22,7 @@ class CreateSortiesTable extends Migration
             $table->integer('user_id');
             $table->integer('empty');
             $table->integer('deposit_id');
+            $table->string('payer');
             $table->timestamps();
         });
     }

@@ -1,5 +1,5 @@
 @extends('app')
-@section('page', $employe->fullname)
+@section('page', $employe->user->fullname)
 @section('content')
 
         <h2> nom de l'employe : {{ $employe->user->fullname }} </h2>

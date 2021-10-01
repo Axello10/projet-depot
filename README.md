@@ -7,6 +7,10 @@
 ## Fonctionnement
 ---
 
+- ### Prix
+
+    - un produit equivaut a un casier donc le prix d'un produit = au prix d'un casier du produit en question.
+
 - ### Roles
 
     - super user => 1   (a tout les droits!)

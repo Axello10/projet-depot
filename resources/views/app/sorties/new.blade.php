@@ -2,6 +2,7 @@
 @section('page', 'Nouvelle Sortie')
 @section('content')
     <h2>Ajouter une sortie</h2>
+    <h4>pour les clients avec faveurs</h4>
     @if ($errors->any())
         <ul>
         @foreach ($errors->all() as $error)
@@ -35,17 +36,25 @@
         </div>
 
         <div class="">
-            <label for="deposit_id">nom du depot</label>
-            <select name="deposit_id" id="deposit_id">
-                @foreach ($deposits as $dp)
-                    <option value="{{ $dp->id }}">{{ $dp->name }}</option>
-                @endforeach
-            </select>
+            <label for="prix">prix par casier</label>
+            <input type="number" name="prix" id="prix">
         </div>
+
+        <input type="hidden" name="deposit_id" value="{{ Auth::user()->deposit_id }}">
         
         <div class="">
             <label for="empty">vide rendue</label>
             <input type="number" name="empty" id="empty">
+        </div>
+
+        <div class="">
+            <label for="choice">paiement</label>
+            <select name="payer" id="">
+                <option value="oui">payer directement</option>
+                <option value="non">cheque</option>
+                <option value="non">payer plus tard</option>
+                <option value="non">payer a la fin du mois</option>
+            </select>
         </div>
         
         <button type="submit">ajouter</button>

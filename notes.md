@@ -80,6 +80,11 @@ voir les action, le depot appartenant, son role dans le sys
 
 
 
+a chaque sortie marque comme non payes il faut le mettre dans une table a part
+
+creer un sortie avec status non payer!
+
+
 regroupe les elements par mois ou anne
 
 groupBy(function($val) {

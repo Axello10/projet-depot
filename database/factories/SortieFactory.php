@@ -28,7 +28,8 @@ class SortieFactory extends Factory
             'price' => $this->faker->numberBetween(100000, 200000) * 5,
             'user_id' => $this->faker->numberBetween(1, 10),
             'empty' => $this->faker->numberBetween(50, 150),
-            'deposit_id' => $this->faker->numberBetween(1, 10)
+            'deposit_id' => $this->faker->numberBetween(1, 10),
+            'payer' => 'oui'
         ];
     }
 }

@@ -11,7 +11,7 @@ class Sortie extends Model
 
     protected $fillable = [
         'client_id', 'product_id', 'quantity', 'price', 'user_id',
-        'empty', 'deposit_id'
+        'empty', 'deposit_id', 'payer'
     ];
 
     public function client()

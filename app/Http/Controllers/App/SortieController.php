@@ -57,6 +57,8 @@ class SortieController extends Controller
             'empty' => 'required',
             'deposit_id' => 'required'
         ]);
+
+        
         
         // verifier si le nombre de vide est inferieur a la quantité il ajouter dans les dettes
         // echo json_encode($request->all());
@@ -80,7 +82,7 @@ class SortieController extends Controller
 
         $data['user_id'] = Auth::user()->id;
 
-        $data['price'] = Product::findOrFail($request->product_id)->price_out * $request->quantity;
+        $data['price'] = $request->prix * $request->quantity;
 
         $client = Client::findOrFail($request->client_id);
 
