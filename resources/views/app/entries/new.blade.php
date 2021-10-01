@@ -24,7 +24,7 @@
             <label for="product">nom du produit</label>
             <select name="product_id" id="product">
                 @foreach ($products as $pd)
-                    <option value="{{ $pd->id }}">{{ $pd->name }}</option>
+                    <option value="{{ $pd->id }}">{{ $pd->name }} - {{ $pd->price_in }} Fbu</option>
                 @endforeach
             </select>
         </div>
@@ -34,14 +34,7 @@
             <input type="number" name="quantity" id="quantity">
         </div>
 
-        <div class="">
-            <label for="deposit_id">nom du depot</label>
-            <select name="deposit_id" id="deposit_id">
-                @foreach ($deposits as $dp)
-                    <option value="{{ $dp->id }}">{{ $dp->name }}</option>
-                @endforeach
-            </select>
-        </div>
+        <input type="hidden" name="deposit_id" value="{{ Auth::user()->deposit_id }}">
         
         <div class="">
             <label for="empty">vide rendue</label>

@@ -130,7 +130,11 @@ class DepositProductController extends Controller
     public function destroy($id)
     {
         $depositProduct = DepositProduct::findOrFail($id);
-        $depositProduct->delete();
-        return back();
+        $product = Product::where('id', $depositProduct->product_id);
+        $de = $product;
+        // $product->update(['quantity' => $product->quantity - $depositProduct->quantity]);
+        return ['avant' => $de, 'apres' => $product];
+        // $depositProduct->delete();
+        // return back();
     }
 }

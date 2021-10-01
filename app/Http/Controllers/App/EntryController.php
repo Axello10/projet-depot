@@ -7,8 +7,8 @@ use App\Models\Deposit;
 use App\Models\Entrie;
 use App\Models\Giveback;
 use App\Models\Product;
+use App\Models\DepositProduct;
 use App\Models\Vendor;
-use Dotenv\Parser\Entry;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -98,6 +98,27 @@ class EntryController extends Controller
         ];
 
         Product::where('id', $request->product_id)->update($pd_update);
+
+        $depot = DepositProduct::where('deposit_id', Auth::user()->deposit_id)->get();
+
+        $products = [];
+        for($i = 0; $i < count($depot); $i++) {
+            $products[$i] = Product::findOrFail($depot[$i]->product_id);
+        }
+
+        foreach($products as $prod) {
+            if ($prod->name === $product->name) {
+                return ['msg' => 'allready in!'];
+            }
+            $depotproduct = [
+                'deposit_id' => $request->deposit_id,
+                'product_id' => $product->id,
+                'user_id' => Auth::user()->id,
+                'quantity' => $request->quantity
+            ];
+
+            DepositProduct::create($depotproduct);
+        }
 
         Entrie::create($data);
 
