@@ -155,7 +155,6 @@ class EntryController extends Controller
      */
     public function show(Entrie $entry)
     {
-        
         return view('app.entries.one')
                 ->with('entrie', $entry);
     }
