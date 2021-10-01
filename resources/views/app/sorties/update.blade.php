@@ -16,7 +16,7 @@
             <label for="client_id">nom du client</label>
             <select name="client_id" id="client_id">
                 @foreach ($clients as $cl)
-                    <option value="{{ $cl->id }}">{{ $cl->name }}</option>
+                    <option value="{{ $cl->id }}" {{ ($cl->id === $sortie->client_id) ? "selected" : "" }}>{{ $cl->name }}</option>
                 @endforeach
             </select>
         </div>
@@ -25,24 +25,28 @@
             <label for="product">nom du produit</label>
             <select name="product_id" id="product">
                 @foreach ($products as $pd)
-                    <option value="{{ $pd->id }}">{{ $pd->name }}</option>
+                    <option value="{{ $pd->id }}" {{ ($pd->id === $sortie->product_id) ? "selected" : "" }}>{{ $pd->name }}</option>
                 @endforeach
             </select>
         </div>
         
+        <p><strong>choississez l'action a faire sur la quantité</strong></p>
+        <select name="choice" id="">
+            <option value="add">augmentez</option>
+            <option value="substract">diminuer</option>
+        </select>
+
         <div class="">
             <label for="quantity">quantité</label>
             <input type="number" name="quantity" id="quantity" value="{{ $sortie->quantity }}">
         </div>
 
         <div class="">
-            <label for="deposit_id">nom du depot</label>
-            <select name="deposit_id" id="deposit_id">
-                @foreach ($deposits as $dp)
-                    <option value="{{ $dp->id }}">{{ $dp->name }}</option>
-                @endforeach
-            </select>
+            <label for="prix">prix par casier</label>
+            <input type="number" name="prix" id="prix">
         </div>
+
+        <input type="hidden" name="deposit_id" value="{{ Auth::user()->deposit_id }}">
         
         <div class="">
             <label for="empty">vide rendue</label>

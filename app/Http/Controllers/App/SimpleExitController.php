@@ -145,20 +145,20 @@ class SimpleExitController extends Controller
 
         if ($request->choice === "add") {
             // augmenter la quantité du produit dans le stocke du depot 
-            $product_quantity = ['quantity' => $product->quantity + $request->quantity];
+            $product_quantity = ['quantity' => $product->quantity - $request->quantity];
 
             // augmenter la quantité dans la totale des produit
-            $deprod_quantity = ['quantity' => $deproduct->quantity + $request->quantity];
+            $deprod_quantity = ['quantity' => $deproduct->quantity - $request->quantity];
 
             $data['quantity'] = $simp->quantity + $request->quantity;
         }
 
         else if ($request->choice === "substract") {
             // augmenter la quantité du produit dans le stocke du depot 
-            $product_quantity = ['quantity' => $product->quantity - $request->quantity];
+            $product_quantity = ['quantity' => $product->quantity + $request->quantity];
 
             // augmenter la quantité dans la totale des produit
-            $deprod_quantity = ['quantity' => $deproduct->quantity - $request->quantity];
+            $deprod_quantity = ['quantity' => $deproduct->quantity + $request->quantity];
 
             $data['quantity'] = $simp->quantity - $request->quantity;
         }

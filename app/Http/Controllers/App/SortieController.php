@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\Deposit;
 use App\Models\Emptie;
 use Illuminate\Http\Request;
+use App\Models\DepositProduct;
 use Illuminate\Support\Facades\Auth;
 
 class SortieController extends Controller
@@ -33,13 +34,17 @@ class SortieController extends Controller
      */
     public function create()
     {
+        $depot = DepositProduct::where('deposit_id', Auth::user()->deposit_id)->get();
+
+        $products = [];
+        for($i = 0; $i < count($depot); $i++) {
+            $products[$i] = Product::findOrFail($depot[$i]->product_id);
+        }
+
         $clients = Client::all();
-        $products = Product::all();
-        $deposits = Deposit::all();
         return view('app.sorties.new')
                 ->with('clients', $clients)
-                ->with('products', $products)
-                ->with('deposits', $deposits);
+                ->with('products', $products);
     }
 
     /**
@@ -50,6 +55,16 @@ class SortieController extends Controller
      */
     public function store(Request $request)
     {
+        $deproduct = DepositProduct::where('deposit_id', Auth::user()->deposit_id)->where('product_id', $request->product_id)->first();
+        // verifier si la quantité est dispo
+        $product = Product::findOrFail($deproduct->product_id);
+
+        if ($request->quantity > $deproduct->quantity || $deproduct->quantity === 0) {
+            return back()->withErrors(['errors' => 'quantité non disponible']);
+        } else if ($request->quantity === 0) {
+            return back()->withErrors(['errors' => 'reka gufyina!']);
+        }
+
         $request->validate([
             'client_id' => 'required',
             'product_id' => 'required',
@@ -58,7 +73,7 @@ class SortieController extends Controller
             'deposit_id' => 'required'
         ]);
 
-        
+
         
         // verifier si le nombre de vide est inferieur a la quantité il ajouter dans les dettes
         // echo json_encode($request->all());
@@ -104,6 +119,9 @@ class SortieController extends Controller
 
         Sortie::create($data);
 
+        $deprod_quantity = ['quantity' => $deproduct->quantity - $request->quantity];
+        $deproduct->update($deprod_quantity);
+
         return redirect()->route('sorties.index');
     }
 
@@ -127,8 +145,14 @@ class SortieController extends Controller
      */
     public function edit(Sortie $sorty)
     {
+        $depot = DepositProduct::where('deposit_id', Auth::user()->deposit_id)->get();
+
+        $products = [];
+        for($i = 0; $i < count($depot); $i++) {
+            $products[$i] = Product::findOrFail($depot[$i]->product_id);
+        }
+
         $clients = Client::all();
-        $products = Product::all();
         $deposits = Deposit::all();
         return view('app.sorties.update')
                 ->with('sortie', $sorty)
@@ -146,8 +170,19 @@ class SortieController extends Controller
      */
     public function update(Request $request, Sortie $sorty)
     {
+        $deproduct = DepositProduct::where('deposit_id', Auth::user()->deposit_id)->where('product_id', $request->product_id)->first();
+        // verifier si la quantité est dispo
+        $product = Product::findOrFail($deproduct->product_id);
+
+        if ($request->quantity > $deproduct->quantity || $deproduct->quantity === 0) {
+            return back()->withErrors(['errors' => 'quantité non disponible']);
+        } else if ($request->quantity === 0) {
+            return back()->withErrors(['errors' => 'reka gufyina!']);
+        }
+
         $request->validate([
             'quantity' => 'min:1',
+            'prix' => 'required|min:1'
         ]);
         
         // verifier si le nombre de vide est inferieur a la quantité il ajouter dans les dettes
@@ -162,20 +197,12 @@ class SortieController extends Controller
 
             Emptie::create($empti);
         } 
-        
-        else {
-            $data = $request->all();
-            $data['empty'] = $request->quantity;
-
-            $empt = Emptie::where('id', $request->id)->get();
-            $empt->destroy($empt);
-        }
 
         $data = $request->all();
 
         $data['user_id'] = Auth::user()->id;
 
-        $data['price'] = Product::findOrFail($request->product_id)->price_out * $request->quantity;
+        $data['price'] = $request->prix * $request->quantity;
 
         $client = Client::findOrFail($request->client_id);
 
@@ -183,6 +210,32 @@ class SortieController extends Controller
             $data['price'] = 0;
         }
 
+        if ($request->choice === "add") {
+            // augmenter la quantité du produit dans le stocke du depot 
+            $product_quantity = ['quantity' => $product->quantity - $request->quantity];
+
+            // augmenter la quantité dans la totale des produit
+            $deprod_quantity = ['quantity' => $deproduct->quantity - $request->quantity];
+
+            $data['quantity'] = $sorty->quantity + $request->quantity;
+        }
+
+        else if ($request->choice === "substract") {
+            // augmenter la quantité du produit dans le stocke du depot 
+            $product_quantity = ['quantity' => $product->quantity + $request->quantity];
+
+            // augmenter la quantité dans la totale des produit
+            $deprod_quantity = ['quantity' => $deproduct->quantity + $request->quantity];
+
+            $data['quantity'] = $sorty->quantity - $request->quantity;
+        }
+        
+        if ($product_quantity['quantity'] <= 0 || $deprod_quantity['quantity'] <= 0 || $data['quantity'] <= 0) {
+            return back()->withErrors(['errors' => 'operation impossible!']);
+        }
+
+        $product->update($product_quantity);        
+        $deproduct->update($deprod_quantity);
         $sorty->update($data);
 
         return redirect()->route('sorties.index');
