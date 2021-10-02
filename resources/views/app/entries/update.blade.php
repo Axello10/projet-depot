@@ -16,7 +16,7 @@
             <label for="vendor_id">vendeur</label>
             <select name="vendor_id" id="vendor">
                 @foreach ($vendors as $vd)
-                    <option value="{{ $vd->id }}">{{ $vd->name }}</option>
+                    <option value="{{ $vd->id }}" {{ ($vd->id === $entrie->vendor_id) ? "selected" : "" }}>{{ $vd->name }}</option>
                 @endforeach
             </select>
         </div>
@@ -25,7 +25,7 @@
             <label for="product">nom du produit</label>
             <select name="product_id" id="product">
                 @foreach ($products as $pd)
-                    <option value="{{ $pd->id }}">{{ $pd->name }}</option>
+                    <option value="{{ $pd->id }}" {{ ($pd->id === $entrie->product_id) ? "selected" : "" }}>{{ $pd->name }}</option>
                 @endforeach
             </select>
         </div>
@@ -44,7 +44,7 @@
             <label for="deposit_id">nom du depot</label>
             <select name="deposit_id" id="deposit_id">
                 @foreach ($deposits as $dp)
-                    <option value="{{ $dp->id }}">{{ $dp->name }}</option>
+                    <option value="{{ $dp->id }}" {{ ($dp->id === $entrie->deposit_id) ? "selected" : "" }}>{{ $dp->name }}</option>
                 @endforeach
             </select>
         </div>

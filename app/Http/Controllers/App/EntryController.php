@@ -167,8 +167,13 @@ class EntryController extends Controller
      */
     public function edit(Entrie $entry)
     {
+        $depot = DepositProduct::where('deposit_id', Auth::user()->deposit_id)->get();
+
+        $products = [];
+        for($i = 0; $i < count($depot); $i++) {
+            $products[$i] = Product::findOrFail($depot[$i]->product_id);
+        }
         $vendors = Vendor::all();
-        $products = Product::all();
         $deposits = Deposit::all();
         return view('app.entries.update')
                 ->with('entrie', $entry)
@@ -186,6 +191,7 @@ class EntryController extends Controller
      */
     public function update(Request $request, Entrie $entry)
     {
+        
         $request->validate([
             'quantity' => 'min:1',
         ]);
