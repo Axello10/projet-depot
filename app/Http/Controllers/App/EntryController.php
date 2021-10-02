@@ -45,6 +45,24 @@ class EntryController extends Controller
     }
 
     /**
+    * 
+    * @param $products[] liste des produits du depot
+    * @param $product le produit a inserer
+    * 
+    * @return bool
+    */
+    public static function check_existing($products, $product) {
+        foreach($products as $prod) {
+            $res = false;
+            if ($prod->name === $product->name) {
+                $res = true;
+                break;
+            }
+            $res = false;
+        }
+        return $res;
+    }
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -104,27 +122,9 @@ class EntryController extends Controller
         $products = [];
         for($i = 0; $i < count($depot); $i++) {
             $products[$i] = Product::findOrFail($depot[$i]->product_id);
-        }
+        }      
 
-        /**
-         * 
-         * @param $products[] liste des produits du depot
-         * @param $product le produit a inserer
-         * 
-         * @return bool
-         */
-        function check_existing($products, $product) {
-            foreach($products as $prod) {
-                if ($prod->name === $product->name) {
-                    $res = true;
-                    break;
-                }
-                $res = false;
-            }
-            return $res;
-        }       
-
-        if (check_existing($products, Product::findOrFail($request->product_id))) {
+        if ($this->check_existing($products, Product::findOrFail($request->product_id))) {
             // update the products table
             $product_q = ['quantity' => $request->quantity + $product->quantity];
             $product->update($product_q);
@@ -191,7 +191,7 @@ class EntryController extends Controller
      */
     public function update(Request $request, Entrie $entry)
     {
-        
+
         $request->validate([
             'quantity' => 'min:1',
         ]);
@@ -225,6 +225,33 @@ class EntryController extends Controller
 
         if ($vendor['grade_id'] == 1 || $vendor['grade_id'] === 2) {
             $data['price'] = 0;
+        }
+
+        $product = Product::findOrFail($request->product_id);
+
+        $depot = DepositProduct::where('deposit_id', Auth::user()->deposit_id)->get();
+
+        $products = [];
+        for($i = 0; $i < count($depot); $i++) {
+            $products[$i] = Product::findOrFail($depot[$i]->product_id);
+        }      
+
+        if ($this->check_existing($products, Product::findOrFail($request->product_id))) {
+            // update the products table
+            $product_q = ['quantity' => $request->quantity + $product->quantity];
+            $product->update($product_q);
+            // update the depotproduct table
+            $deproduct = DepositProduct::where('deposit_id', Auth::user()->deposit_id)->where('product_id', $request->product_id)->first();
+            $deproduct->update(['quantity' => $deproduct->quantity + $request->quantity]);
+        } else {
+            $depotproduct = [
+                'deposit_id' => $request->deposit_id,
+                'product_id' => $product->id,
+                'user_id' => Auth::user()->id,
+                'quantity' => $request->quantity
+            ];
+    
+            DepositProduct::create($depotproduct);
         }
 
         $entry->update($data);

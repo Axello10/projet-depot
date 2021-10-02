@@ -34,20 +34,8 @@
             <label for="quantity">quantité</label>
             <input type="number" name="quantity" id="quantity" value="{{ $entrie->quantity }}">
         </div>
-        
-        <div class="">
-            <label for="price">prix totale</label>
-            <input type="number" name="price" id="price" value="{{ $entrie->quantity }}">
-        </div>
 
-        <div class="">
-            <label for="deposit_id">nom du depot</label>
-            <select name="deposit_id" id="deposit_id">
-                @foreach ($deposits as $dp)
-                    <option value="{{ $dp->id }}" {{ ($dp->id === $entrie->deposit_id) ? "selected" : "" }}>{{ $dp->name }}</option>
-                @endforeach
-            </select>
-        </div>
+        <input type="hidden" name="deposit_id" value="{{ Auth::user()->deposit_id }}">
         
         <div class="">
             <label for="empty">vide rendue</label>
