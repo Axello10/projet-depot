@@ -36,6 +36,14 @@
             </select>
         </div>
 
+        <div class="">
+            <label for="payer">etat du dette</label>
+            <select name="payer" id="">
+                <option value="oui">dette payer</option>
+                <option value="non">dette non payer</option>
+            </select>
+        </div>
+
         <button type="submit">modifier</button>
     </form>
 
