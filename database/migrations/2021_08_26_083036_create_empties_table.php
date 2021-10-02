@@ -19,6 +19,7 @@ class CreateEmptiesTable extends Migration
             $table->integer('product_id');
             $table->integer('quantity');
             $table->integer('deposit_id');
+            $table->string('payer');
             $table->timestamps();
         });
     }
