@@ -30,6 +30,12 @@
             </select>
         </div>
         
+        <p>choississez l'action a faire sur la quantité</p>
+        <select name="choice" id="">
+            <option value="add">augmentez</option>
+            <option value="substract">diminuer</option>
+        </select>
+
         <div class="">
             <label for="quantity">quantité</label>
             <input type="number" name="quantity" id="quantity" value="{{ $entrie->quantity }}">

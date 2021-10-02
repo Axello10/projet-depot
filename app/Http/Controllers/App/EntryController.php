@@ -228,6 +228,8 @@ class EntryController extends Controller
         }
 
         $product = Product::findOrFail($request->product_id);
+        
+        $deproduct = DepositProduct::where('deposit_id', Auth::user()->deposit_id)->where('product_id', $request->product_id)->first();
 
         $depot = DepositProduct::where('deposit_id', Auth::user()->deposit_id)->get();
 
@@ -237,12 +239,36 @@ class EntryController extends Controller
         }      
 
         if ($this->check_existing($products, Product::findOrFail($request->product_id))) {
+
+            /// updating by adding or substracting from the quantity
+            if ($request->choice === "add") {
+                // diminuer la quantité du produit dans le stocke du depot 
+                $product_quantity = ['quantity' => $product->quantity - $request->quantity];
+    
+                // diminuer la quantité dans la totale des produit
+                $deprod_quantity = ['quantity' => $deproduct->quantity - $request->quantity];
+    
+                $data['quantity'] = $entry->quantity + $request->quantity;
+            }
+    
+            else if ($request->choice === "substract") {
+                // augmenter la quantité du produit dans le stocke du depot 
+                $product_quantity = ['quantity' => $product->quantity + $request->quantity];
+    
+                // augmenter la quantité dans la totale des produit
+                $deprod_quantity = ['quantity' => $deproduct->quantity + $request->quantity];
+    
+                $data['quantity'] = $entry->quantity - $request->quantity;
+            }
+            
+            if ($product_quantity['quantity'] <= 0 || $deprod_quantity['quantity'] <= 0 || $data['quantity'] <= 0) {
+                return back()->withErrors(['errors' => 'operation impossible!']);
+            }
+
             // update the products table
-            $product_q = ['quantity' => $request->quantity + $product->quantity];
-            $product->update($product_q);
+            $product->update($product_quantity);
             // update the depotproduct table
-            $deproduct = DepositProduct::where('deposit_id', Auth::user()->deposit_id)->where('product_id', $request->product_id)->first();
-            $deproduct->update(['quantity' => $deproduct->quantity + $request->quantity]);
+            $deproduct->update($deprod_quantity);
         } else {
             $depotproduct = [
                 'deposit_id' => $request->deposit_id,
