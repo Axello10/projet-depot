@@ -49,6 +49,16 @@
         <input type="hidden" name="deposit_id" value="{{ Auth::user()->deposit_id }}">
         
         <div class="">
+            <label for="choice">paiement</label>
+            <select name="payer" id="">
+                <option value="oui" selected>payer directement</option>
+                <option value="non">cheque</option>
+                <option value="non">payer plus tard</option>
+                <option value="non">payer a la fin du mois</option>
+            </select>
+        </div>
+
+        <div class="">
             <label for="empty">vide rendue</label>
             <input type="number" name="empty" id="empty" value="{{ $sortie->empty }}">
         </div>
