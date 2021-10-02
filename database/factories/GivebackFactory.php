@@ -25,7 +25,8 @@ class GivebackFactory extends Factory
             'vendor_id' => $this->faker->numberBetween(1, 20),
             'product_id' => $this->faker->numberBetween(1, 20),
             'quantity' => $this->faker->numberBetween(50, 150),
-            'deposit_id' => $this->faker->numberBetween(1, 10)
+            'deposit_id' => $this->faker->numberBetween(1, 10),
+            'payer' => 'oui'
         ];
     }
 }
