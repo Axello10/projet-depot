@@ -10,7 +10,7 @@ class Emptie extends Model
     use HasFactory;
 
     protected $fillable = [
-        'client_id', 'product_id', 'quantity', 'deposit_id'
+        'client_id', 'product_id', 'quantity', 'deposit_id', 'payer'
     ];
 
     public function client()
