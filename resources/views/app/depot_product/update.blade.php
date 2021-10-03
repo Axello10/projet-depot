@@ -9,7 +9,7 @@
             @endforeach
         </ul>
     @endif
-    <form action="{{ route('depotproducts.update', $product->id) }}" method="POST">
+    <form action="{{ route('depotproducts.update', $depotproduct->id) }}" method="POST">
         @csrf
         @method('put')
     
@@ -20,8 +20,6 @@
             <option value="add">augmenter</option>
             <option value="subtract">diminuer</option>
         </select>
-
-        <input type="hidden" name="depositproduct" value="{{ $product->id }}">
         
         <div class="">
             <label for="quantity">Quantité</label>

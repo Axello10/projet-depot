@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DepositProduct;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Models\Deposit;
 use Illuminate\Support\Facades\Auth;
 
 class DepositProductController extends Controller
@@ -61,10 +62,10 @@ class DepositProductController extends Controller
      * @param  \App\Models\DepositProduct  $depositProduct
      * @return \Illuminate\Http\Response
      */
-    public function show(DepositProduct $depotproduct)
+    public function show($id)
     {   
         return view('app.depot_product.one')
-                ->with('deproduct', $depotproduct);
+                ->with('deproduct', DepositProduct::findOrFail($id));
     }
 
     /**
@@ -75,8 +76,9 @@ class DepositProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::findOrFail($id);
-        $deProd = DepositProduct::where('product_id', $product->id)->first();
+        $deProd = DepositProduct::findOrFail($id);
+        $product = Product::findOrFail($deProd->product_id);
+
         return view('app.depot_product.update')
                 ->with('product', $product)
                 ->with('depotproduct', $deProd);
@@ -92,31 +94,34 @@ class DepositProductController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            // 'product_id' => 'required|min:1',
             'quantity' => 'required|min:1'
         ]);
+
+        $depositProduct = DepositProduct::findOrFail($id);
+
+        $product = Product::findOrFail($depositProduct->product_id);
 
         $data = $request->all();
 
         $data['user_id'] = Auth::user()->id;
         $data['deposit_id'] = Auth::user()->deposit->id;
-
-        $depositProduct = DepositProduct::findOrFail($request->depositproduct);
         
-        $product = Product::findOrFail($id);
-        if ($request->choice === "add") {
-            $pro['quantity'] = $request->quantity + $product->quantity;
-            $data['quantity'] = $request->quantity + $data['quantity'];
-        } else if ($request->choice === "subtract") {
-            $pro['quantity'] = $request->quantity - $product->quantity;
-            $data['quantity'] = $request->quantity - $data['quantity'];
+        if ($request->choice === "add")
+        {
+            $depositProduct_quantity = $depositProduct->quantity + $request->quantity;
+            $product_quantity = $product->quantity - $request->quantity;
+        } else if ($request->choice === "subtract")
+        {
+            $depositProduct_quantity = $depositProduct->quantity - $request->quantity;
+            $product_quantity = $product->quantity + $request->quantity;
         }
+
+        $depositProduct->update(['quantity' => $depositProduct_quantity]);
         
-        // $depositProduct->update($data);
-        
-        // $product->update($pro);
+        $product->update(['quantity' => $product_quantity]);
                 
-        return ['data' => $data, 'produit' => $product, 'depot produit' => $depositProduct];
-        return redirect()->back();
+        return redirect()->route('deposits.show', Auth::user()->deposit_id);
 
     }
 

@@ -7,6 +7,8 @@ use App\Models\Client;
 use App\Models\Deposit;
 use App\Models\DepositProduct;
 use App\Models\Grade;
+use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Vendor;
 use Illuminate\Http\Request;
 
@@ -55,10 +57,19 @@ class DepositController extends Controller
      */
     public function show(Deposit $deposit)
     {
-        // return view('app.deposits.one')
-        //         ->with('deposit', $deposit);
-
-        // return ['produit' => $deposit->products, 'depot produit' => DepositProduct::where('product_id', $)];
+        
+        $deproducts = DepositProduct::where('deposit_id', Auth::user()->deposit_id)->orderBy('id')->get();
+        
+        $products = [];
+        
+        for($i = 0; $i < count($deproducts); $i++) {
+            $products[$i] = Product::findOrFail($deproducts[$i]->product_id);
+        }
+        
+        return view('app.deposits.one')
+                ->with('deposit', $deposit)
+                ->with('products', $products)
+                ->with('deproducts', $deproducts);
     }
 
     /**
