@@ -11,30 +11,26 @@
         @csrf
         @method('put')
         <div class="">
+            <label for="">nom du fournisseur</label>
             <select name="vendor_id" id="vendor_id">
                 @foreach ($vendors as $vd)
-                    <option value="{{ $vd->id }}">{{ $vd->name }}</option>
+                    <option value="{{ $vd->id }}" {{ ($vd->id === $giveback->vendor_id) ? "selected" : "" }}>{{ $vd->name }}</option>
                 @endforeach
             </select>
         </div>
 
         <div class="">
+            <label for="">nom du produit</label>
             <select name="product_id" id="product_id">
                 @foreach ($products as $pd)
-                    <option value="{{ $pd->id }}">{{ $pd->name }}</option>
+                    <option value="{{ $pd->id }}" {{ ($pd->id === $giveback->product_id) ? "selected" : "" }}>{{ $pd->name }}</option>
                 @endforeach
             </select>
         </div>
 
         <input type="number" name="quantity" id="quantity" value="{{ $giveback->quantity }}">
 
-        <div class="">
-            <select name="deposit_id" id="deposit_id">
-                @foreach ($deposits as $dp)
-                    <option value="{{ $dp->id }}">{{ $dp->name }}</option>
-                @endforeach
-            </select>
-        </div>
+        <input type="hidden" name="deposit_id" value="{{ Auth::user()->deposit_id }}">
 
         <div class="">
             <label for="payer">etat du dette</label>
