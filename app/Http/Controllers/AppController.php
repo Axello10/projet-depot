@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Auth;
 class AppController extends Controller
 {
 
+    public function dashboard()
+    {
+        return view('app.dashboard');
+    }
+
     public function entries()
     {
         if (Auth::user()->role_id === 1 || Auth::user()->role_id === 2) {
@@ -36,10 +41,5 @@ class AppController extends Controller
 
         return view('app.main.exits')
                 ->with('exits', $all);
-    }
-    
-    public function emptie()
-    {
-        return DepotEmptie::all();
     }
 }
