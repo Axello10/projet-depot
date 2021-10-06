@@ -17,7 +17,7 @@ class ClientController extends Controller
      */
     public function index()
     {        
-        $clients = Client::all();   
+        $clients = Client::orderBy('created_at', 'desc')->get();
         return view('app.clients.read')->with('clients', $clients);
     }
 
@@ -45,7 +45,7 @@ class ClientController extends Controller
             'name' => 'required|min:4',
             'adress' => 'min:4',
             'grade_id' => 'required',
-            'mobile_number' => 'integer|min:8'
+            'mobile_number' => 'min:8'
         ]);
 
         Client::create($request->all());
@@ -91,7 +91,7 @@ class ClientController extends Controller
         $request->validate([
             'name' => 'min:4',
             'adress' => 'min:4',
-            'mobile_number' => 'integer|min:8'
+            'mobile_number' => 'min:8'
         ]);
 
         $client->update($request->all());

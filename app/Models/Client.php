@@ -22,4 +22,9 @@ class Client extends Model
     {
         return $this->hasMany(Sortie::class);
     }
+
+    public function deposit()
+    {
+        return $this->belongsTo(Deposit::class);
+    }
 }

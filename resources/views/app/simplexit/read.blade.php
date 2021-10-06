@@ -1,13 +1,13 @@
 @extends('app')
-@section('page', 'sortie')
+@section('page', 'sortie simple')
 @section('content')
 
-    @if ( count($sorties) <= 0)
+    @if ( count($simplexits) <= 0)
         <p>aucun sortie trouvé</p>
     @else
-    <h2>liste de sortie</h2>
+    <h2>liste des sortie simple</h2>
     <ul>
-        @foreach ($sorties as $st)
+        @foreach ($simplexits as $st)
             <div style="margin: 20px 0px">
                 <li> <strong> nom du produit </strong> : {{ $st->product_id }} </li>
                 <div>

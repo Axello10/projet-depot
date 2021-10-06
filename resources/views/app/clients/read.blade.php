@@ -15,7 +15,11 @@
 
                     <a href="{{ route('clients.edit', $cl->id) }}">modifier</a>
 
-                    <a href="{{ route('clients.destroy', $cl->id) }}">supprimer</a>
+                    <form action="{{ route('clients.destroy', $cl->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="supprimer">
+                    </form>
                 </div>
                 
             </div>

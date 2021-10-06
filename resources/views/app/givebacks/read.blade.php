@@ -15,7 +15,11 @@
 
                     <a href="{{ route('givebacks.edit', $gv->id) }}">modifier</a>
 
-                    <a href="{{ route('givebacks.destroy', $gv->id) }}">supprimer</a>
+                    <form action="{{ route('givebacks.destroy', $st->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="supprimer">
+                    </form>
                 </div>
                 
             </div>

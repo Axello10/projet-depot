@@ -14,8 +14,12 @@
                     <a href="{{ route('deposits.show', $dp->id) }}">plus de details</a>
 
                     <a href="{{ route('deposits.edit', $dp->id) }}">modifier</a>
-
-                    <a href="{{ route('deposits.destroy', $dp->id) }}">supprimer</a>
+                    
+                    <form action="{{ route('deposits.destroy', $dp->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="supprimer">
+                    </form>
                 </div>
                 
             </div>

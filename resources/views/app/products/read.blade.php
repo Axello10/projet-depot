@@ -15,7 +15,11 @@
 
                     <a href="{{ route('products.edit', $pd->id) }}">modifier</a>
 
-                    <a href="{{ route('products.destroy', $pd->id) }}">supprimer</a>
+                    <form action="{{ route('products.destroy', $st->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="supprimer">
+                    </form>
                 </div>
                 
             </div>

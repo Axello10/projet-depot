@@ -3,11 +3,7 @@
 @section('content')
 
         <h2> nom du client : {{ $client->name }} </h2>
-        <p>{{ $client->adress }} | {{ $client->mobile_number }}</p>
-        <p>
-            @foreach ($client->empties as $cl)
-                {{ $cl->deposit->name }}
-            @endforeach
-        </p>
+        <p>adresse : {{ $client->adress }} </p>
+        <p>numero du client : {{ $client->mobile_number }}</p>
         
 @endsection

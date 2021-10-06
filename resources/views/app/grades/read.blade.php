@@ -15,7 +15,11 @@
 
                     <a href="{{ route('grades.edit', $gd->id) }}">modifier</a>
 
-                    <a href="{{ route('grades.destroy', $gd->id) }}">supprimer</a>
+                    <form action="{{ route('grades.destroy', $st->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="supprimer">
+                    </form>
                 </div>
                 
             </div>

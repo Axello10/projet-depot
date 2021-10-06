@@ -17,7 +17,11 @@
 
                     <a href="{{ route('empties.edit', $pt->id) }}">modifier</a>
 
-                    <a href="{{ route('empties.destroy', $pt->id) }}">supprimer</a>
+                    <form action="{{ route('empties.destroy', $st->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="supprimer">
+                    </form>
                 </div>
                 
             </div>
