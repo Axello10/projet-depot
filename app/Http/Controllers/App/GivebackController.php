@@ -116,6 +116,8 @@ class GivebackController extends Controller
      */
     public function destroy(Giveback $giveback)
     {
-        //
+        $giveback->delete();
+
+        return redirect()->route('givebacks.index');
     }
 }
