@@ -46,6 +46,8 @@ class EmployeController extends Controller
         ]);
 
         Employe::create($request->all());
+
+        return redirect()->route('employes.index');
     }
 
     /**
@@ -87,6 +89,8 @@ class EmployeController extends Controller
         ]);
 
         $employe->update($request->all());
+
+        return redirect()->route('employes.index');
     }
 
     /**
@@ -98,5 +102,7 @@ class EmployeController extends Controller
     public function destroy(Employe $employe)
     {
         $employe->delete();
+
+        return redirect()->route('employes.index');
     }
 }
