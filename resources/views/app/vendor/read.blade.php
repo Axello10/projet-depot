@@ -16,7 +16,11 @@
 
                     <a href="{{ route('vendors.edit', $vd->id) }}">modifier</a>
 
-                    <a href="{{ route('vendors.destroy', $vd->id) }}">supprimer</a>
+                    <form action="{{ route('vendors.destroy', $vd->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="supprimer">
+                    </form>
                 </div>
                 
             </div>

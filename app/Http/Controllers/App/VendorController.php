@@ -104,8 +104,8 @@ class VendorController extends Controller
      */
     public function destroy(Vendor $vendor)
     {
-        $vendor->forceDelete();
+        $vendor->delete();
 
-        return back();
+        return redirect()->route('vendors.index');
     }
 }
