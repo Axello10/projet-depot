@@ -128,5 +128,7 @@ class UserController extends Controller
         $this->authorize('delete', Auth::user());
 
         $user->delete();
+
+        return redirect()->route('dashboard');
     }
 }
