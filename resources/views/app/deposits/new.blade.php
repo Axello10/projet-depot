@@ -27,7 +27,7 @@
 
         <div class="">
             <label for="name">numero du gérant</label>
-            <input type="number" name="mobile_number" id="mobile_number">
+            <input type="text" name="mobile_number" id="mobile_number">
         </div>
         
         <button type="submit">ajouter</button>

@@ -2,9 +2,10 @@
 @section('page', $deposit->name)
 @section('content')
 
-        <h2> nom du depot : {{ $deposit->name }} </h2>
+        <h2> nom du depot : {{ $deposit->name }} | type de depot : {{ $deposit->grade->name }}</h2>
         @if (Auth::user()->deposit_id === $deposit->id)
-            <a href="{{ route('depotproducts.create') }}">ajouter un produit dans le stock</a>            
+            <a href="{{ route('depotproducts.create') }}">ajouter un produit dans le stock</a>
+            <a href="{{ route('deposits.edit', $deposit->id) }}">modifier le depot</a>
         @endif
         <ul>
             @if(count($products) <= 0)

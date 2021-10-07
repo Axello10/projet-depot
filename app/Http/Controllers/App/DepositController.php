@@ -35,7 +35,8 @@ class DepositController extends Controller
      */
     public function create()
     {
-        
+        return view('app.deposits.new')
+                ->with('grades', Grade::all());
     }
 
     /**
@@ -46,7 +47,14 @@ class DepositController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $request->validate([
+            'name' => 'required|unique:deposits',
+            'mobile_number' => 'required|unique:deposits'
+        ]);
+
+        Deposit::create($request->all());
+
+        return redirect()->route('deposits.index');
     }
 
     /**
@@ -58,14 +66,14 @@ class DepositController extends Controller
     public function show(Deposit $deposit)
     {
         
-        $deproducts = DepositProduct::where('deposit_id', Auth::user()->deposit_id)->orderBy('id')->get();
+        $deproducts = DepositProduct::where('deposit_id', $deposit->id)->orderBy('id')->get();
         
         $products = [];
         
         for($i = 0; $i < count($deproducts); $i++) {
             $products[$i] = Product::findOrFail($deproducts[$i]->product_id);
         }
-        
+
         return view('app.deposits.one')
                 ->with('deposit', $deposit)
                 ->with('products', $products)
@@ -80,7 +88,9 @@ class DepositController extends Controller
      */
     public function edit(Deposit $deposit)
     {
-        
+        return view('app.deposits.update')
+                ->with('grades', Grade::all())
+                ->with('deposit', $deposit);
     }
 
     /**
@@ -92,7 +102,14 @@ class DepositController extends Controller
      */
     public function update(Request $request, Deposit $deposit)
     {
-        
+        $request->validate([
+            'name' => 'required',
+            'mobile_number' => 'required'
+        ]);
+
+        $deposit->update($request->all());
+
+        return redirect()->route('deposits.index');
     }
 
     /**
@@ -104,5 +121,7 @@ class DepositController extends Controller
     public function destroy(Deposit $deposit)
     {
         $deposit->delete();
+
+        return redirect()->route('deposits.index');
     }
 }

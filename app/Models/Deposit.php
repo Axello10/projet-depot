@@ -47,4 +47,9 @@ class Deposit extends Model
     {
         return $this->hasMany(Client::class);
     }
+
+    public function grade()
+    {
+        return $this->belongsTo(Grade::class);
+    }
 }

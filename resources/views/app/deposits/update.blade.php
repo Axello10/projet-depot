@@ -21,7 +21,7 @@
             <label for="grade_id">type de depot</label>
             <select name="grade_id" id="grade_id">
                 @foreach ($grades as $gd)
-                    <option value="{{ $gd->id }}">{{ $gd->name }}</option>
+                    <option value="{{ $gd->id }}" {{ ($gd->id === $deposit->grade_id) ? "selected" : "" }}>{{ $gd->name }}</option>
                 @endforeach
             </select>
         </div>
