@@ -9,7 +9,7 @@
     <ul>
         @foreach ($empties as $pt)
             <div style="margin: 20px 0px">
-                <li> <strong> nom du client </strong> : {{ $pt->client_id }} 
+                <li> <strong> nom du client </strong> : {{ $pt->client->name }} 
                 <p></p>
                 </li>
                 <div>
@@ -17,7 +17,7 @@
 
                     <a href="{{ route('empties.edit', $pt->id) }}">modifier</a>
 
-                    <form action="{{ route('empties.destroy', $st->id) }}" method="POST">
+                    <form action="{{ route('empties.destroy', $pt->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <input type="submit" value="supprimer">
