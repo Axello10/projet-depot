@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -23,6 +24,13 @@ class LoginController extends Controller
             'username' => 'required|max:20|min:5',
             'password' => 'required'
         ]);
+
+        $us = User::where('username', $request->username)->first();
+        $id = $us->role_id;
+
+        if ($id === 4) {
+            return back()->withErrors(['message' => "vous n'avez rien a faire ici!"]);
+        }
 
         if (Auth::attempt($credentials, true)) {
 
