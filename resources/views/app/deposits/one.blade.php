@@ -20,7 +20,6 @@
             @else
                 @foreach ($products as $product)
                 <br>
-                <p>Ce produit est disponible dans ce dépot </p>
                         <div class="note note-info">
                             
                             <p><strong>{{ $product->name }}</strong></p>
