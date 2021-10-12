@@ -21,6 +21,7 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nom du produit</th>
+                <th scope="col">Quantité totale</th>
                 <th scope="col" >Action</th>
               </tr>
             </thead>
@@ -31,6 +32,7 @@
                 
                 <th scope="row"><small><?php $i++; echo "$i" ?></small></th>
                 <td> <strong>{{ $pd->name }}</strong> </td>
+                <td> <strong>{{ $pd->quantity }}</strong> </td>
                 <td>
                 <a href="{{ route('products.show', $pd->id) }}"  class="mb-1 btn btn-sm btn-primary " >Plus de details</a>
 
