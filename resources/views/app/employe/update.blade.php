@@ -36,7 +36,7 @@
             <input class="form-control" type="text" name="adress" id="adress" value="{{ $employe->adress }}">
           </div>
           <div class="col-md-4 mb-3" >
-            <label  class="form-label" for="mobile_number">Numero du client</label>
+            <label  class="form-label" for="mobile_number">Numero de l'employer</label>
             <input class="form-control" type="number" name="mobile_number" id="mobile_number" value="{{ $employe->mobile_number }}">
           </div>
           <br>
