@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Auth;
 
 class ProductPolicy
 {
@@ -18,7 +19,7 @@ class ProductPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->role_id === 1 || $user->role_id === 2 || $user->role_id === 3;
+        return true;
     }
 
     /**
@@ -30,7 +31,7 @@ class ProductPolicy
      */
     public function view(User $user, Product $product)
     {
-        return $user->role_id === 1 or $user->role_id === 2 or $user->role_id === 3;
+        return true;
     }
 
     /**
@@ -41,7 +42,7 @@ class ProductPolicy
      */
     public function create(User $user)
     {
-        return $user->role_id === 1 || $user->role_id === 2 || $user->role_id === 3;
+        return true;
     }
 
     /**
@@ -53,7 +54,7 @@ class ProductPolicy
      */
     public function update(User $user, Product $product)
     {
-        return $user->id === 1 || $user->id === 2 || $user->id === $product->user_id;
+        return true;
     }
 
     /**
@@ -65,7 +66,7 @@ class ProductPolicy
      */
     public function delete(User $user, Product $product)
     {
-        return $user->id === 1 || $user->id === 2;
+        return $user->role_id === 1 || $product === 1;
     }
 
     /**

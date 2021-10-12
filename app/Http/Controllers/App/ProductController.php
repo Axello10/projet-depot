@@ -9,7 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->authorizeResource(Product::class, 'products');
+    }
     /**
      * Display a listing of the resource.
      *

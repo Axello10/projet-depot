@@ -37,13 +37,13 @@
                 <a href="{{ route('products.show', $pd->id) }}"  class="mb-1 btn btn-sm btn-primary " >Plus de details</a>
 
                 <a href="{{ route('products.edit', $pd->id) }}"  class="mb-1 btn btn-sm btn-info ">Modifier</a>
-                
+                @can('delete', Auth::user(), Product::class)
                 <form action="{{ route('products.destroy', $pd->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <input type="submit" value="supprimer" class="mb-1 btn btn-sm btn-danger ">
                     </form>
-
+                @endcan
                 </td>
               </tr>
             @endforeach
