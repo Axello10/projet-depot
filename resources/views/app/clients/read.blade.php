@@ -19,6 +19,7 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nom du client</th>
+                <th scope="col">type de client</th>
                 <th scope="col" >Action</th>
               </tr>
             </thead>
@@ -29,6 +30,7 @@
                 
                 <th scope="row"><small><?php $i++; echo "$i" ?></small></th>
                 <td> <strong>{{ $cl->name }} </strong> </td>
+                <td> <strong>{{ $cl->grade->name }} </strong> </td>
                 <td>
                 <a href="{{ route('clients.show', $cl->id) }}"  class="mb-1  btn btn-sm btn-primary " >Plus de details</a>
 

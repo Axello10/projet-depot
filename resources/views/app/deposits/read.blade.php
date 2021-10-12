@@ -20,6 +20,7 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nom du dépot</th>
+                <th scope="col">type de dépot</th>
                 <th scope="col" >Action</th>
               </tr>
             </thead>
@@ -30,6 +31,7 @@
                 
                 <th scope="row"><small><?php $i++; echo "$i" ?></small></th>
                 <td> <strong>{{ $dp->name }} </strong> </td>
+                <td> <strong>{{ $dp->grade->name }} </strong> </td>
                 <td>
                 <a href="{{ route('deposits.show', $dp->id) }}"  class="mb-1 btn btn-sm btn-primary " >Plus de details</a>
 

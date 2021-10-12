@@ -27,4 +27,9 @@ class Client extends Model
     {
         return $this->belongsTo(Deposit::class);
     }
+
+    public function grade()
+    {
+        return $this->belongsTo(Grade::class);
+    }
 }

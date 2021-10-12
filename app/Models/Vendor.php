@@ -20,4 +20,9 @@ class Vendor extends Model
     {
         return $this->hasMany(Entrie::class);
     }
+
+    public function grade()
+    {
+        return $this->belongsTo(Grade::class);
+    }
 }
