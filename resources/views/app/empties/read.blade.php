@@ -19,6 +19,8 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nom du client</th>
+                <th scope="col">Quantité</th>
+                <th scope="col">Payé</th>
                 <th scope="col" >Action</th>
               </tr>
             </thead>
@@ -29,6 +31,8 @@
                 
                 <th scope="row"><small><?php $i++; echo "$i" ?></small></th>
                 <td> <strong> {{ $pt->client->name }}  </strong> </td>
+                <td> <strong> {{ $pt->quantity }}  </strong> </td>
+                <td> <strong> {{ $pt->payer }}  </strong> </td>
                 <td>
                 <a href="{{ route('empties.show', $pt->id) }}"  class="mb-1 btn btn-sm btn-primary " >Plus de details</a>
 

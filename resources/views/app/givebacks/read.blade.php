@@ -21,6 +21,8 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nom du vendeur</th>
+                <th scope="col">Quantité</th>
+                <th scope="col">Payé</th>
                 <th scope="col" >Action</th>
               </tr>
             </thead>
@@ -31,6 +33,8 @@
                 
                 <th scope="row"><small><?php $i++; echo "$i" ?></small></th>
                 <td> <strong>{{ $gv->vendor->name }} </strong> </td>
+                <td> <strong>{{ $gv->quantity }} </strong> </td>
+                <td> <strong>{{ $gv->payer }} </strong> </td>
                 <td>
                 <a href="{{ route('givebacks.show', $gv->id) }}"  class="btn btn-sm btn-primary  mb-1" >Plus de details</a>
 
