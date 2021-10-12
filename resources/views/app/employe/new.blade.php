@@ -25,11 +25,7 @@
          
           <div class="col-md-12 mb-3">
             <label class="form-label" for="user_id">Nom de l'employer</label>
-            <select   name="user_id" class="form-select" aria-label="Default select example">
-                @foreach ($users as $user)
-                    <option value="{{ $user->id }}">{{ $user->fullname }}</option>
-                @endforeach
-            </select>
+            <input class="form-control" type="text" name="fullname" id="fullname">
           </div>
           <div class="col-md-4 mb-3" >
             <label  class="form-label" for="salary">Salaire mensuel</label>

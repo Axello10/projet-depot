@@ -41,7 +41,7 @@ class EmployeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'user_id' => 'unique:employes',
+            'fullname' => 'unique:employes',
             'salary' => 'required|min:1'
         ]);
 
