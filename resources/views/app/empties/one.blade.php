@@ -6,10 +6,10 @@
                 <h1 class="display-4"> Les vides </h1>
                 </div>
                 <div class="note note-primary text-dark  mt-5 mb-3 shadow p-3 mb-5 brounded  ">
-                <h2>Nom du client : {{ $empty->client->name }} </h2>
-                <div><p>Nom du produit : {{ $empty->product->name }} || prix du produit : {{ $empty->product->price }}</p>
+                <h2>Nom du client : {{ $client->name }} </h2>
+                <div><p>Nom du produit : {{ $product->name }} || prix du produit : {{ $product->price_out }} Fbu</p>
                 <p>Quantité : {{ $empty->quantity }}</p>
-                <p>Nom du depot : {{ $empty->deposit->name }}</p></div>
+                <p>Nom du depot : {{ $deposit->name }}</p></div>
 
                 </div>
 </main> 

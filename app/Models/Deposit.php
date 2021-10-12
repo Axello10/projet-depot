@@ -40,7 +40,7 @@ class Deposit extends Model
 
     public function empties()
     {
-        return $this->belongsToMany(Emptie::class, 'depot_empties');
+        return $this->belongsTo(Emptie::class);
     }
 
     public function client()

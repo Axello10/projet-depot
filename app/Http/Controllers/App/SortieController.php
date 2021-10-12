@@ -250,5 +250,7 @@ class SortieController extends Controller
     public function destroy(Sortie $sorty)
     {
         $sorty->delete();
+
+        return redirect()->route('sorties.index');
     }
 }

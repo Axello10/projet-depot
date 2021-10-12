@@ -25,6 +25,6 @@ class Emptie extends Model
 
     public function deposits()
     {
-        return $this->belongsToMany(Deposit::class, 'depot_empties');
+        return $this->belongsTo(Deposit::class);
     }
 }

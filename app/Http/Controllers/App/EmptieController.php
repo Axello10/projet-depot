@@ -67,8 +67,14 @@ class EmptieController extends Controller
      */
     public function show(Emptie $empty)
     {
+        $client = Client::findOrFail($empty->client_id);
+        $product = Product::findOrFail($empty->product_id);
+        $deposit = Deposit::findOrFail($empty->deposit_id);
         return view('app.empties.one')
-                ->with('empty', $empty);
+                ->with('empty', $empty)
+                ->with('client', $client)
+                ->with('product', $product)
+                ->with('deposit', $deposit);
     }
 
     /**
@@ -116,8 +122,10 @@ class EmptieController extends Controller
      * @param  \App\Models\Emptie  $emptie
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Emptie $emptie)
+    public function destroy(Emptie $empty)
     {
-        //
+        $empty->delete();
+
+        return redirect()->route('empties.index');
     }
 }
