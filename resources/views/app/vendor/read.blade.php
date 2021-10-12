@@ -39,11 +39,13 @@
                 <a href="{{ route('vendors.show', $vd->id) }}"  class="mb-1 btn btn-sm btn-primary " >Plus de details</a>
 
                 <a href="{{ route('vendors.edit', $vd->id) }}"  class="mb-1 btn btn-sm btn-info ">Modifier</a>
+                @if(Auth::user()->role_id === 1)
                 <form action="{{ route('vendors.destroy', $vd->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <input type="submit"  class="mb-1 btn btn-sm btn-danger"  value="Supprimer">
                 </form>
+                @endif
 
                 </td>
               </tr>

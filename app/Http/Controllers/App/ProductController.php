@@ -11,7 +11,7 @@ class ProductController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource(Product::class, 'products');
+        // $this->authorizeResource(Product::class, 'products');
     }
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $this->authorize('viewAny', Auth::user());
+        // $this->authorize('viewAny', Auth::user());
         $products = Product::all();
         return view('app.products.read')->with('products', $products);
     }
@@ -32,7 +32,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $this->authorize('create', [Auth::user(), Product::class]);
+        // $this->authorize('create', [Auth::user(), Product::class]);
         return view('app.products.new');
     }
 

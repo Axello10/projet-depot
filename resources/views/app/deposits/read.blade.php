@@ -36,13 +36,13 @@
                 <a href="{{ route('deposits.show', $dp->id) }}"  class="mb-1 btn btn-sm btn-primary " >Plus de details</a>
 
                 <a href="{{ route('deposits.edit', $dp->id) }}"  class="mb-1 btn btn-sm btn-info ">Modifier</a>
-                
+                @if(Auth::user()->role_id === 1 || Auth::user()->role_id === 2)
                 <form action="{{ route('deposits.destroy', $dp->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <input type="submit"  class="mb-1 btn btn-sm btn-danger " value="Supprimer">
                     </form>
-
+                @endif
                 </td>
               </tr>
             @endforeach

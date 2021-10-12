@@ -39,13 +39,13 @@
                 <a href="{{ route('givebacks.show', $gv->id) }}"  class="btn btn-sm btn-primary  mb-1" >Plus de details</a>
 
                 <a href="{{ route('givebacks.edit', $gv->id) }}"  class="btn btn-sm btn-info  mb-1">Modifier</a>
-                
+                @if(Auth::user()->role_id === 1)
                 <form action="{{ route('givebacks.destroy', $gv->id) }}"  method="POST">
                         @csrf
                         @method('DELETE')
                         <input type="submit" class="btn btn-sm btn-danger  mb-1" value="Supprimer">
                     </form>
-
+                @endif
                 </td>
               </tr>
             @endforeach

@@ -33,7 +33,8 @@
                 <td> <strong>{{ $gd->name }}</strong> </td>
                 <td>
                 <a href="{{ route('grades.show', $gd->id) }}"  class="btn btn-sm btn-primary mb-1 " >Plus de details</a>
-
+                
+                @if(Auth::user()->role_id === 1)
                 <a href="{{ route('grades.edit', $gd->id) }}"  class="btn btn-sm btn-info  mb-1">Modifier</a>
                 
                 <form action="{{ route('grades.destroy', $gd->id) }}" method="POST">
@@ -41,6 +42,7 @@
                         @method('DELETE')
                         <input type="submit" class="btn btn-sm btn-danger  mb-1" value="Supprimer">
                     </form>
+                @endif
                 </div>
                 </td>
               </tr>
