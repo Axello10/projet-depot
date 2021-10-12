@@ -4,19 +4,23 @@ namespace App\Http\Controllers\App;
 
 use App\Http\Controllers\Controller;
 use App\Models\Client;
-use App\Models\Emptie;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Grade;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
+    public function __construct()
+    {
+        // $this->authorizeResource('clients', Client::class);
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {        
+    {
         $clients = Client::orderBy('created_at', 'desc')->get();
         return view('app.clients.read')->with('clients', $clients);
     }
@@ -61,6 +65,7 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
+        $this->authorize('view', $client, Auth::user());
         return view('app.clients.one')
                 ->with('client', $client);
     }
@@ -106,6 +111,7 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
+        $this->authorize('delete', Auth::user(), $client);
         $client->delete();
 
         return redirect()->route('clients.index');

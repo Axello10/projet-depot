@@ -35,13 +35,13 @@
                 <a href="{{ route('clients.show', $cl->id) }}"  class="mb-1  btn btn-sm btn-primary " >Plus de details</a>
 
                 <a href="{{ route('clients.edit', $cl->id) }}"  class="mb-1 btn btn-sm btn-info ">Modifier</a>
-                
-                <form action="{{ route('clients.destroy', $cl->id) }}"  method="POST">
+                @can('delete', Auth::user(), Client::class)
+                    <form action="{{ route('clients.destroy', $cl->id) }}"  method="POST">
                         @csrf
                         @method('DELETE')
                         <input type="submit" class="mb-1 btn btn-sm btn-danger" value="Supprimer">
-                </form>
-
+                    </form>    
+                @endcan
                 </td>
               </tr>
             @endforeach
