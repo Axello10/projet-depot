@@ -1,11 +1,16 @@
+
 @extends('app')
 @section('page', $employe->user->fullname)
 @section('content')
-
-        <h2> nom de l'employe : {{ $employe->user->fullname }} </h2>
-        <p>role dans le sys : {{ $employe->user->role->name }}</p>
-        <p>salaire par mois : {{ $employe->salary }} Fbu</p>
-        <p>adresse : {{ (empty($employe->adress)) ? "inconnue" : $employe->adress }}</p>
-        <p>numero de telephone : {{ (empty($employe->mobile_number)) ? "inconnue" : $employe->mobile_number }}</p>
-
+<main class="col-md-9 ms-sm-auto col-lg-9 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="display-4"> Employé </h1>
+                </div>
+                <div class="note note-primary text-dark   mt-5 mb-3 shadow p-3 mb-5 brounded  ">
+                <h2>Nom de l'employe : {{ $employe->user->fullname }} </h2>
+                <p>Rôle dans le sys : {{ $employe->user->role->name }}</p>
+                <p>Salaire par mois : {{ $employe->salary }} Fbu</p>
+                <p>Adresse : {{ (empty($employe->adress)) ? "inconnue" : $employe->adress }}</p>
+                <p>Numero de telephone : {{ (empty($employe->mobile_number)) ? "inconnue" : $employe->mobile_number }}</p>
+</main>    
 @endsection

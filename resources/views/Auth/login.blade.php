@@ -7,10 +7,30 @@
     <meta name="author" content="">
     <title>{{ $_ENV['APP_NAME'] }} - Connection</title>
 <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<!-- MDB -->
+<!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
+  rel="stylesheet"
+/>
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"
+></script>
 <!-- fin -->
 <!-- css supplémentaire -->
     <style>
+
         html,body {
           height: 100%;
         }
@@ -57,28 +77,34 @@
             .form-signin h1{
               color: black;
             }
+            ul{
+              padding:0;
+            }
     </style>
 </head>
   
 <body class="text-center">
-    
-    <main class="form-signin">
-      <h4>commencez par vous connectez</h4>
+
+    <main class="form-signin ">
+      <h4>Commencez par vous connectez</h4>
+      <br>
       @if ($errors->any())
         <ul>
+        <div class="alert alert-danger" role="alert">
             @foreach ($errors->all() as $error)
                 {{ $error }}
             @endforeach
+        </div>
         </ul>
       @endif
       <form action="auth" method="GET">
         <h1 class="mb-4">{{ $_ENV['APP_NAME'] }}</h1>
-        <div class="form-floating">
-          <input type="text" class="form-control" id="floatingInput" placeholder="nom d'utilisateur" name="username">
+        <div class="form-floating ">
+          <input type="text" class="form-control form-outline mb-4" id="floatingInput" placeholder="nom d'utilisateur" name="username">
           <label for="floatingInput">Identifiant</label>
         </div> 
         <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="******" name="password">
+          <input type="password" class="form-control form-outline mb-4" id="floatingPassword" placeholder="******" name="password">
           <label for="floatingPassword">Mot de passe</label>
         </div>
         <button class="mb-2 w-100 btn btn-lg btn-primary " type="submit">Se connecter</button>

@@ -1,29 +1,42 @@
 @extends('app')
 @section('page', $deposit->name)
 @section('content')
-
-        <h2> nom du depot : {{ $deposit->name }} | type de depot : {{ $deposit->grade->name }}</h2>
-        @if (Auth::user()->deposit_id === $deposit->id)
-            <a href="{{ route('depotproducts.create') }}">ajouter un produit dans le stock</a>
-            <a href="{{ route('deposits.edit', $deposit->id) }}">modifier le depot</a>
-        @endif
-        <ul>
+<main class="col-md-9 ms-sm-auto col-lg-9 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="display-4"> Dépot </h1>
+                </div>
+                <div class="note note-primary  text-dark   mt-5 mb-3 shadow p-3 mb-5 brounded  ">
+                <h2>Nom du dépot: {{ $deposit->name }} </h2>
+                <strong>Type du dépot : {{ $deposit->grade->name}}</strong>
+                @if (Auth::user()->deposit_id === $deposit->id)
+                <br>
+            <a href="{{ route('depotproducts.create') }}"  class="mb-1 btn btn-sm btn-primary " >Ajouter un produit dans le stock</a>
+            <a href="{{ route('deposits.edit', $deposit->id) }}"  class="mb-1 btn btn-sm btn-primary " >Modifier ce dépot</a>
+             @endif
+            <ul>
             @if(count($products) <= 0)
-                <p>pas de produits dans le stock!</p>
+                <br>
+                <p>Pas de produits disponible dans son stock!</p>
             @else
                 @foreach ($products as $product)
-                        <div class="" style="border: 2px dashed black">
+                <br>
+                <p>Ce produit est disponible dans ce dépot </p>
+                        <div class="note note-info">
+                            
                             <p><strong>{{ $product->name }}</strong></p>
-                            <p>la quantité :
+                            <p>la quantité disponible :</p>
+                            <p>
                                 @foreach ($deproducts as $dp)
                                     @if ($dp->product_id === $product->id)
                                         {{ $dp->quantity }}
                                         @if (Auth::user()->deposit_id === $deposit->id)
-                                            <a href="{{ route('depotproducts.edit', $dp->id) }}">modifier le produit dans le stock</a>
+                                        <br>
+                                            <a  class="mb-1 btn btn-sm btn-primary "  href="{{ route('depotproducts.edit', $dp->id) }}">Modifier le produit dans le stock</a>
                                         @endif
                                     @endif
                                 @endforeach
                             </p>
+                            {{-- {{ ($product->quantity <= 0) ? "non disponible (0)" : $product->quantity }} --}}
                         </div>
                 @endforeach
             @endif
@@ -31,4 +44,7 @@
 @endsection
 
 
-{{-- {{ ($product->quantity <= 0) ? "non disponible (0)" : $product->quantity }} --}}
+
+
+
+

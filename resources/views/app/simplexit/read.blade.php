@@ -2,32 +2,55 @@
 @section('page', 'sortie simple')
 @section('content')
 
+   
+<main class="col-md-9 ms-sm-auto col-lg-9 px-md-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="display-4"> Simple Sortie </h1>
+    </div>
     @if ( count($simplexits) <= 0)
-        <p>aucun sortie trouvé</p>
+        <p class="alert alert-info">Aucun sortie simple trouvé</p>
     @else
-    <h2>liste des sortie simple</h2>
-    <ul>
-        @foreach ($simplexits as $st)
-            <div style="margin: 20px 0px">
-                <li> <strong> nom du produit </strong> : {{ $st->product_id }} </li>
-                <div>
-                    <a href="{{ route('sorties.show', $st->id) }}">plus de details</a>
+    <div class="card  shadow p-3 mb-5 brounded ">
+      <div class="card-header  text-center text-dark alert-primary ">
+        <h3> Liste des sortie simple </h3>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-striped " id="table_id">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom du produit</th>
+                <th scope="col" >Action</th>
+              </tr>
+            </thead>
+            <tbody>
+            <?php $i=0;?>
+            @foreach ($simplexits as $st)
+              <tr>
+                
+                <th scope="row"><small><?php $i++; echo "$i" ?></small></th>
+                <td> <strong>{{ $st->product_id }} </strong> </td>
+                <td>
+                <a href="{{ route('sorties.show', $st->id) }}"  class="btn btn-sm btn-primary mb-1 " >Plus de details</a>
 
-                    <a href="{{ route('sorties.edit', $st->id) }}">modifier</a>
-
-                    <a href="{{ route('sorties.destroy', $st->id) }}">supprimer</a>
-
-                    <form action="{{ route('sorties.destroy', $st->id) }}" method="POST">
+                <a href="{{ route('sorties.edit', $st->id) }}"  class="btn btn-sm btn-info  mb-1">Modifier</a>
+                
+                <form action="{{ route('sorties.destroy', $st->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <input type="submit" value="supprimer">
+                        <input type="submit" class="btn btn-sm btn-danger  mb-1" value="Supprimer">
                     </form>
-
                 </div>
-                
-            </div>
-        @endforeach
-    </ul>
+                </td>
+              </tr>
+            @endforeach
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>  
+</main>
     @endif
     
 @endsection

@@ -1,12 +1,17 @@
 @extends('app')
 @section('page', 'dette de vides')
 @section('content')
+<main class="col-md-9 ms-sm-auto col-lg-9 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="display-4"> Dette des vides </h1>
+                </div>
+                <div class="note note-primary text-dark   mt-5 mb-3 shadow p-3 mb-5 brounded shadow p-3 mb-5 brounded ">
+                        <h2>Nom du vendeur : {{ $giveback->vendor->name }} </h2>
+                        <p>Nom du produit : {{ $giveback->product->name }}</p>
+                        <p>Quantité : {{ $giveback->quantity }}</p>
+                        <p>Nom du dépot : {{ $giveback->deposit->name }}</p>
+                </div>
 
-        <h2> nom du vendeur : {{ $giveback->vendor->name }} </h2>
-        <div>
-                <p>nom du produit : {{ $giveback->product->name }}</p>
-                <p>quantité : {{ $giveback->quantity }}</p>
-                <p>nom du depot : {{ $giveback->deposit->name }}</p>
-        </div>
+</main> 
     
 @endsection

@@ -31,7 +31,7 @@
     }
 	.signup-form{
     width: 100%;
-    max-width: 450px;
+    max-width: 550px;
     margin: auto;
 	}
 	.signup-form form{
@@ -106,27 +106,27 @@
     <form action="{{ route('users.store') }}" method="POST">
         @csrf
 		<h1>Ajouter un utilisateur...</h1>
-		<p>Veuillez completer ce formulaire pour créer un compte!</p>
+		<p>Veuillez completer ce formulaire pour créer un compte utilisateur !</p>
 		<hr>
         <div class="form-group">
 			<div class="row">
 				<div class="col-xs-6">
-                    <label for="deposit">nom de l'utilisateur</label>
+                    <label for="deposit">Nom de l'utilisateur</label>
                     <input class="form-control" placeholder="Nom utilisateur" type="text" name="username">
                 </div>
 				<div class="col-xs-6">
-                    <label for="deposit">nom complet</label>
+                    <label for="deposit">Nom complet</label>
                     <input class="form-control" placeholder="Nom complet" type="text" name="fullname">
                 </div>
 			</div>
         </div>
         <div class="form-group">
-            <label for="email">email de l'utilisateur</label>
+            <label for="email">Email de l'utilisateur</label>
         	<input type="email" class="form-control" name="email" placeholder="Email" required="required">
         </div>
         <div class="form-group">
-            <label for="deposit">nom du depot</label>
-            <select name="deposit_id" id="deposit_id">
+            <label for="deposit">Nom du depot</label>
+            <select name="deposit_id" id="deposit_id" class="form-control">
                 @foreach ($deposits as $dp)
                 <option value="{{ $dp->id }}">{{ $dp->name }}</option>                    
                 @endforeach
@@ -143,7 +143,7 @@
 			<label class="checkbox-inline"><input type="checkbox" required="required"> Je confirmes
 		</div>
 		<div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg">ajouter l'utilisateur</button>
+            <button type="submit" class="btn btn-primary btn-lg">Ajouter l'utilisateur</button>
         </div>
     </form>
 	<div class="hint-text">Vous avez un compte? <a href="{{ route('login') }}">Connectez-vous ici</a></div>

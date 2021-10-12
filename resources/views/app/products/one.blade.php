@@ -2,25 +2,26 @@
 @section('page', $product->name)
 @section('content')
 
-        <h2> nom du produit : {{ $product->name }} </h2>
-        <p>prix d'achat : {{ $product->price_in }}</p>
-        <p>prix de sortie : {{ $product->price_out }}</p>
-        <p>ajouté par : {{ $product->user->fullname }}</p>
-        <ul>
-        <ul>
-            @if (count($product->deposits) <= 0)
-                non disponible!
-            @else
-            @foreach ($product->deposits as $pd)
-                
-                    <li><strong>{{ $pd->name }}</strong></li>
-                
-            @endforeach
-            @endif
-            
-            </ul>
-        </ul>
-        
 
-
+<main class="col-md-9 ms-sm-auto col-lg-9 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="display-4"> Produit </h1>
+                </div>
+                <div class="note note-primary  text-dark  alert-primary  mt-5 mb-3 shadow p-3 mb-5 brounded shadow p-3 mb-5 brounded ">
+                <h2>Nom du produit : {{ $product->name }} </h2>
+                <p>Prix d'achat : {{ $product->price_in }}</p>
+                <p>Prix de sortie : {{ $product->price_out }}</p>
+                <p>Ajouté par : {{ $product->user->fullname }}</p>
+                <p>Disponible sur ces dépots :</p>
+                @if (count($product->deposits) <= 0)
+                    Produit non disponible!
+                @else
+                @foreach ($product->deposits as $pd)
+                        
+                        <li>{{ $pd->name }}</li>
+                    
+                @endforeach
+                @endif
+                </div>
+</main>      
 @endsection

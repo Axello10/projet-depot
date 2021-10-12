@@ -2,45 +2,75 @@
 @section('page', 'mettre a jour une dette de vide')
 @section('content')
     
-    @if ($errors->any())
+<main class="col-md-7 ms-sm-auto col-lg-9 px-md-5">
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="display"> Dette des vides </h1>
+    </div>
+    <div class="card mt-5 mt-5 shadow p-3 mb-5 brounded">
+      <div class="card-header alert-primary text-center text-dark">
+        <h1> Modifier une dette de vide </h1>
+      </div>
+      @if ($errors->any())
+      <div class="alert alert-danger">
+      <ul>
         @foreach ($errors->all() as $error)
-            {{ $error }}
+        <li>{{ $error }}</li>    
         @endforeach
-    @endif
-    <form action="{{ route('givebacks.update', $giveback->id) }}" method="post">
-        @csrf
-        @method('put')
-        <div class="">
-            <label for="">nom du fournisseur</label>
-            <select name="vendor_id" id="vendor_id">
+      </ul>
+      </div>
+       @endif
+      <div class="card-body">
+   <form class="row g-6" action="{{ route('givebacks.update', $giveback->id) }}" method="post">
+          @csrf
+          @method('put')
+          <div class="col-md-6 mb-3">
+            <label class="form-label" for="vendor_id">Nom du fournisseur</label>
+            <select name="vendor_id" id="vendor_id" class="form-select" aria-label="Default select example">
                 @foreach ($vendors as $vd)
-                    <option value="{{ $vd->id }}" {{ ($vd->id === $giveback->vendor_id) ? "selected" : "" }}>{{ $vd->name }}</option>
+                <option value="{{ $vd->id }}" {{ ($vd->id === $giveback->vendor_id) ? "selected" : "" }}>{{ $vd->name }}</option>
                 @endforeach
             </select>
-        </div>
-
-        <div class="">
-            <label for="">nom du produit</label>
-            <select name="product_id" id="product_id">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label" for="deposit_id" >Nom du dépot</label>
+            <select name="deposit_id" id="deposit_id" class="form-select" aria-label="Default select example">
+                @foreach ($deposits as $dp)
+                    <option value="{{ $dp->id }}">{{ $dp->name }}</option>
+                @endforeach
+            </select>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label" for="product_id">Nom du produit</label>
+            <select name="product_id" id="product_id" class="form-select" aria-label="Default select example">
                 @foreach ($products as $pd)
-                    <option value="{{ $pd->id }}" {{ ($pd->id === $giveback->product_id) ? "selected" : "" }}>{{ $pd->name }}</option>
+                <option value="{{ $pd->id }}" {{ ($pd->id === $giveback->product_id) ? "selected" : "" }}>{{ $pd->name }}</option>
                 @endforeach
             </select>
-        </div>
-
-        <input type="number" name="quantity" id="quantity" value="{{ $giveback->quantity }}">
-
-        <input type="hidden" name="deposit_id" value="{{ Auth::user()->deposit_id }}">
+          </div>
+          <div class="col-md-6 mb-3" >
+            <label  class="form-label" for="quantity">Quantité</label>
+            <input class="form-control" type="number" name="quantity" id="quantity" value="{{ $giveback->quantity }}">
+          </div>
+          <input type="hidden" name="deposit_id" value="{{ Auth::user()->deposit_id }}">
 
         <div class="">
-            <label for="payer">etat du dette</label>
-            <select name="payer" id="">
+            <label class="form-label" for="payer">Etat du dette</label>
+            <select name="payer" id="" class="form-select">
                 <option value="oui">dette payer</option>
                 <option value="non">dette non payer</option>
             </select>
         </div>
-
-        <button type="submit">modifier</button>
+          <br>
+          <div class="col-12 mt-3">
+            <button type="submit" class="btn btn-primary">Modifier</button>
+          </div>
     </form>
-
+    </div>
+</div>
+</main>
 @endsection
+
+
+
+
+
