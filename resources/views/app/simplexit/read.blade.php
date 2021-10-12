@@ -8,7 +8,7 @@
       <h1 class="display-4"> Simple Sortie </h1>
     </div>
     @if ( count($simplexits) <= 0)
-        <p class="alert alert-info">Aucun sortie simple trouvé</p>
+        <p class="alert alert-info">Aucune sortie simple trouvé</p>
     @else
     <div class="card  shadow p-3 mb-5 brounded ">
       <div class="card-header  text-center text-dark alert-primary ">
@@ -21,6 +21,8 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nom du produit</th>
+                <th scope="col">quantité</th>
+                <th scope="col">utilisateur</th>
                 <th scope="col" >Action</th>
               </tr>
             </thead>
@@ -30,13 +32,15 @@
               <tr>
                 
                 <th scope="row"><small><?php $i++; echo "$i" ?></small></th>
-                <td> <strong>{{ $st->product_id }} </strong> </td>
+                <td> <strong>{{ $st->product->name }} </strong> </td>
+                <td> <strong>{{ $st->quantity }} </strong> </td>
+                <td> <strong>{{ $st->user->fullname }} </strong> </td>
                 <td>
-                <a href="{{ route('sorties.show', $st->id) }}"  class="btn btn-sm btn-primary mb-1 " >Plus de details</a>
+                <a href="{{ route('simplexits.show', $st->id) }}"  class="btn btn-sm btn-primary mb-1 " >Plus de details</a>
 
-                <a href="{{ route('sorties.edit', $st->id) }}"  class="btn btn-sm btn-info  mb-1">Modifier</a>
+                <a href="{{ route('simplexits.edit', $st->id) }}"  class="btn btn-sm btn-info  mb-1">Modifier</a>
                 
-                <form action="{{ route('sorties.destroy', $st->id) }}" method="POST">
+                <form action="{{ route('simplexits.destroy', $st->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <input type="submit" class="btn btn-sm btn-danger  mb-1" value="Supprimer">

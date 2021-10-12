@@ -19,7 +19,8 @@ class SimpleExitController extends Controller
      */
     public function index()
     {
-        return SimpleExit::all();
+        return view('app.simplexit.read')
+                ->with('simplexits', SimpleExit::orderBy('created_at', 'desc')->get());
     }
 
     /**
