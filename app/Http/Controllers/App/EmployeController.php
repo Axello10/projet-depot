@@ -5,8 +5,8 @@ namespace App\Http\Controllers\App;
 use App\Http\Controllers\Controller;
 use App\Models\Employe;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EmployeController extends Controller
 {
@@ -101,6 +101,8 @@ class EmployeController extends Controller
      */
     public function destroy(Employe $employe)
     {
+        $this->authorize('delete', Auth::user(), Employe::class);
+        
         $employe->delete();
 
         return redirect()->route('employes.index');

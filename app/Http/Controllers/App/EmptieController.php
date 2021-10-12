@@ -8,6 +8,7 @@ use App\Models\Deposit;
 use App\Models\Emptie;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EmptieController extends Controller
 {
@@ -124,6 +125,8 @@ class EmptieController extends Controller
      */
     public function destroy(Emptie $empty)
     {
+        $this->authorize('delete', Auth::user(), Emptie::class);
+
         $empty->delete();
 
         return redirect()->route('empties.index');
