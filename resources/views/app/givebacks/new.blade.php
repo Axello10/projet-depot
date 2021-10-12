@@ -51,6 +51,13 @@
             <label  class="form-label" for="quantity">Quantité</label>
             <input class="form-control" type="number" name="quantity" id="quantity">
           </div>
+          <div class="">
+            <label class="form-label" for="payer">Etat du dette</label>
+            <select name="payer" id="" class="form-select">
+                <option value="oui">dette payer</option>
+                <option value="non">dette non payer</option>
+            </select>
+        </div>
           <br>
           <div class="col-12 mt-3">
             <button type="submit" class="btn btn-primary">Ajouter</button>

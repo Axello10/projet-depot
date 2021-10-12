@@ -18,7 +18,7 @@ class GivebackController extends Controller
      */
     public function index()
     {
-        $givebacks = Giveback::all();
+        $givebacks = Giveback::orderBy('created_at', 'desc')->get();
         return view('app.givebacks.read')->with('givebacks', $givebacks);
     }
 
