@@ -91,7 +91,6 @@ class ClientController extends Controller
         $request->validate([
             'name' => 'min:4',
             'adress' => 'min:4',
-            'mobile_number' => 'min:8'
         ]);
 
         $client->update($request->all());

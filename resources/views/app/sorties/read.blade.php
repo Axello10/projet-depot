@@ -28,7 +28,7 @@
               <tr>
                 
                 <th scope="row"><small><?php $i++; echo "$i" ?></small></th>
-                <td> <strong> {{ $st->product_id }}</strong> </td>
+                <td> <strong> {{ $st->product->name }}</strong> </td>
                 <td>
                 <a href="{{ route('sorties.show', $st->id) }}"  class="btn btn-sm btn-primary mb-1 " >Plus de details</a>
 
