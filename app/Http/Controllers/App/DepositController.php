@@ -35,6 +35,8 @@ class DepositController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Deposit::class);
+
         return view('app.deposits.new')
                 ->with('grades', Grade::all());
     }
@@ -47,6 +49,8 @@ class DepositController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Deposit::class);
+
         $request->validate([
             'name' => 'required|unique:deposits',
             'mobile_number' => 'required|unique:deposits'
@@ -88,6 +92,8 @@ class DepositController extends Controller
      */
     public function edit(Deposit $deposit)
     {
+        $this->authorize('update', Deposit::class);
+
         return view('app.deposits.update')
                 ->with('grades', Grade::all())
                 ->with('deposit', $deposit);
@@ -102,6 +108,8 @@ class DepositController extends Controller
      */
     public function update(Request $request, Deposit $deposit)
     {
+        $this->authorize('update', Deposit::class);
+
         $request->validate([
             'name' => 'required',
             'mobile_number' => 'required'
@@ -120,6 +128,8 @@ class DepositController extends Controller
      */
     public function destroy(Deposit $deposit)
     {
+        $this->authorize('delete', Auth::user(), Deposit::class);
+
         $deposit->delete();
 
         return redirect()->route('deposits.index');
