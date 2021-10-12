@@ -31,7 +31,7 @@
               <tr>
                 
                 <th scope="row"><small><?php $i++; echo "$i" ?></small></th>
-                <td> <strong>{{ $employe->user->fullname }} </strong> </td>
+                <td> <strong>{{ $employe->fullname }} </strong> </td>
                 <td>
                 <a href="{{ route('employes.show', $employe->id) }}"  class="mb-1  btn btn-sm btn-primary " >Plus de details</a>
 

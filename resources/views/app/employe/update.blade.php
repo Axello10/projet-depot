@@ -22,7 +22,7 @@
       <div class="card-body">
    <form class="row g-6" action="{{ route('employes.update', $employe->id) }}" method="POST">
           @csrf
-         
+          @method('put')
           <div class="col-md-12 mb-3">
             <label class="form-label" for="user_id">Nom de l'employer</label>
             <input class="form-control" type="text" name="fullname" id="fullname" value="{{ $employe->fullname }}">
