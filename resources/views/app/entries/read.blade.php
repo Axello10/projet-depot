@@ -41,14 +41,16 @@
                 <td> <strong> {{ $et->payer }}</strong> </td>
                 <td>
                 <a href="{{ route('entries.show', $et->id) }}"  class="mb-1 btn btn-sm btn btn-primary " >Plus de details</a>
-
-                <a href="{{ route('entries.edit', $et->id) }}"  class="mb-1 btn btn-sm btn btn-info ">Modifier</a>
-                
-                <form action="{{ route('entries.destroy', $et->id) }}" method="POST">
+                @if(Auth::user()->role_id === 1 || Auth::user()->role_id === 2 || Auth::user()->id === $et->user_id)
+                    <a href="{{ route('entries.edit', $et->id) }}"  class="mb-1 btn btn-sm btn btn-info ">Modifier</a>
+                @endcan
+                @can(Auth::user()->role_id === 1)
+                    <form action="{{ route('entries.destroy', $et->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <input type="submit" class="mb-1 btn btn-sm btn btn-danger " value="Supprimer">
                     </form>
+                @endcan
 
                 </td>
               </tr>

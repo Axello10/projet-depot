@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Emptie;
+use App\Models\Entrie;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class EmptiePolicy
+class EntriePolicy
 {
     use HandlesAuthorization;
 
@@ -18,19 +18,19 @@ class EmptiePolicy
      */
     public function viewAny(User $user)
     {
-        return true;
+        return $user->role_id === 1 || $user->role_id === 2;
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Emptie  $emptie
+     * @param  \App\Models\Entrie  $entrie
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Emptie $emptie)
+    public function view(User $user, Entrie $entrie)
     {
-        return true;
+        return $user->role_id === 1 || $user->role_id === 2 || $user->id === $entrie->id;
     }
 
     /**
@@ -48,22 +48,22 @@ class EmptiePolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Emptie  $emptie
+     * @param  \App\Models\Entrie  $entrie
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Emptie $emptie)
+    public function update(User $user, Entrie $entrie)
     {
-        return $user->role_id === 1 || $user->id === $emptie->user_id;
+        return $user->role_id === 1 || $user->id === $entrie->user_id;
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Emptie  $emptie
+     * @param  \App\Models\Entrie  $entrie
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Emptie $emptie)
+    public function delete(User $user, Entrie $entrie)
     {
         return $user->role_id === 1;
     }
@@ -72,10 +72,10 @@ class EmptiePolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Emptie  $emptie
+     * @param  \App\Models\Entrie  $entrie
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Emptie $emptie)
+    public function restore(User $user, Entrie $entrie)
     {
         //
     }
@@ -84,10 +84,10 @@ class EmptiePolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Emptie  $emptie
+     * @param  \App\Models\Entrie  $entrie
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Emptie $emptie)
+    public function forceDelete(User $user, Entrie $entrie)
     {
         //
     }

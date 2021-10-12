@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 
 class EntryController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +22,8 @@ class EntryController extends Controller
      */
     public function index()
     {
-        $entries = Entrie::orderBy('created_at', 'desc')->get();
+        $entries = Entrie::where('user_id', Auth::user()->id)
+                        ->orderBy('created_at', 'desc')->get();
 
         return view('app.entries.read')
                 ->with('entries', $entries);
@@ -167,6 +169,7 @@ class EntryController extends Controller
      */
     public function edit(Entrie $entry)
     {
+
         $depot = DepositProduct::where('deposit_id', Auth::user()->deposit_id)->get();
 
         $products = [];
@@ -293,6 +296,7 @@ class EntryController extends Controller
      */
     public function destroy(Entrie $entry)
     {
+        $this->authorize('delete', Auth::user(), Entrie::class);
         $entry->delete();
         return back();
     }

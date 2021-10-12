@@ -221,7 +221,7 @@ svg{
           </svg>
             </a>
           </h6>
-          @can('create', Auth::user())
+          
           <ul class="nav flex-column">
               <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="{{ route('employes.create') }}">
@@ -242,9 +242,7 @@ svg{
                   <span class="ml-2">Voir les employés</span>
                 </a>
               </li>
-              @else
-                   <p class="alert alert-info">T'es pas autorisé!</p>
-               @endcan
+               
           </ul>
 
         <h6 class="sidebar-heading d-flex justify-content-between mt-3              align-items-center px-3 mt-2 mb-1 text-muted">
@@ -401,7 +399,7 @@ svg{
             </svg>
           </a>
         </h6>
-        @can(['viewAny'], [Auth::user(), Product::class])
+        
         <ul class="nav flex-column">
             <li class="nav-item">
               <a class="nav-link" href="{{ route('products.create') }}">
@@ -423,7 +421,7 @@ svg{
              
               </a>
             </li>
-            @elsecan('create', [Auth::user(), App\Models\product::class])
+            
               <li class="nav-item">
               <a class="nav-link" href="{{ route('products.create') }}">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-plus" viewBox="0 0 16 16">
@@ -434,9 +432,7 @@ svg{
                 <span class="ml-2">Ajouter un produit</span>
               </a>
             </li>
-            @else
-                 <p class="alert alert-info">T'es pas autorisé!</p>
-            @endcan
+            
         </ul>
         
 
