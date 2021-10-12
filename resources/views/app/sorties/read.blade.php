@@ -21,6 +21,7 @@
                 <th scope="col">Nom du produit</th>
                 <th scope="col">prix totale</th>
                 <th scope="col">utilisateur</th>
+                <th scope="col">client</th>
                 <th scope="col">payé</th>
                 <th scope="col" >Action</th>
               </tr>
@@ -34,6 +35,7 @@
                 <td> <strong> {{ $st->product->name }}</strong> </td>
                 <td> <strong> {{ $st->price }} Fbu</strong> </td>
                 <td> <strong> {{ $st->user->fullname }}</strong> </td>
+                <td> <strong> {{ $st->client->name }}</strong> </td>
                 <td> <strong> {{ $st->payer }}</strong> </td>
                 <td>
                 <a href="{{ route('sorties.show', $st->id) }}"  class="btn btn-sm btn-primary mb-1 " >Plus de details</a>
