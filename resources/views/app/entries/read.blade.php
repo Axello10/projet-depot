@@ -21,6 +21,9 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nom du produit </th>
+                <th scope="col">prix totale</th>
+                <th scope="col">utilisateur</th>
+                <th scope="col">payé</th>
                 <th scope="col" >Action</th>
               </tr>
             </thead>
@@ -30,7 +33,10 @@
               <tr>
                 
                 <th scope="row"><small><?php $i++; echo "$i" ?></small></th>
-                <td> <strong>{{ $et->product_id }}</strong> </td>
+                <td> <strong>{{ $et->product->name }}</strong> </td>
+                <td> <strong> {{ $et->price }} Fbu</strong> </td>
+                <td> <strong> {{ $et->user->fullname }}</strong> </td>
+                <td> <strong> {{ $et->payer }}</strong> </td>
                 <td>
                 <a href="{{ route('entries.show', $et->id) }}"  class="mb-1 btn btn-sm btn btn-primary " >Plus de details</a>
 

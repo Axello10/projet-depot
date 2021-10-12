@@ -27,7 +27,7 @@
             <label class="form-label" for="vendor_id">Vendeur</label>
             <select name="vendor_id" id="vendor" class="form-select" aria-label="Default select example">
                 @foreach ($vendors as $vd)
-                    <option value="{{ $vd->id }}">{{ $vd->name }}</option>
+                    <option value="{{ $vd->id }}">{{ $vd->name }} - {{ $vd->grade->name }}</option>
                 @endforeach
             </select>
           </div>
