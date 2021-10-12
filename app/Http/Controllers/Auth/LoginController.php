@@ -25,13 +25,6 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
-        $us = User::where('username', $request->username)->first();
-        $id = $us->role_id;
-
-        if ($id === 4) {
-            return back()->withErrors(['message' => "vous n'avez rien a faire ici!"]);
-        }
-
         if (Auth::attempt($credentials, true)) {
 
             $request->session()->regenerate();
