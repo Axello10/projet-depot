@@ -21,7 +21,7 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nom du produit</th>
-                <th scope="col">Quantité totale</th>
+                <th scope="col">Quantité (tout les depots)</th>
                 <th scope="col" >Action</th>
               </tr>
             </thead>
