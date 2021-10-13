@@ -38,6 +38,11 @@ fournisseurs
 2 => depot simple
 3 => depot ou source externe
 
+cpanel - hosting credentials
+
+database name : zmxhtcnw_depot
+database user : zmxhtcnw_username
+database password : OtakuDepotApp
 
 > let's build it!
 
