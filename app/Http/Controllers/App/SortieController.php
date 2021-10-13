@@ -83,7 +83,8 @@ class SortieController extends Controller
                 'client_id' => $request->client_id,
                 'product_id' => $request->product_id,
                 'quantity' => $request->quantity - $request->empty,
-                'deposit_id' => $request->deposit_id
+                'deposit_id' => $request->deposit_id,
+                'payer' => 'non'
             ];
 
             Emptie::create($empti);
@@ -193,7 +194,8 @@ class SortieController extends Controller
                 'client_id' => $request->client_id,
                 'product_id' => $request->product_id,
                 'quantity' => $request->quantity - $request->empty,
-                'deposit_id' => $request->deposit_id
+                'deposit_id' => $request->deposit_id,
+                'payer' => 'non'
             ];
 
             Emptie::create($empti);
