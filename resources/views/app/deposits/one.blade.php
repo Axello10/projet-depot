@@ -20,8 +20,7 @@
             @else
                 @foreach ($products as $product)
                 <br>
-                        <div class="note note-info">
-                            
+                    <div class="note note-info">        
                             <p><strong>{{ $product->name }}</strong></p>
                             <p>la quantité disponible :</p>
                             <p>
@@ -35,7 +34,6 @@
                                     @endif
                                 @endforeach
                             </p>
-                            {{-- {{ ($product->quantity <= 0) ? "non disponible (0)" : $product->quantity }} --}}
                         </div>
                 @endforeach
             @endif

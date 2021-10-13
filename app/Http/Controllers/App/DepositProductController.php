@@ -42,7 +42,7 @@ class DepositProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'product_id' => 'required|min:1',
+            'product_id' => 'required|min:1|unique:deposit_products',
             'quantity' => 'required|min:1'
         ]);
 
@@ -53,7 +53,7 @@ class DepositProductController extends Controller
 
         DepositProduct::create($data);
 
-        return redirect()->route('deposits.index');
+        return redirect()->route('deposits.show', Auth::user()->deposit_id);
     }
 
     /**
