@@ -54,8 +54,8 @@ class EntryController extends Controller
     * @return bool
     */
     public static function check_existing($products, $product) {
+        $res = false;
         foreach($products as $prod) {
-            $res = false;
             if ($prod->name === $product->name) {
                 $res = true;
                 break;
