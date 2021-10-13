@@ -34,6 +34,25 @@ class DepositProductController extends Controller
     }
 
     /**
+    * 
+    * @param $products[] liste des produits du depot
+    * @param $product le produit a inserer
+    * 
+    * @return bool
+    */
+    public static function check_existing($products, $product) {
+        $res = false;
+        foreach($products as $prod) {
+            if ($prod->name === $product->name) {
+                $res = true;
+                break;
+            }
+            $res = false;
+        }
+        return $res;
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -42,18 +61,29 @@ class DepositProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'product_id' => 'required|min:1|unique:deposit_products',
+            'product_id' => 'required',
             'quantity' => 'required|min:1'
         ]);
 
-        $data = $request->all();
+        $depot = DepositProduct::where('deposit_id', Auth::user()->deposit_id)->get();
 
-        $data['user_id'] = Auth::user()->id;
-        $data['deposit_id'] = Auth::user()->deposit->id;
+        $products = [];
+        for($i = 0; $i < count($depot); $i++) {
+            $products[$i] = Product::findOrFail($depot[$i]->product_id);
+        }      
 
-        DepositProduct::create($data);
+        if (!$this->check_existing($products, Product::findOrFail($request->product_id))) {
+            $data = $request->all();
 
-        return redirect()->route('deposits.show', Auth::user()->deposit_id);
+            $data['user_id'] = Auth::user()->id;
+            $data['deposit_id'] = Auth::user()->deposit->id;
+    
+            DepositProduct::create($data);
+    
+            return redirect()->route('deposits.show', Auth::user()->deposit_id);
+        } else {
+            return back()->withErrors(['errors' => 'produit deja existant']);
+        }
     }
 
     /**
