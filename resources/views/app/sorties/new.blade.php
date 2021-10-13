@@ -27,7 +27,7 @@
             <label class="form-label" for="client_id">Nom du client</label>
             <select class="form-select" name="client_id" id="client">
             @foreach ($clients as $cl)
-                    <option value="{{ $cl->id }}">{{ $cl->name }} - {{ $cl->grade->name }}</option>
+                    <option value="{{ $cl->id }}">{{ $cl->name }}</option>
             @endforeach
             </select>
         </div>
