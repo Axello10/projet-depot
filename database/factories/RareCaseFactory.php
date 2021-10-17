@@ -22,7 +22,12 @@ class RareCaseFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'incident' => $this->faker->paragraph,
+            'justification' => $this->faker->paragraphs(1, true),
+            'acteur' => $this->faker->lastName,
+            'user_id' => $this->faker->numberBetween(1, 2),
+            'deposit_id' => $this->faker->numberBetween(1, 2),
+            'price' => $this->faker->numberBetween(10000, 30000)
         ];
     }
 }

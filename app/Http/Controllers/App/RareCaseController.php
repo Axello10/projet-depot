@@ -5,6 +5,7 @@ namespace App\Http\Controllers\App;
 use App\Http\Controllers\Controller;
 use App\Models\RareCase;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RareCaseController extends Controller
 {
@@ -15,7 +16,8 @@ class RareCaseController extends Controller
      */
     public function index()
     {
-        //
+        return view('app.rarecases.read')
+                ->with('rarecases', RareCase::orderBy('created_at', 'desc')->get());
     }
 
     /**
@@ -25,7 +27,7 @@ class RareCaseController extends Controller
      */
     public function create()
     {
-        //
+        return view('app.rarecases.new');
     }
 
     /**
@@ -36,7 +38,13 @@ class RareCaseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'incident' => 'required'
+        ]);
+
+        RareCase::create($request->all());
+
+        return redirect()->route('rarecases.index');
     }
 
     /**
@@ -45,9 +53,10 @@ class RareCaseController extends Controller
      * @param  \App\Models\RareCase  $rareCase
      * @return \Illuminate\Http\Response
      */
-    public function show(RareCase $rareCase)
+    public function show($id)
     {
-        //
+        return view('app.rarecases.one')
+                ->with('rarecase', RareCase::findOrFail($id));
     }
 
     /**
@@ -56,9 +65,10 @@ class RareCaseController extends Controller
      * @param  \App\Models\RareCase  $rareCase
      * @return \Illuminate\Http\Response
      */
-    public function edit(RareCase $rareCase)
+    public function edit($id)
     {
-        //
+        return view('app.rarecases.update')
+                ->with('rarecase', RareCase::findOrFail($id));
     }
 
     /**
@@ -68,9 +78,17 @@ class RareCaseController extends Controller
      * @param  \App\Models\RareCase  $rareCase
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RareCase $rareCase)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'incident' => 'required'
+        ]);
+
+        $rareCase = RareCase::findOrFail($id);
+
+        $rareCase->update($request->all());
+
+        return redirect()->route('rarecases.index');
     }
 
     /**
@@ -79,8 +97,16 @@ class RareCaseController extends Controller
      * @param  \App\Models\RareCase  $rareCase
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RareCase $rareCase)
+    public function destroy($id)
     {
-        //
+        if (Auth::user()->role_id === 1) {
+            $rareCase = RareCase::findOrFail($id);
+    
+            $rareCase->delete();
+    
+            return redirect()->route('rarecases.index');
+        } else {
+            return 403;
+        }
     }
 }

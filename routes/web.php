@@ -61,6 +61,8 @@ Route::middleware('auth')->group(function() {
 
     Route::resource('employes', 'App\Http\Controllers\App\EmployeController');
 
+    Route::resource('rarecases', 'App\Http\Controllers\App\RareCaseController');
+
     /**
      * 
      * ===========================

@@ -15,6 +15,12 @@ class CreateRareCasesTable extends Migration
     {
         Schema::create('rare_cases', function (Blueprint $table) {
             $table->id();
+            $table->string('incident');
+            $table->text('justification')->nullable();
+            $table->string('acteur')->nullable();
+            $table->integer('user_id');
+            $table->integer('deposit_id');
+            $table->integer('price')->nullable();
             $table->timestamps();
         });
     }
