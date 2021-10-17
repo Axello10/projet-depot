@@ -2,15 +2,8 @@
 @section('page', 'dashboard')
 @section('content')
 <main class="col-md-9 ms-sm-auto col-lg-9 px-md-3">
-    <div class="card mt-5 mb-3 shadow p-3 mb-5 brounded">
-    <div class="card-header ">    
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-1">
-      <h1 class="text-center display-2">Accueil</h1>
-      <hr>
-    </div>
 </div>
   <div class="card-body">
-    <?php $f = date('H') + 2 ?>
     <h1 class="card-title mb-3 time"></h1>
     <p class="card-text note note-primary">
   <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-signpost-2" viewBox="0 0 16 16">
