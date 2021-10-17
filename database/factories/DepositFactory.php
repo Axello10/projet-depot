@@ -23,7 +23,7 @@ class DepositFactory extends Factory
     {
         return [
             'name' => $this->faker->city,
-            'grade_id' => $this->faker->numberBetween(1, 3),
+            'grade' => $this->faker->jobTitle,
             'mobile_number' => $this->faker->phoneNumber
         ];
     }

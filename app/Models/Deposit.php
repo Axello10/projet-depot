@@ -10,7 +10,7 @@ class Deposit extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'grade_id', 'mobile_number'
+        'name', 'grade', 'mobile_number'
     ];
 
     public function emptie()
@@ -46,10 +46,5 @@ class Deposit extends Model
     public function client()
     {
         return $this->hasMany(Client::class);
-    }
-
-    public function grade()
-    {
-        return $this->belongsTo(Grade::class);
     }
 }

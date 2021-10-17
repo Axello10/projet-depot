@@ -16,7 +16,7 @@ class CreateDepositsTable extends Migration
         Schema::create('deposits', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('grade_id');
+            $table->string('grade');
             $table->string('mobile_number');
             $table->timestamps();
         });

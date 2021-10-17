@@ -10,10 +10,7 @@ use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
-    public function __construct()
-    {
-        // $this->authorizeResource('clients', Client::class);
-    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -32,9 +29,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        $grades = Grade::all();
-        return view('app.clients.new')
-                ->with('grades', $grades);
+        return view('app.clients.new');
     }
 
     /**
@@ -48,7 +43,7 @@ class ClientController extends Controller
         $request->validate([
             'name' => 'required|min:4',
             'adress' => 'min:4',
-            'grade_id' => 'required',
+            'grade' => 'required',
             'mobile_number' => 'min:8'
         ]);
 
@@ -78,10 +73,8 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        $grades = Grade::all();
         return view('app.clients.update')
-            ->with('client', $client)
-            ->with('grades', $grades);
+            ->with('client', $client);
     }
 
     /**

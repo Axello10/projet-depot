@@ -31,9 +31,8 @@
           <div class="col-md-4 mb-3">
             <label class="form-label" for="grade_id">Type du client</label>
             <select  name="grade_id" id="grade_id" class="form-select" aria-label="Default select example">
-                @foreach ($grades as $gd)
-                    <option value="{{ $gd->id }}">{{ $gd->name }}</option>
-                @endforeach
+                <option value="Principale" {{ ($client->grade === "Principale") ? "selected"}}>principale</option>
+                <option value="Simple" {{ ($client->grade === "Simple") ? "selected"}}>simple</option>
             </select>
           </div>
           <div class="col-md-4 mb-3" >

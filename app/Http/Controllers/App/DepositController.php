@@ -3,13 +3,11 @@
 namespace App\Http\Controllers\App;
 
 use App\Http\Controllers\Controller;
-use App\Models\Client;
 use App\Models\Deposit;
 use App\Models\DepositProduct;
 use App\Models\Grade;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Vendor;
 use Illuminate\Http\Request;
 
 
@@ -37,8 +35,7 @@ class DepositController extends Controller
     {
         $this->authorize('create', Deposit::class);
 
-        return view('app.deposits.new')
-                ->with('grades', Grade::all());
+        return view('app.deposits.new');
     }
 
     /**
@@ -95,7 +92,6 @@ class DepositController extends Controller
         $this->authorize('update', Deposit::class);
 
         return view('app.deposits.update')
-                ->with('grades', Grade::all())
                 ->with('deposit', $deposit);
     }
 

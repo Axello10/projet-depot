@@ -10,7 +10,7 @@ class Client extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'adress', 'mobile_number', 'grade_id'
+        'name', 'adress', 'mobile_number', 'grade'
     ];
 
     public function empties()
@@ -26,10 +26,5 @@ class Client extends Model
     public function deposit()
     {
         return $this->belongsTo(Deposit::class);
-    }
-
-    public function grade()
-    {
-        return $this->belongsTo(Grade::class);
     }
 }
