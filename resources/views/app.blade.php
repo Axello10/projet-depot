@@ -431,5 +431,20 @@
      $('#table_id').DataTable();
  } );</script>
  <!-- fin datatable -->
+ <script type="text/javascript">
+    let date = new Date();
+    let time_container = document.querySelector('.time');
+    let word = "";
+
+    if (date.getFullHour >= 00 && date.getFullHour <= 12) {
+        word = "Bonjour ";
+    } else if (date.getFullHour >= 13 && date.getFullHour <= 18) {
+        word = "Bon apres-midi ";
+    } else {
+        word = "Bonsoir "
+    }
+
+    time_container.textContent = `${word} cher {{ Auth::user()->username }}`;
+</script>
 </body>
 </html>
