@@ -62,7 +62,11 @@ class SimpleExitController extends Controller
         // le prix egale a quantité par le produit
         $product = Product::findOrFail($deproduct->product_id);
         $data = $request->all();
-        $data['price'] = $request->quantity * $product->price_out;
+        if (Auth::user()->deposit_id === 1) {
+            $data['price'] = $request->quantity * $product->second_price_out;
+        } else {
+            $data['price'] = $request->quantity * $product->price_out;
+        }
         $data['user_id'] = Auth::user()->id;
         $data['deposit_id'] = Auth::user()->deposit_id;
         
@@ -140,7 +144,11 @@ class SimpleExitController extends Controller
         // le prix egale a quantité par le produit
         $product = Product::findOrFail($deproduct->product_id);
         $data = $request->all();
-        $data['price'] = $request->quantity * $product->price_out;
+        if (Auth::user()->deposit_id === 1) {
+            $data['price'] = $request->quantity * $product->second_price_out;
+        } else {
+            $data['price'] = $request->quantity * $product->price_out;
+        }
         $data['user_id'] = Auth::user()->id;
         $data['deposit_id'] = Auth::user()->deposit_id;
 
