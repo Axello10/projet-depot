@@ -31,8 +31,8 @@
           <div class="col-md-4 mb-3">
             <label class="form-label" for="grade">Type du client</label>
             <select  name="grade" id="grade" class="form-select" aria-label="Default select example">
-                <option value="Principale" {{ ($client->grade === "Principale") ? "selected"}}>principale</option>
-                <option value="Simple" {{ ($client->grade === "Simple") ? "selected"}}>simple</option>
+                <option value="Principale" {{ ($client->grade === "Principale") ? "selected" : ""}}>principale</option>
+                <option value="Simple" {{ ($client->grade === "Simple") ? "selected" : ""}}>simple</option>
             </select>
           </div>
           <div class="col-md-4 mb-3" >

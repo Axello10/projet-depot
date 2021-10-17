@@ -89,7 +89,7 @@ class DepositController extends Controller
      */
     public function edit(Deposit $deposit)
     {
-        $this->authorize('update', Deposit::class);
+        $this->authorize('update', Auth::user(), Deposit::class);
 
         return view('app.deposits.update')
                 ->with('deposit', $deposit);
@@ -104,7 +104,7 @@ class DepositController extends Controller
      */
     public function update(Request $request, Deposit $deposit)
     {
-        $this->authorize('update', Deposit::class);
+        $this->authorize('update', Auth::user(), Deposit::class);
 
         $request->validate([
             'name' => 'required',
