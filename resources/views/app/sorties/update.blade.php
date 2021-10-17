@@ -81,7 +81,7 @@
             <input class="form-control" type="number" name="num_cheque" id="num_cheque" value="{{ $sortie->num_cheque }}">
           </div>
           <div class="col-12 mt-3">
-            <button type="submit" class="btn btn-primary">Ajouter</button>
+            <button type="submit" class="btn btn-primary">Modifier</button>
           </div>
         </form>
       </div>

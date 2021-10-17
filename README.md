@@ -32,6 +32,11 @@
     - pour ce il faut un compte relié a ce system
     - une fois connecté on verifie vos autorisation.
 
+- ### depot
+
+    - tout les depots ont les meme prix d'entree et de sortie sauf pour un seul depot
+    avec l'id 1.
+
 fournisseurs
 
 1 => depot principale

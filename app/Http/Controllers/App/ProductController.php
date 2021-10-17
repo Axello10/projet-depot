@@ -9,10 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
-    public function __construct()
-    {
-        // $this->authorizeResource(Product::class, 'products');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -32,7 +28,6 @@ class ProductController extends Controller
      */
     public function create()
     {
-        // $this->authorize('create', [Auth::user(), Product::class]);
         return view('app.products.new');
     }
 
