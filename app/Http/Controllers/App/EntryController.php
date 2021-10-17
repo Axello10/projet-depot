@@ -102,17 +102,14 @@ class EntryController extends Controller
         $data = $request->all();
 
         $data['user_id'] = Auth::user()->id;
-
-        $data['price'] = Product::findOrFail($request->product_id)
-                                    ->price_in * $request->quantity;
-
-        $vendor = Vendor::findOrFail($request->vendor_id);
-
-        if ($vendor['grade_id'] == 1 || $vendor['grade_id'] === 2) {
-            $data['price'] = 0;
-        }
-
+        
         $product = Product::findOrFail($request->product_id);
+        
+        if (Auth::user()->deposit_id === 1) {
+            $data['price'] = $product->second_price_in * $request->quantity;
+        } else {
+            $data['price'] = $product->price_in * $request->quantity;
+        }
 
         $pd_update = [
             'quantity' => $product->quantity + $request->quantity

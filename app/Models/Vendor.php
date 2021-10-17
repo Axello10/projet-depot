@@ -9,7 +9,7 @@ class Vendor extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'adress', 'grade_id', 'mobile_number'];
+    protected $fillable = ['name', 'adress', 'mobile_number'];
 
     public function giveback()
     {

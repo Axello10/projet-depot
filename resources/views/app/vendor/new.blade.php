@@ -26,14 +26,7 @@
             <label  class="form-label" for="name">Nom du vendeur</label>
             <input class="form-control" type="text" name="name" id="name">
           </div>
-          <div class="col-md-4 " >
-            <label  class="form-label" for="grade">Type de vendeur</label>
-            <select   name="grade_id" id="grade_id" class="form-select" aria-label="Default select example">
-                @foreach ($grades as $gd)
-                    <option value="{{ $gd->id }}">{{ $gd->name }}</option>
-                @endforeach
-            </select>
-          </div>
+          
           <div class="col-md-4 " >
             <label  class="form-label" for="adress">Adresse du vendeur</label>
             <input class="form-control type="text" name="adress" id="adress">

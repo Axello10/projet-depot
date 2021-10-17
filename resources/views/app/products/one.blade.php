@@ -12,14 +12,12 @@
                 <p>Prix d'achat : {{ $product->price_in }}</p>
                 <p>Prix de sortie : {{ $product->price_out }}</p>
                 <p>Ajouté par : {{ $product->user->fullname }}</p>
-                <p>Disponible sur ces dépots :</p>
+                <p><strong>Disponible sur ces dépots :</strong></p>
                 @if (count($product->deposits) <= 0)
                     Produit non disponible!
                 @else
                 @foreach ($product->deposits as $pd)
-                        
-                        <li>{{ $pd->name }}</li>
-                    
+                    <p>nom du depot : <strong>{{ $pd->name }}</strong></p>
                 @endforeach
                 @endif
                 </div>
