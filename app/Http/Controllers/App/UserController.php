@@ -106,7 +106,6 @@ class UserController extends Controller
         $request->validate([
             'username' => 'required|max:20|min:5',
             'fullname' => 'required',
-            'password' => 'min:5',
             'deposit_id' => 'required'
         ]);
 

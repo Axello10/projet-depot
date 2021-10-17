@@ -42,7 +42,7 @@
             <label  class="form-label" for="role_id">Rôle</label>
             <select  name="role_id" class="form-select" aria-label="Default select example">
                 @foreach ($roles as $rl)
-                    <option value="{{ $rl->id }}">{{ $rl->name }}</option>
+                    <option value="{{ $rl->id }}" {{ ($rl->id === $user->role_id) ? "selected" : "" }}>{{ $rl->name }}</option>
                 @endforeach
             </select>
           </div>
@@ -51,7 +51,7 @@
             <label  class="form-label" for="fullname">Nom du dépot</label>
             <select  name="deposit_id" id="" class="form-select" aria-label="Default select example">
             @foreach ($deposits as $dp)
-                    <option value="{{ $dp->id }}">{{ $dp->name }}</option>
+                    <option value="{{ $dp->id }}" {{ ($dp->id === $user->deposit_id) ? "selected" : "" }}>{{ $dp->name }}</option>
             @endforeach
             </select>
           </div>
