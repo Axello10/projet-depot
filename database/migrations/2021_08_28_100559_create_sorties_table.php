@@ -21,6 +21,7 @@ class CreateSortiesTable extends Migration
             $table->integer('price');
             $table->integer('user_id');
             $table->integer('empty');
+            $table->bigInteger('num_cheque')->nullable();
             $table->integer('deposit_id');
             $table->string('payer');
             $table->timestamps();

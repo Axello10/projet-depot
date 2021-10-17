@@ -71,6 +71,15 @@
           </div>
           <input type="hidden" name="deposit_id" value="{{ Auth::user()->deposit_id }}">
           <br>
+          <div class="col-md-12">
+            <div class="alert alert-warning m-0 mt-2 p-0" role="alert">
+                <ul>
+                    <li class="list-inline-item">si le client paye par cheque remplissez ce champ *important, sinon laissez ce champ vide</li>
+                </ul>
+            </div>
+            <label  class="form-label" for="num_cheque">numero du cheque</label>
+            <input class="form-control" type="number" name="num_cheque" id="num_cheque" value="{{ $sortie->num_cheque }}">
+          </div>
           <div class="col-12 mt-3">
             <button type="submit" class="btn btn-primary">Ajouter</button>
           </div>

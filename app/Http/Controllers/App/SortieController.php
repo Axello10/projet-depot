@@ -73,8 +73,6 @@ class SortieController extends Controller
             'empty' => 'required',
             'deposit_id' => 'required'
         ]);
-
-
         
         // verifier si le nombre de vide est inferieur a la quantité il ajouter dans les dettes
         // echo json_encode($request->all());
@@ -88,7 +86,7 @@ class SortieController extends Controller
             ];
 
             Emptie::create($empti);
-        } 
+        }
         
         else {
             $data = $request->all();
@@ -100,12 +98,6 @@ class SortieController extends Controller
         $data['user_id'] = Auth::user()->id;
 
         $data['price'] = $request->prix * $request->quantity;
-
-        $client = Client::findOrFail($request->client_id);
-
-        if ($client['grade_id'] == 1 || $client['grade_id'] === 2) {
-            $data['price'] = 0;
-        }
 
         $product = Product::findOrFail($request->product_id);
 

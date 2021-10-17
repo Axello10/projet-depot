@@ -27,7 +27,7 @@
             <label class="form-label" for="client_id">Nom du client</label>
             <select class="form-select" name="client_id" id="client">
             @foreach ($clients as $cl)
-                    <option value="{{ $cl->id }}">{{ $cl->name }} - {{ $cl->grade->name }}</option>
+                    <option value="{{ $cl->id }}">{{ $cl->name }} - {{ $cl->grade }}</option>
             @endforeach
             </select>
         </div>
@@ -48,6 +48,7 @@
                 <option value="non">Payer à la fin du mois</option>
             </select>
         </div>
+        
           <div class="col-md-4" >
             <label  class="form-label" for="quantity">Quantité</label>
             <input class="form-control" type="number" name="quantity" id="quantity"> 
@@ -62,6 +63,15 @@
           </div>
           <input type="hidden" name="deposit_id" value="{{ Auth::user()->deposit_id }}">
           <br>
+          <div class="col-md-12">
+            <div class="alert alert-warning m-0 mt-2 p-0" role="alert">
+                <ul>
+                    <li class="list-inline-item">si le client paye par cheque remplissez ce champ *important, sinon laissez ce champ vide</li>
+                </ul>
+            </div>
+            <label  class="form-label" for="num_cheque">numero du cheque</label>
+            <input class="form-control" type="number" name="num_cheque" id="num_cheque"> 
+          </div>
           <div class="col-12 mt-3">
             <button type="submit" class="btn btn-primary">Ajouter</button>
           </div>

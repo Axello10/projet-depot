@@ -10,7 +10,7 @@ class Sortie extends Model
     use HasFactory;
 
     protected $fillable = [
-        'client_id', 'product_id', 'quantity', 'price', 'user_id',
+        'client_id', 'product_id', 'quantity', 'price', 'user_id', 'num_cheque',
         'empty', 'deposit_id', 'payer'
     ];
 
