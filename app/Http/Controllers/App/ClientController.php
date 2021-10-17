@@ -43,7 +43,6 @@ class ClientController extends Controller
         $request->validate([
             'name' => 'required|min:4',
             'adress' => 'min:4',
-            'grade' => 'required',
             'mobile_number' => 'min:8'
         ]);
 

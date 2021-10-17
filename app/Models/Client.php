@@ -10,7 +10,7 @@ class Client extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'adress', 'mobile_number', 'grade'
+        'name', 'adress', 'mobile_number'
     ];
 
     public function empties()

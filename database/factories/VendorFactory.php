@@ -24,7 +24,6 @@ class VendorFactory extends Factory
         return [
             'name' => $this->faker->company,
             'adress' => $this->faker->address,
-            'grade_id' => $this->faker->numberBetween(1, 3),
             'mobile_number' => $this->faker->phoneNumber()
         ];
     }

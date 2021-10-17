@@ -26,18 +26,12 @@
             <label  class="form-label" for="name">Nom du client</label>
             <input class="form-control" type="text" name="name" id="name">
           </div>
-          <div class="col-md-4 mb-3">
-            <label class="form-label" for="grade">Type du client</label>
-            <select  name="grade" id="grade" class="form-select" aria-label="Default select example">
-                <option value="Principale">principale</option>
-                <option value="Simple">simple</option>
-            </select>
-          </div>
+          
           <div class="col-md-4 mb-3" >
             <label  class="form-label" for="adress">Adresse du client</label>
             <input class="form-control" type="text" name="adress" id="adress">
           </div>
-          <div class="col-md-4 mb-3" >
+          <div class="col-md-8 mb-3" >
             <label  class="form-label" for="mobile_number">Numero du client</label>
             <input class="form-control" type="number" name="mobile_number" id="mobile_number">
           </div>

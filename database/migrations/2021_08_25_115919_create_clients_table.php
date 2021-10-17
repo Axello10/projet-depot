@@ -17,7 +17,6 @@ class CreateClientsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('adress')->nullable();
-            $table->string('grade');
             $table->string('mobile_number')->nullable();
             $table->timestamps();
         });
