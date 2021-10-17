@@ -79,10 +79,16 @@ class DepositProductController extends Controller
             $data['deposit_id'] = Auth::user()->deposit->id;
     
             DepositProduct::create($data);
+
+            $product = Product::findOrFail($request->product_id);
+
+            $product_quantity = $product->quantity + $request->quantity;
+            
+            $product->update(['quantity' => $product_quantity]);
     
             return redirect()->route('deposits.show', Auth::user()->deposit_id);
         } else {
-            return back()->withErrors(['errors' => 'produit deja existant']);
+            return back()->withErrors(['errors' => 'produit deja existant, essayez de le mettre a jour.']);
         }
     }
 
@@ -124,7 +130,6 @@ class DepositProductController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            // 'product_id' => 'required|min:1',
             'quantity' => 'required|min:1'
         ]);
 
@@ -140,11 +145,11 @@ class DepositProductController extends Controller
         if ($request->choice === "add")
         {
             $depositProduct_quantity = $depositProduct->quantity + $request->quantity;
-            $product_quantity = $product->quantity - $request->quantity;
+            $product_quantity = $product->quantity + $request->quantity;
         } else if ($request->choice === "subtract")
         {
             $depositProduct_quantity = $depositProduct->quantity - $request->quantity;
-            $product_quantity = $product->quantity + $request->quantity;
+            $product_quantity = $product->quantity - $request->quantity;
         }
 
         $depositProduct->update(['quantity' => $depositProduct_quantity]);
