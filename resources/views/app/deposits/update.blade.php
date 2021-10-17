@@ -28,8 +28,8 @@
             <input class="form-control" type="text" name="name" id="name" value="{{ $deposit->name }}">
           </div>
           <div class="col-md-6 mb-3">
-            <label class="form-label" for="grade_id">Type de depot</label>
-            <select  name="grade_id" id="grade_id" class="form-select" aria-label="Default select example">
+            <label class="form-label" for="grade">Type de depot</label>
+            <select  name="grade" id="grade" class="form-select" aria-label="Default select example">
                 <option value="Principale" {{ ($deposit->grade === "Principale") ? "selected"}}>principale</option>
                 <option value="Simple" {{ ($deposit->grade === "Simple") ? "selected"}}>simple</option>
             </select>

@@ -7,7 +7,7 @@
                 </div>
                 <div class="note note-primary  text-dark   mt-5 mb-3 shadow p-3 mb-5 brounded  ">
                 <h2>Nom du dépot: {{ $deposit->name }} </h2>
-                <strong>Type du dépot : {{ $deposit->grade->name}}</strong>
+                <strong>Type du dépot : {{ $deposit->grade }}</strong>
                 @if (Auth::user()->deposit_id === $deposit->id)
                 <br>
             <a href="{{ route('depotproducts.create') }}"  class="mb-1 btn btn-sm btn-primary " >Ajouter un produit dans le stock</a>
