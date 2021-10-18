@@ -39,32 +39,6 @@ product model devrait avoir une colonne quantité qui contient le nombre de casi
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 pour mettre a jour un produit il faut saisir le nombre a augmenter ou soustraire puis faire l'action.
 
 
