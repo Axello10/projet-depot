@@ -13,30 +13,33 @@
     
   </div>
 </div>
-<div class="card  mt-5 mb-3 shadow p-3 mb-5 brounded">
-  <div class="card-body">
-  <h1 class="card-title mb-3">Tableau De Bord</h1>
-  {{-- @if (Auth::user()->role_id === 2)
-                
-                @endif --}}
-    <p class="card-text note note-primary">
-      Voici les liens importantes et rapides pour pour réalisez votre tache voulue.
-    </p>
-    <div class="">
-    <a href="{{ route('entries') }}" class="btn btn-primary mb-3">Entree</a>
-    <a href="{{ route('exits') }}" class="btn btn-primary mb-3" type="button">Sortie</a>
-    <a href="{{ route('products.index') }}" class="btn btn-primary mb-3" type="button">Tout les produit</a>
-    @if (Auth::user()->role_id === 1 || Auth::user()->role_id === 2)
-                    <a href="{{ route('deposits.index') }}"class="btn btn-primary mb-3" type="button">Produit par depot</a>
-                    <a href="{{ route('deposits.show', Auth::user()->deposit_id) }}" class="btn btn-primary mb-3" type="button">Produit dans le stock</a>
-                    <a href="{{ route('employes.index') }}" class="btn btn-primary mb-3" type="button" >Employés</a>
-                @elseif (Auth::user()->role_id === 3)
-                   <a href="{{ route('deposits.show', Auth::user()->deposit_id) }}" class="btn btn-primary mb-3" type="button">Produit dans le stock</a>
-                @endif
-    </div>
-  </div>
-</div>
+@if (Auth::user()->role_id === 1 || Auth::user()->role_id === 2 )
+    
+    <div class="card  mt-5 mb-3 shadow p-3 mb-5 brounded">
+    <div class="card-body">
+    <h1 class="card-title mb-3">Tableau De Bord</h1>
+    {{-- @if (Auth::user()->role_id === 2)
+                    
+                    @endif --}}
+        <p class="card-text note note-primary">
+        Voici les liens importantes et rapides pour pour réalisez votre tache voulue.
+        </p>
+        <div class="">
+        <a href="{{ route('entries') }}" class="btn btn-primary mb-3">Entree</a>
+        <a href="{{ route('exits') }}" class="btn btn-primary mb-3" type="button">Sortie</a>
+        <a href="{{ route('products.index') }}" class="btn btn-primary mb-3" type="button">Tout les produit</a>
 
+        <a href="{{ route('deposits.index') }}"class="btn btn-primary mb-3" type="button">Produit par depot</a>
+        
+        <a href="{{ route('deposits.show', Auth::user()->deposit_id) }}" class="btn btn-primary mb-3" type="button">Produit dans le stock</a>
+        
+        <a href="{{ route('employes.index') }}" class="btn btn-primary mb-3" type="button" >Employés</a>
+                    
+        <a href="{{ route('deposits.show', Auth::user()->deposit_id) }}" class="btn btn-primary mb-3" type="button">Produit dans le stock</a>
+        </div>
+    </div>
+    </div>
+@endif
 </main>
 
 @endsection

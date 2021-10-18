@@ -426,6 +426,8 @@
           </svg>
           </a>
         </h6>
+        @if (Auth::user()->role_id === 1 || Auth::user()->role_id === 2)
+            
         <ul class="nav flex-column">
             <li class="nav-item">
               <a class="nav-link" href="{{ route('deposits.create') }}">
@@ -444,10 +446,12 @@
               <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
             </svg>
                 <span class="ml-2">Voir les dépots</span>
-             
               </a>
             </li>
         </ul>
+        @else
+            <a href="{{ route('deposits.show', Auth::user()->deposit_id) }}" class="btn btn-primary mb-3" type="button">Produit dans le stock</a>
+        @endif
 
         <h6 class="sidebar-heading d-flex justify-content-between mt-3              align-items-center px-3 mt-2 mb-1 text-muted">
             <span class="span_title2">Les vides</span>
