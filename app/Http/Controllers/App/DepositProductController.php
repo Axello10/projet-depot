@@ -146,7 +146,7 @@ class DepositProductController extends Controller
         {
             $depositProduct_quantity = $depositProduct->quantity + $request->quantity;
             $product_quantity = $product->quantity + $request->quantity;
-        } else if ($request->choice === "subtract")
+        } else if ($request->choice === "substract")
         {
             $depositProduct_quantity = $depositProduct->quantity - $request->quantity;
             $product_quantity = $product->quantity - $request->quantity;
