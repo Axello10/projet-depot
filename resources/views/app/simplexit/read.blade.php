@@ -23,6 +23,7 @@
                 <th scope="col">Nom du produit</th>
                 <th scope="col">quantité</th>
                 <th scope="col">utilisateur</th>
+                <th scope="col" >date</th>
                 <th scope="col" >Action</th>
               </tr>
             </thead>
@@ -35,6 +36,7 @@
                 <td> <strong>{{ $st->product->name }} </strong> </td>
                 <td> <strong>{{ $st->quantity }} </strong> </td>
                 <td> <strong>{{ $st->user->fullname }} </strong> </td>
+                <td> <strong>{{ $st->created_at->format('d M') }} </strong> </td>
                 <td>
                 <a href="{{ route('simplexits.show', $st->id) }}"  class="btn btn-sm btn-primary mb-1 " >Plus de details</a>
 

@@ -23,6 +23,7 @@
                 <th scope="col">utilisateur</th>
                 <th scope="col">client</th>
                 <th scope="col">payé</th>
+                <th scope="col">date</th>
                 <th scope="col" >Action</th>
               </tr>
             </thead>
@@ -37,6 +38,7 @@
                 <td> <strong> {{ $st->user->fullname }}</strong> </td>
                 <td> <strong> {{ $st->client->name }}</strong> </td>
                 <td> <strong> {{ $st->payer }}</strong> </td>
+                <td> <strong> {{ $st->created_at->format('d M') }} </strong> </td>
                 <td>
                 <a href="{{ route('sorties.show', $st->id) }}"  class="btn btn-sm btn-primary mb-1 " >Plus de details</a>
                 

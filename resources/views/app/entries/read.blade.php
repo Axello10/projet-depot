@@ -25,6 +25,7 @@
                 <th scope="col">utilisateur</th>
                 <th scope="col">vendeur</th>
                 <th scope="col">payé</th>
+                <th scope="col">date</th>
                 <th scope="col" >Action</th>
               </tr>
             </thead>
@@ -39,6 +40,7 @@
                 <td> <strong> {{ $et->user->fullname }}</strong> </td>
                 <td> <strong> {{ $et->vendor->name }}</strong> </td>
                 <td> <strong> {{ $et->payer }}</strong> </td>
+                <td> <strong> {{ $et->created_at->format('d M') }}</strong> </td>
                 <td>
                 <a href="{{ route('entries.show', $et->id) }}"  class="mb-1 btn btn-sm btn btn-primary " >Plus de details</a>
                 @if(Auth::user()->role_id === 1 || Auth::user()->role_id === 2 || Auth::user()->id === $et->user_id)

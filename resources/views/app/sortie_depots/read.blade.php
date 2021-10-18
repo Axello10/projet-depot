@@ -23,6 +23,8 @@
                 <th scope="col">nom du depot</th>
                 <th scope="col">utilisateur</th>
                 <th scope="col">quantité</th>
+                <th scope="col">date</th>
+                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -36,6 +38,7 @@
                 <td> <strong> {{ $sd->deposit->name }}</strong> </td>
                 <td> <strong> {{ $sd->user->fullname }}</strong> </td>
                 <td> <strong> {{ $sd->quantity }}</strong> </td>
+                <td> <strong> {{ $sd->created_at->format('d M') }}</strong> </td>
                 <td>
                 @if(Auth::user()->role_id === 1 || Auth::user()->role_id === 2 || Auth::user()->id === $sd->user_id)
                     <a href="{{ route('sdeposits.edit', $sd->id) }}"  class="btn btn-sm btn-info  mb-1">Modifier</a>
