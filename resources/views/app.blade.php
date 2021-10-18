@@ -467,9 +467,9 @@
     let time_container = document.querySelector('.time');
     let word = "";
 
-    if (date.getFullHour >= 00 && date.getFullHour <= 12) {
+    if (date.getHours() >= 0 && date.getHours() <= 12) {
         word = "Bonjour ";
-    } else if (date.getFullHour >= 13 && date.getFullHour <= 18) {
+    } else if (date.getHours() >= 13 && date.getHours() <= 18) {
         word = "Bon apres-midi ";
     } else {
         word = "Bonsoir "
