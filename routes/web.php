@@ -63,6 +63,8 @@ Route::middleware('auth')->group(function() {
 
     Route::resource('rarecases', 'App\Http\Controllers\App\RareCaseController');
 
+    Route::resource('sdeposits', 'App\Http\Controllers\App\SortiedepotController');
+
     /**
      * 
      * ===========================
