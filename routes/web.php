@@ -65,6 +65,8 @@ Route::middleware('auth')->group(function() {
 
     Route::resource('sdeposits', 'App\Http\Controllers\App\SortiedepotController');
 
+    Route::resource('estocks', 'App\Http\Controllers\App\EstockController');
+
     /**
      * 
      * ===========================

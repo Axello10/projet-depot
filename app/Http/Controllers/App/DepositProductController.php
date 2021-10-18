@@ -71,6 +71,8 @@ class DepositProductController extends Controller
         for($i = 0; $i < count($depot); $i++) {
             $products[$i] = Product::findOrFail($depot[$i]->product_id);
         }      
+        
+        $product = Product::findOrFail($request->product_id);
 
         if (!$this->check_existing($products, Product::findOrFail($request->product_id))) {
             $data = $request->all();
@@ -80,15 +82,13 @@ class DepositProductController extends Controller
     
             DepositProduct::create($data);
 
-            $product = Product::findOrFail($request->product_id);
-
             $product_quantity = $product->quantity + $request->quantity;
             
             $product->update(['quantity' => $product_quantity]);
     
             return redirect()->route('deposits.show', Auth::user()->deposit_id);
         } else {
-            return back()->withErrors(['errors' => 'produit deja existant, essayez de le mettre a jour.']);
+            return redirect()->route('depotproducts.edit', $product->id)->withErrors(['errors' => 'produit deja existant, essayez de le mettre a jour.']);
         }
     }
 

@@ -22,7 +22,10 @@ class EstockFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'product_id' => $this->faker->numberBetween(1, 2),
+            'deposit_id' => $this->faker->numberBetween(1, 2),
+            'user_id' => $this->faker->numberBetween(1, 2),
+            'quantity' => $this->faker->numberBetween(100, 300)
         ];
     }
 }

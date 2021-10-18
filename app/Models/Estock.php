@@ -8,4 +8,26 @@ use Illuminate\Database\Eloquent\Model;
 class Estock extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'product_id',
+        'deposit_id',
+        'user_id',
+        'quantity'
+    ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function deposit()
+    {
+        return $this->belongsTo(Deposit::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
