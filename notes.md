@@ -60,7 +60,3 @@ creer un sortie avec status non payer!
 
 
 regroupe les elements par mois ou anne
-
-groupBy(function($val) {
-                    return Carbon::parse($val->created_at)->format('Y');
-                });

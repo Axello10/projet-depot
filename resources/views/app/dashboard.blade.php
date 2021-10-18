@@ -18,9 +18,7 @@
     <div class="card  mt-5 mb-3 shadow p-3 mb-5 brounded">
     <div class="card-body">
     <h1 class="card-title mb-3">Tableau De Bord</h1>
-    {{-- @if (Auth::user()->role_id === 2)
-                    
-                    @endif --}}
+    
         <p class="card-text note note-primary">
         Voici les liens importantes et rapides pour pour réalisez votre tache voulue.
         </p>
@@ -34,8 +32,41 @@
         <a href="{{ route('deposits.show', Auth::user()->deposit_id) }}" class="btn btn-primary mb-3" type="button">Produit dans le stock</a>
         
         <a href="{{ route('employes.index') }}" class="btn btn-primary mb-3" type="button" >Employés</a>
-                    
-        <a href="{{ route('deposits.show', Auth::user()->deposit_id) }}" class="btn btn-primary mb-3" type="button">Produit dans le stock</a>
+        </div>
+
+        {{-- {{ dd($entries) }} --}}
+
+        <div class="card row-md-12">
+            <h2>Depense</h2>
+            <div class="">
+                <h5>Dans les entrées</h5>
+                <p>aujourd'hui : {{ $entries['today'] }} Fbu</p>
+                <p>cette semaine : {{ $entries['this_week'] }} Fbu</p>
+                <p>ce mois : {{ $entries['this_month'] }} Fbu</p>
+                <p>cette année : {{ $entries['this_year'] }} Fbu</p>
+            </div>
+            <div class="">
+                <h5>Dans les cas rares</h5>
+                <p>aujourd'hui : {{ $rarecases['today'] }} Fbu</p>
+                <p>cette semaine : {{ $rarecases['this_week'] }} Fbu</p>
+                <p>ce mois : {{ $rarecases['this_month'] }} Fbu</p>
+                <p>cette année : {{ $rarecases['this_year'] }} Fbu</p>
+            </div>
+            <h2>Revenue</h2>
+            <div class="">
+                <h5>Dans les sorties pour client particulier</h5>
+                <p>aujourd'hui : {{ $sorties['today'] }} Fbu</p>
+                <p>cette semaine : {{ $sorties['this_week'] }} Fbu</p>
+                <p>ce mois : {{ $sorties['this_month'] }} Fbu</p>
+                <p>cette année : {{ $sorties['this_year'] }} Fbu</p>
+            </div>
+            <div class="">
+                <h5>Dans les sorties pour client simple</h5>
+                <p>aujourd'hui : {{ $simplexits['today'] }} Fbu</p>
+                <p>cette semaine : {{ $simplexits['this_week'] }} Fbu</p>
+                <p>ce mois : {{ $simplexits['this_month'] }} Fbu</p>
+                <p>cette année : {{ $simplexits['this_year'] }} Fbu</p>
+            </div>
         </div>
     </div>
     </div>
