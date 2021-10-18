@@ -463,19 +463,8 @@
  } );</script>
  <!-- fin datatable -->
  <script type="text/javascript">
-    let date = new Date();
-    let time_container = document.querySelector('.time');
-    let word = "";
-
-    if (date.getHours() >= 0 && date.getHours() <= 12) {
-        word = "Bonjour ";
-    } else if (date.getHours() >= 13 && date.getHours() <= 18) {
-        word = "Bon apres-midi ";
-    } else {
-        word = "Bonsoir "
-    }
-
-    time_container.textContent = `${word} cher {{ Auth::user()->username }}`;
+    let date=new Date();let time_container=document.querySelector('.time');let word="";if(date.getHours()>=0&&date.getHours()<=12){word="Bonjour "}else if(date.getHours()>=13&&date.getHours()<=18){word="Bon apres-midi "}else{word="Bonsoir "}
+time_container.textContent=word
 </script>
 </body>
 </html>
