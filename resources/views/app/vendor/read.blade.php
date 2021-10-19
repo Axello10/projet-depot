@@ -12,7 +12,7 @@
     @else
     <div class="card  shadow p-3 mb-5 brounded ">
       <div class="card-header  text-center text-dark alert-primary ">
-        <h3>Liste de produits </h3>
+        <h3> Liste des vendeurs </h3>
       </div>
       <div class="card-body">
         <div class="table-responsive">
