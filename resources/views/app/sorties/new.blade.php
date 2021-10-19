@@ -70,7 +70,7 @@
                 </ul>
             </div>
             <label  class="form-label" for="num_cheque">numero du cheque</label>
-            <input class="form-control" type="number" name="num_cheque" id="num_cheque"> 
+            <input class="form-control" type="text" name="num_cheque" id="num_cheque">
           </div>
           <div class="col-12 mt-3">
             <button type="submit" class="btn btn-primary">Ajouter</button>
