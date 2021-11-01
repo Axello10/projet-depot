@@ -73,9 +73,7 @@
               </a>
             </li>
             </h6>
-            @else
-                 <p class="alert alert-info">T'es pas autorisé!</p>
-             @endcan
+            @endcan
         </ul>
 
         {{-- employer --}}
@@ -89,8 +87,7 @@
                     <span class="ml-2">Employer</span>
                 </a>
             </li>
-            @else
-              <p class="alert alert-info">T'es pas autorisé!</p>
+            
           @endif
               
           </ul>
@@ -149,8 +146,6 @@
                 <span class="ml-2">Fournir un depot</span>           
               </a>
             </li>
-            @else
-                <p>t'es pas autorisé</p>
             @endif
         </ul>
 
