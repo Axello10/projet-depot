@@ -23,6 +23,7 @@
                 <th scope="col">depot</th>
                 <th scope="col">incident</th>
                 <th scope="col">date</th>
+                <th scope="col">action</th>
               </tr>
             </thead>
             <tbody>
@@ -36,8 +37,9 @@
                 <td> <strong>{{ $rs->created_at }} </strong> </td>
                 <td>
                 <a href="{{ route('rarecases.show', $rs->id) }}"  class="mb-1  btn btn-sm btn-primary " >Plus de details</a>
-
-                <a href="{{ route('rarecases.edit', $rs->id) }}"  class="mb-1 btn btn-sm btn-info ">Modifier</a>
+                @if(Auth::user()->role_id === 1 || $rs->check($rs->id) < 24)    
+                    <a href="{{ route('rarecases.edit', $rs->id) }}"  class="mb-1 btn btn-sm btn-info ">Modifier</a>
+                @endif
                 @if(Auth::user()->role_id === 1)
                     <form action="{{ route('rarecases.destroy', $rs->id) }}"  method="POST">
                         @csrf
