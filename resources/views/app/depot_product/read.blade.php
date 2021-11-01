@@ -10,7 +10,7 @@
     @else
     <div class="card  shadow p-3 mb-5 brounded ">
       <div class="card-header  text-center text-dark alert-primary ">
-        <h3> Liste de tout les produits reliés aux dépots </h3>
+        <h3> Liste de tout les produits fournis aux dépots </h3>
       </div>
       <div class="card-body">
         <div class="table-responsive">
@@ -19,6 +19,10 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nom du produit</th>
+                <th scope="col">Nom du depot</th>
+                <th scope="col">Quantité</th>
+                <th scope="col">Utilisateur</th>
+                <th scope="col">Date</th>
                 <th scope="col" >Action</th>
               </tr>
             </thead>
@@ -27,7 +31,11 @@
             @foreach ($depotproducts as $gd)
               <tr>
                 <th scope="row"><small><?php $i++; echo "$i" ?></small></th>
-                <td> <strong> {{ $gd->product_id }} </strong> </td>
+                <td> <strong> {{ $gd->product->name }} </strong> </td>
+                <td> <strong> {{ $gd->deposit->name }} </strong> </td>
+                <td> <strong> {{ $gd->quantity }} </strong> </td>
+                <td> <strong> {{ $gd->user->username }} </strong> </td>
+                <td> <strong> {{ $gd->created_at }} </strong> </td>
                 <td>
                 <a href="{{ route('depotproducts.show', $gd->id) }}"  class="mb-1 btn btn-sm btn-primary " >Plus de details</a>
 

@@ -31,7 +31,7 @@
         
         <a href="{{ route('deposits.show', Auth::user()->deposit_id) }}" class="btn btn-primary mb-3" type="button">Produit dans le stock</a>
         
-        <a href="{{ route('employes.index') }}" class="btn btn-primary mb-3" type="button" >Employés</a>
+        <a href="{{ route('depotproducts.index') }}" class="btn btn-primary mb-3" type="button" >entree venant de nos depots</a>
         </div>
 
         {{-- {{ dd($entries) }} --}}
