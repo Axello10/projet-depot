@@ -5,6 +5,7 @@
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="display-4"> Les vides dans le stock </h1>
     </div>
+    <a href="{{ route('estocks.create') }}" class="btn btn-primary mb-3" >Ajouter un vide dans le depot</a>
     @if ( count($estocks) <= 0)
         <p class="alert alert-info text-dark  mt-5 mb-3 shadow p-3 mb-5 brounded ">Aucun vide trouvé dans le stock</p>
     @else

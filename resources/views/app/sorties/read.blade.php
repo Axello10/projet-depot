@@ -5,6 +5,7 @@
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="display-4">  Sortie pour les clients avec faveurs  </h1>
     </div>
+    <a href="{{ route('sorties.create') }}" class="btn btn-primary mb-3" >Ajouter une sortie</a>
     @if ( count($sorties) <= 0)
         <p class="alert alert-info">Aucun sortie  trouvé</p>
     @else

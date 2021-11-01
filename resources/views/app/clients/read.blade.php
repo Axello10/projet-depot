@@ -5,6 +5,7 @@
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="my-2"> Client </h1>
     </div>
+    <a href="{{ route('clients.create') }}" class="btn btn-primary mb-3" >Ajouter un client(é)</a>
     @if ( count($clients) <= 0)
         <p class="alert alert-info text-dark  mt-5 mb-3 shadow p-3 mb-5 brounded ">Aucun client trouvé</p>
     @else
