@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use GuzzleHttp\Handler\Proxy;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
