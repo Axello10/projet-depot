@@ -27,36 +27,40 @@
 
         {{-- days card for the current day! --}}
 
-        <div class="card row-md-12">
+        <div class="card row-md-12 main-card">
             <h2>Depense</h2>
-            <div class="">
-                <h5>Dans les entrées</h5>
-                <p>aujourd'hui : {{ $entries['today'] }} Fbu</p>
-                <p>cette semaine : {{ $entries['this_week'] }} Fbu</p>
-                <p>ce mois : {{ $entries['this_month'] }} Fbu</p>
-                <p>cette année : {{ $entries['this_year'] }} Fbu</p>
-            </div>
-            <div class="">
-                <h5>Dans les cas rares</h5>
-                <p>aujourd'hui : {{ $rarecases['today'] }} Fbu</p>
-                <p>cette semaine : {{ $rarecases['this_week'] }} Fbu</p>
-                <p>ce mois : {{ $rarecases['this_month'] }} Fbu</p>
-                <p>cette année : {{ $rarecases['this_year'] }} Fbu</p>
+            <div class="cards-box">
+                <div class="cards">
+                    <h5>Dans les entrées</h5>
+                    <p>aujourd'hui : {{ $entries['today'] }} Fbu</p>
+                    <p>cette semaine : {{ $entries['this_week'] }} Fbu</p>
+                    <p>ce mois : {{ $entries['this_month'] }} Fbu</p>
+                    <p>cette année : {{ $entries['this_year'] }} Fbu</p>
+                </div>
+                <div class="cards">
+                    <h5>Dans les cas rares</h5>
+                    <p>aujourd'hui : {{ $rarecases['today'] }} Fbu</p>
+                    <p>cette semaine : {{ $rarecases['this_week'] }} Fbu</p>
+                    <p>ce mois : {{ $rarecases['this_month'] }} Fbu</p>
+                    <p>cette année : {{ $rarecases['this_year'] }} Fbu</p>
+                </div>
             </div>
             <h2>Revenue</h2>
-            <div class="">
-                <h5>Dans les sorties pour client particulier</h5>
-                <p>aujourd'hui : {{ $sorties['today'] }} Fbu</p>
-                <p>cette semaine : {{ $sorties['this_week'] }} Fbu</p>
-                <p>ce mois : {{ $sorties['this_month'] }} Fbu</p>
-                <p>cette année : {{ $sorties['this_year'] }} Fbu</p>
-            </div>
-            <div class="">
-                <h5>Dans les sorties pour client simple</h5>
-                <p>aujourd'hui : {{ $simplexits['today'] }} Fbu</p>
-                <p>cette semaine : {{ $simplexits['this_week'] }} Fbu</p>
-                <p>ce mois : {{ $simplexits['this_month'] }} Fbu</p>
-                <p>cette année : {{ $simplexits['this_year'] }} Fbu</p>
+            <div class="cards-box">
+                <div class="cards">
+                    <h5>Dans les sorties pour client particulier</h5>
+                    <p>aujourd'hui : {{ $sorties['today'] }} Fbu</p>
+                    <p>cette semaine : {{ $sorties['this_week'] }} Fbu</p>
+                    <p>ce mois : {{ $sorties['this_month'] }} Fbu</p>
+                    <p>cette année : {{ $sorties['this_year'] }} Fbu</p>
+                </div>
+                <div class="cards">
+                    <h5>Dans les sorties pour client simple</h5>
+                    <p>aujourd'hui : {{ $simplexits['today'] }} Fbu</p>
+                    <p>cette semaine : {{ $simplexits['this_week'] }} Fbu</p>
+                    <p>ce mois : {{ $simplexits['this_month'] }} Fbu</p>
+                    <p>cette année : {{ $simplexits['this_year'] }} Fbu</p>
+                </div>
             </div>
         </div>
     </div>
