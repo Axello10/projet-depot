@@ -5,7 +5,6 @@
 </div>
   <div class="card-body">
     <h1 class="card-title mb-3 "><p class="time" style="display: inline"></p>cher {{ Auth::user()->username }}</h1>
-    
   </div>
 </div>
 @if (Auth::user()->role_id === 1 || Auth::user()->role_id === 2 )
@@ -24,25 +23,20 @@
         <a href="{{ route('depotproducts.index') }}" class="btn btn-primary mb-3" type="button" >entree venant de nos depots</a>
         </div>
 
-        <canvas id="myChart" width="400" height="200"></canvas>
-
+        {{-- <canvas id="myChart" width="400" height="200"></canvas> --}}
 
         {{-- days card for the current day! --}}
 
-        <div class="cards">
-            <div class="cards-child">
-                Depense : 0fbu
-            </div>
+        <div class="mini__card">
+            <p>Depense : 0fbu</p>
         </div>
-        <div class="cards">
-            <div class="cards-child">
-                revenue : 0fbu
-            </div>
+        <div class="mini__card">
+            <p>revenue : 0fbu</p>
         </div>
 
         <div class="card row-md-12">
             <h2>Depense</h2>
-            <div class="cards">
+            <div class="">
                 <h5>Dans les entrées</h5>
                 <p>aujourd'hui : {{ $entries['today'] }} Fbu</p>
                 <p>cette semaine : {{ $entries['this_week'] }} Fbu</p>

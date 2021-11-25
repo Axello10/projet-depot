@@ -291,10 +291,10 @@
 
 
 {{-- importation of chartjs --}}
-<script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js" defer></script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js" defer></script> --}}
 {{-- end of importation --}}
 
-<script src="app.js" defer></script>
+{{-- <script src="app.js" defer></script> --}}
 
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.11.3/datatables.min.css"/>
  
