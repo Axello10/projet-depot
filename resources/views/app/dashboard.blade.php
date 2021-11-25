@@ -27,13 +27,6 @@
 
         {{-- days card for the current day! --}}
 
-        <div class="mini__card">
-            <p>Depense : 0fbu</p>
-        </div>
-        <div class="mini__card">
-            <p>revenue : 0fbu</p>
-        </div>
-
         <div class="card row-md-12">
             <h2>Depense</h2>
             <div class="">
