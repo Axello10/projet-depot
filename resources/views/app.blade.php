@@ -7,10 +7,7 @@
     <title>{{ $_ENV['APP_NAME'] }} - @yield('page')</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
-
-    {{-- importation of chartjs --}}
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js" async></script>
-    {{-- end of importation --}}
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css" rel="stylesheet" />
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
@@ -291,7 +288,15 @@
     @endauth
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
   <!-- datatable -->
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.11.3/datatables.min.css"/>
+
+
+{{-- importation of chartjs --}}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js" defer></script>
+{{-- end of importation --}}
+
+<script src="app.js" defer></script>
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.11.3/datatables.min.css"/>
  
  <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.11.3/datatables.min.js"></script>
  <script>$(document).ready( function () {
