@@ -13,7 +13,13 @@ use Illuminate\Support\Facades\Auth;
 
 class AppController extends Controller
 {
-
+    
+    /**
+     * 
+     * @param $arr array to loop on
+     * @return Array 
+     * 
+     * */
     public function loop($arr) {
         $data = 0;
         foreach($arr as $ar) {
@@ -105,13 +111,6 @@ class AppController extends Controller
 
     public function dashboard()
     {
-        // function loop($arr) {
-        //     $data = 0;
-        //     foreach($arr as $ar) {
-        //         $data += $ar->price;
-        //     }
-        //     return $data;
-        // }
         
         // entrees
         // aujourd'hui
