@@ -14,15 +14,6 @@
 
     <link rel="stylesheet" href="app.css">
 
-    <!-- 
-       U  ___ u _____      _       _  __      _   _       _____  U _____ u    _      __  __   
-    \/"_ \/|_ " _| U  /"\  u  |"|/ /   U |"|u| |     |_ " _| \| ___"|/U  /"\  uU|' \/ '|u 
-    | | | |  | |    \/ _ \/   | ' /     \| |\| |       | |    |  _|"   \/ _ \/ \| |\/| |/ 
-.-,_| |_| | /| |\   / ___ \ U/| . \\u    | |_| |      /| |\   | |___   / ___ \  | |  | |  
- \_)-\___/ u |_|U  /_/   \_\  |_|\_\    <<\___/      u |_|U   |_____| /_/   \_\ |_|  |_|  
-      \\   _// \\_  \\    >>,-,>> \\,-.(__) )(       _// \\_  <<   >>  \\    >><<,-,,-.   
-     (__) (__) (__)(__)  (__)\.)   (_/     (__)     (__) (__)(__) (__)(__)  (__)(./  \.)      
-    !-->
     <style>
         .feather{width:16px;height:16px;vertical-align:text-bottom}.sidebar{position:fixed;top:0;bottom:0;left:0;z-index:100;padding:48px 0 0;box-shadow:inset 2px 2px 2px rgba(0,0,0,.3)}@media (max-width:767.98px){.sidebar{top:5rem}}.position-sticky{position:relative;top:0;height:calc(100vh - 48px);padding-top:.5rem;overflow:auto}.sidebar .nav-link{font-weight:500;color:#333}.sidebar .nav-link .feather{margin-right:4px}.sidebar .nav-link.active{color:#2470dc}.sidebar .nav-link.active .feather,.sidebar .nav-link:hover .feather{color:inherit}.sidebar-heading{text-transform:uppercase}span{font-size:1.1rem}.navbar-brand{padding-top:.75rem;padding-bottom:.75rem;font-size:1.1rem}.navbar .navbar-toggler{top:.25rem;right:1rem}.navbar .form-control{padding:.75rem 1rem;border-width:0;border-radius:0}.form-control-dark{color:#fff;background-color:#0d6efd;border-color:rgba(255,255,255,.1)}.form-control-dark:focus{box-shadow:0 0 0 3px rgba(255,255,255,.25)}.span_title2{font-size:17px;text-transform:capitalize}.nav-item span:hover{cursor:pointer;width:80%;border-bottom:2px solid #0d6efd;color:#0d6efd}svg{color:inherit}
     </style>

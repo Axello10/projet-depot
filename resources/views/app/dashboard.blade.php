@@ -4,12 +4,12 @@
 <main class="col-md-9 ms-sm-auto col-lg-9 px-md-3">
 </div>
   <div class="card-body">
-    <h1 class="card-title mb-3 "><p class="time" style="display: inline"></p>cher {{ Auth::user()->username }}</h1>
+    <h1 class="card-title mb-3 "><p class="time" style="display: inline"></p>cher {{ Auth::user()->username }} - {{ auth()->user()->deposit->name }}</h1>
   </div>
 </div>
 @if (Auth::user()->role_id === 1 || Auth::user()->role_id === 2 )
     
-    <div class="card mb-3 shadow p-3 mb-5 brounded">
+    <div class="card mb-3 shadow p-3 brounded">
     <div class="card-body">
         <div class="">
         <a href="{{ route('entries') }}" class="btn btn-primary mb-3">Entree</a>

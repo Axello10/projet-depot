@@ -21,7 +21,7 @@
                 <th scope="col">Nom du produit</th>
                 <th scope="col">Nom du depot</th>
                 <th scope="col">Quantité</th>
-                <th scope="col">Utilisateur</th>
+                {{-- <th scope="col">Utilisateur</th> --}}
                 <th scope="col">Date</th>
                 <th scope="col" >Action</th>
               </tr>
@@ -34,7 +34,7 @@
                 <td> <strong> {{ $gd->product->name }} </strong> </td>
                 <td> <strong> {{ $gd->deposit->name }} </strong> </td>
                 <td> <strong> {{ $gd->quantity }} </strong> </td>
-                <td> <strong> {{ $gd->user->username }} </strong> </td>
+                {{-- <td> <strong> {{ $gd->user->username }} </strong> </td> --}}
                 <td> <strong> {{ $gd->created_at }} </strong> </td>
                 <td>
                 <a href="{{ route('depotproducts.show', $gd->id) }}"  class="mb-1 btn btn-sm btn-primary " >Plus de details</a>
