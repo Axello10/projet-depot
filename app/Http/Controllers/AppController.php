@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Deposit;
 use App\Models\Entrie;
 use App\Models\Product;
 use App\Models\RareCase;
@@ -190,6 +190,7 @@ class AppController extends Controller
                     ->with('entries', $entries)
                     ->with('rarecases', $rarecases)
                     ->with('sorties', $sorties)
+                    ->with('deposits', Deposit::all())
                     ->with('simplexits', $simplexits);
         } else {
             // entrees
@@ -269,6 +270,7 @@ class AppController extends Controller
                     ->with('entries', $entries)
                     ->with('rarecases', $rarecases)
                     ->with('sorties', $sorties)
+                    ->with('deposits', Deposit::all())
                     ->with('simplexits', $simplexits);
         }
     }
