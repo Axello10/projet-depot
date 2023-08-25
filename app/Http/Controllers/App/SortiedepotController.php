@@ -54,7 +54,7 @@ class SortiedepotController extends Controller
         // verifier si la quantité est dispo
         $product = Product::findOrFail($deproduct->product_id);
 
-        if ($request->quantity > $deproduct->quantity || $deproduct->quantity === 0) {
+        if ($request->quantity > $deproduct->quantity) {
             return back()->withErrors(['errors' => 'quantité non disponible']);
         } else if ($request->quantity === 0) {
             return back()->withErrors(['errors' => 'reka gufyina!']);
@@ -79,6 +79,25 @@ class SortiedepotController extends Controller
         Product::where('id', $request->product_id)->update($pd_update);
 
         Sortiedepot::create($request->only('deposit_id', 'product_id', 'from_deposit_id', 'user_id', 'quantity'));
+
+        $deposit_product = DepositProduct::where('product_id', $request->product_id)
+                                        ->where('deposit_id', $request->deposit_id)
+                                        ->first();
+        
+        if ($deposit_product) {
+            $data = [
+                'quantity' => $deposit_product->quantity + $request->quantity
+            ];
+
+            $deposit_product->update($data);
+        } else {
+            DepositProduct::create([
+                'deposit_id' => $request->deposit_id,
+                'product_id' => $request->product_id,
+                'user_id' => auth()->user()->id,
+                'quantity' => $request->quantity
+            ]);
+        }
 
         $deprod_quantity = ['quantity' => $deproduct->quantity - $request->quantity];
         $deproduct->update($deprod_quantity);
