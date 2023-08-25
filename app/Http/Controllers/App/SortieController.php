@@ -22,7 +22,8 @@ class SortieController extends Controller
     public function index()
     {
         $sorties = Sortie::where('user_id', Auth::user()->id)
-        ->orderBy('created_at', 'desc')->get();
+            ->where('deposit_id', auth()->user()->deposit->id)
+            ->orderBy('created_at', 'desc')->get();
 
         return view('app.sorties.read')
                 ->with('sorties', $sorties);

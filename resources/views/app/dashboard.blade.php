@@ -15,8 +15,6 @@
         <a href="{{ route('entries') }}" class="btn btn-primary mb-3">Entree</a>
         <a href="{{ route('exits') }}" class="btn btn-primary mb-3" type="button">Sortie</a>
         <a href="{{ route('products.index') }}" class="btn btn-primary mb-3" type="button">Tout les produit</a>
-
-        <a href="{{ route('deposits.index') }}"class="btn btn-primary mb-3" type="button">Produit par depot</a>
         
         <a href="{{ route('deposits.show', Auth::user()->deposit_id) }}" class="btn btn-primary mb-3" type="button">Produit dans le stock</a>
         
