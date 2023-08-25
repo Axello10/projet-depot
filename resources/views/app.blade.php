@@ -31,14 +31,14 @@
 <body>
     @auth
     <header class="navbar navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow ">
-        <a class="navbar-brand col-md-3 col-lg-2  me-0 px-3" href="{{ route('dashboard') }}">{{ $_ENV['APP_NAME'] }}</a>
+        <a class="navbar-brand col-md-3 col-lg-2  me-0 px-3" href="{{ route('dashboard') }}">{{ $_ENV['APP_NAME'] }} - ({{ auth()->user()->deposit->name }})</a>
                         
                 <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="me-3 dropdown-toggle d-flex align-items-center hidden-arrow">
                     <button class="btn btn-primary dropdown-toggle"  type="button" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false">
-                    {{ Auth::user()->username }}
+                    {{ Auth::user()->username }} - {{ auth::user()->role->name }}
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton"
                         <li><a class="dropdown-item" href="{{ route('dashboard') }}">dashboard</a></li>
