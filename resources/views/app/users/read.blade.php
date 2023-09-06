@@ -62,7 +62,7 @@
                                             @endif
                                             
                                             
-                                            @if(Auth::user()->role_id == 2 && $us->role_id == 3)    
+                                            @if(Auth::user()->role_id == 2 && $us->role_id == 3 && Auth::user()->deposit_id == $us->deposit_id)    
                                             <a href="{{ route('users.edit', $us->id) }}"
                                                 class="btn btn-sm btn-info  mb-1">Modifier</a>
 

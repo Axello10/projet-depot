@@ -20,7 +20,7 @@ class SimpleExitController extends Controller
     public function index()
     {
         return view('app.simplexit.read')
-                ->with('simplexits', SimpleExit::orderBy('created_at', 'desc')->get());
+                ->with('simplexits', SimpleExit::latest()->where('deposit_id', Auth::user()->deposit_id)->get());
     }
 
     /**
