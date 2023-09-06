@@ -174,7 +174,8 @@
                     </ul>
 
                     {{-- employer --}}
-                    <ul class="nav flex-column">
+
+                    {{-- <ul class="nav flex-column">
                         @if (Auth::user()->role_id === 1 || Auth::user()->role_id === 2)
                             <li class="nav-item">
                                 <a class="nav-link " aria-current="page" href="{{ route('employes.index') }}">
@@ -186,9 +187,9 @@
                                     <span class="ml-2">Employer</span>
                                 </a>
                             </li>
-                        @endif
+                        @endif --}}
 
-                    </ul>
+                    {{-- </ul> --}}
 
                     {{-- entree --}}
                     <ul class="nav flex-column">
