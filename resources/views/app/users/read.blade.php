@@ -3,9 +3,17 @@
 @section('content')
     <main class="col-md-9 ms-sm-auto col-lg-9 px-md-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="display-4"> Utilisateurs</h1>
+            <h1 class="display-4">
+                Utilisateurs
+            </h1>
         </div>
-        <a href="{{ route('users.create') }}" class="btn btn-primary mb-3">Ajouter un utilisateur</a>
+        <a href="{{ route('users.create') }}" class="btn btn-primary mb-3">Ajouter un 
+            @if(Auth::user()->role_id == 1)
+                gerant
+            @elseif(Auth::user()->role_id == 2)
+                caissier
+            @endif
+        </a>
         @if (count($users) <= 0)
             <p class="alert alert-info">Aucun utilisateur trouvé</p>
         @else
@@ -21,6 +29,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Nom</th>
                                     <th scope="col">Pseudo</th>
+                                    <th scope="col">Depot</th>
                                     <th scope="col">Role</th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -34,11 +43,26 @@
                                         echo "$i"; ?></th>
                                         <td> <strong>{{ $us->fullname }} </strong> </td>
                                         <td class="col-lg-1">{{ $us->username }}</td>
+                                        <td class="col-lg-1">{{ $us->deposit->name }}</td>
                                         <td class="col-lg-1">{{ $us->role->name }}</td>
                                         <td>
+                                            
                                             <a href="{{ route('users.show', $us->id) }}"
                                                 class="btn btn-sm btn-primary mb-1">Plus de details</a>
 
+                                            @if(Auth::user()->role_id == 1 && $us->role_id == 1)    
+                                                <a href="{{ route('users.edit', $us->id) }}"
+                                                    class="btn btn-sm btn-info  mb-1">Modifier</a>
+                                                    
+                                            <form action="{{ route('users.destroy', $us->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <input type="submit" class="btn btn-sm btn-danger mb-1" value="supprimer">
+                                            </form>
+                                            @endif
+                                            
+                                            
+                                            @if(Auth::user()->role_id == 2 && $us->role_id == 3)    
                                             <a href="{{ route('users.edit', $us->id) }}"
                                                 class="btn btn-sm btn-info  mb-1">Modifier</a>
 
@@ -47,6 +71,19 @@
                                                 @method('DELETE')
                                                 <input type="submit" class="btn btn-sm btn-danger mb-1" value="supprimer">
                                             </form>
+                                            @endif
+{{--                                             
+                                            @if($us->role_id )    
+                                            <a href="{{ route('users.edit', $us->id) }}"
+                                                class="btn btn-sm btn-info  mb-1">Modifier</a>
+                                                @endif
+                                            @if(Auth::user()->role_id != 1 || $us->role_id == 2 || Auth::user()->id == $us->id)    
+                                            <form action="{{ route('users.destroy', $us->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <input type="submit" class="btn btn-sm btn-danger mb-1" value="supprimer">
+                                            </form>
+                                            @endif --}}
                                         </td>
                                     </tr>
                                 @endforeach

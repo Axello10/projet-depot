@@ -41,15 +41,6 @@
                         <label class="form-label" for="password">Mot de passe</label>
                         <input class="form-control" type="text" name="password" placeholder="***********">
                     </div>
-                    <div class="col-md-6 ">
-                        <label class="form-label" for="role_id">Rôle</label>
-                        <select name="role_id" class="form-select" aria-label="Default select example">
-                            @foreach ($roles as $rl)
-                                <option value="{{ $rl->id }}" {{ $rl->id === $user->role_id ? 'selected' : '' }}>
-                                    {{ $rl->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
 
                     <div class="col-md-6 ">
                         <label class="form-label" for="fullname">Nom du dépot</label>

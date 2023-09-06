@@ -125,12 +125,16 @@
         	<input type="email" class="form-control" name="email" placeholder="Email" required="required">
         </div>
         <div class="form-group">
+            @if(Auth::user()->role_id == 1)
             <label for="deposit">Nom du depot</label>
             <select name="deposit_id" id="deposit_id" class="form-control">
                 @foreach ($deposits as $dp)
                 <option value="{{ $dp->id }}">{{ $dp->name }}</option>                    
                 @endforeach
             </select>
+            @elseif(Auth::user()->role_id == 2)
+            <input type="hidden" name="deposit_id" value="{{ Auth::user()->deposit_id }}">
+            @endif
         </div>
         
 

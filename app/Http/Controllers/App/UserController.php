@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Deposit;
 use App\Models\Role;
+use App\Rules\PlaceAvailable;
 
 class UserController extends Controller
 {
@@ -50,10 +51,16 @@ class UserController extends Controller
             'username' => 'required|max:20|min:5|unique:users',
             'fullname' => 'required|unique:users',
             'password' => 'required|min:5',
-            'deposit_id' => 'required'
+            'deposit_id' => ['required', new PlaceAvailable]
         ]);
 
         $request['password'] = bcrypt($request->password);
+
+        if(Auth::user()->role_id == 1) {
+            $request['role_id'] = 2;
+        } else if (Auth::user()->role_id == 2) {
+            $request['role_id'] = 3;
+        }
 
         User::create($request->all());
 

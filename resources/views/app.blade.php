@@ -154,7 +154,7 @@
         <div class="container-fluid">
             <div class="row">
                 <nav id="sidebarMenu" class="col-md-4 col-lg-3 d-md-block bg-light sidebar collapse">
-                    @can('create', Auth::user())
+                    @if(Auth::user()->id < 3)
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" aria-current="page" href="{{ route('users.index') }}">
@@ -170,7 +170,7 @@
                                 </a>
                             </li>
                             </h6>
-                        @endcan
+                        @endif
                     </ul>
 
                     {{-- employer --}}
