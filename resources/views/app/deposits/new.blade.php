@@ -26,13 +26,7 @@
             <label  class="form-label" for="name">Nom du dépot</label>
             <input class="form-control" type="text" name="name" id="name">
           </div>
-          <div class="col-md-6 mb-3">
-            <label class="form-label" for="grade">Type de depot</label>
-            <select  name="grade" id="grade" class="form-select" aria-label="Default select example">
-                <option value="Principale">principale</option>
-                <option value="Simple">simple</option>
-            </select>
-          </div>
+          <input type="hidden" name="grade" value="simple">
           <div class="col-md-6 mb-3" >
             <label  class="form-label" for="name">Numero du gérant</label>
             <input class="form-control" type="number" name="mobile_number" id="mobile_number">

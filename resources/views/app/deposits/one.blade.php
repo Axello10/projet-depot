@@ -3,14 +3,13 @@
 @section('content')
 <main class="col-md-9 ms-sm-auto col-lg-9 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <a href="{{ route('deposits.create') }}" class="mb-1 btn btn-sm btn-primary">ajouter depot</a>
                 <h1 class="display-4"> Dépot </h1>
                 </div>
                 <div class="note note-primary  text-dark   mt-5 mb-3 shadow p-3 mb-5 brounded  ">
                 <h2>Nom du dépot: {{ $deposit->name }} </h2>
                 <strong>Type du dépot : {{ $deposit->grade }}</strong>
                 @if (Auth::user()->deposit_id === $deposit->id)
-                <br>
-            <a href="{{ route('depotproducts.create') }}"  class="mb-1 btn btn-sm btn-primary " >Ajouter un produit dans le stock</a>
             <a href="{{ route('deposits.edit', $deposit->id) }}"  class="mb-1 btn btn-sm btn-primary " >Modifier ce dépot</a>
              @endif
             <ul>
@@ -39,9 +38,3 @@
             @endif
         </ul>
 @endsection
-
-
-
-
-
-
