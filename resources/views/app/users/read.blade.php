@@ -50,7 +50,7 @@
                                             <a href="{{ route('users.show', $us->id) }}"
                                                 class="btn btn-sm btn-primary mb-1">Plus de details</a>
 
-                                            @if(Auth::user()->role_id == 1 && $us->role_id == 1)    
+                                            @if(Auth::user()->role_id == 1 && $us->role_id == 2)    
                                                 <a href="{{ route('users.edit', $us->id) }}"
                                                     class="btn btn-sm btn-info  mb-1">Modifier</a>
                                                     
@@ -72,18 +72,7 @@
                                                 <input type="submit" class="btn btn-sm btn-danger mb-1" value="supprimer">
                                             </form>
                                             @endif
-{{--                                             
-                                            @if($us->role_id )    
-                                            <a href="{{ route('users.edit', $us->id) }}"
-                                                class="btn btn-sm btn-info  mb-1">Modifier</a>
-                                                @endif
-                                            @if(Auth::user()->role_id != 1 || $us->role_id == 2 || Auth::user()->id == $us->id)    
-                                            <form action="{{ route('users.destroy', $us->id) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <input type="submit" class="btn btn-sm btn-danger mb-1" value="supprimer">
-                                            </form>
-                                            @endif --}}
+                                            
                                         </td>
                                     </tr>
                                 @endforeach
