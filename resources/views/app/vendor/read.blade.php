@@ -6,8 +6,9 @@
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="display-4"> Vendeur </h1>
     </div>
+    @if(Auth::user()->role_id == 3)
     <a href="{{ route('vendors.create') }}" class="btn btn-primary mb-3" >Ajouter un fournisseur</a>
-     
+     @endif
     @if ( count($vendors) <= 0)
         <p class="alert alert-info">Aucun fournisseur trouvé</p>
     @else

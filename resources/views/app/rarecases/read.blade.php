@@ -5,7 +5,9 @@
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="my-2"> cas rare </h1>
     </div>
+    @if(Auth::user()->role_id == 3)
     <a href="{{ route('rarecases.create') }}" class="btn btn-primary mb-3" >Ajouter un cas rare</a>
+    @endif
     @if ( count($rarecases) <= 0)
         <p class="alert alert-info text-dark  mt-5 mb-3 shadow p-3 mb-5 brounded ">Aucun cas trouvé</p>
     @else
