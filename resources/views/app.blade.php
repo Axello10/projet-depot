@@ -154,7 +154,7 @@
         <div class="container-fluid">
             <div class="row">
                 <nav id="sidebarMenu" class="col-md-4 col-lg-3 d-md-block bg-light sidebar collapse">
-                    @if(Auth::user()->id < 3)
+                    @if(Auth::user()->role_id < 3)
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" aria-current="page" href="{{ route('users.index') }}">
@@ -316,7 +316,7 @@
                     </ul>
 
                     {{-- produits --}}
-
+                    @if(Auth::user()->role_id == 2)
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('products.index') }}">
@@ -332,6 +332,7 @@
                         </li>
 
                     </ul>
+                    @endif
 
                     {{-- cas rares --}}
 

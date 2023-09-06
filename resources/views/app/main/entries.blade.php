@@ -33,6 +33,7 @@
             <tbody>
             <?php $i=0;?>
             @foreach ($entries as $pd)
+                @if(Auth::user()->deposit_id == $pd->deposit_id)
               <tr>
                 <th scope="row"><small><?php $i++; echo "$i" ?></small></th>
                 <td> <strong>{{ $pd->name }}</strong> </td>
@@ -44,6 +45,7 @@
                 <td>{{ $pd->user->fullname }}</td>
                 <td>{{ $pd->created_at->format('d M') }}</td>
               </tr>
+              @endif
             @endforeach
             </tbody>
           </table>

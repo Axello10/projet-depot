@@ -22,7 +22,7 @@ class EntryController extends Controller
      */
     public function index()
     {
-        $entries = Entrie::where('user_id', Auth::user()->id)
+        $entries = Entrie::where('deposit_id', Auth::user()->deposit_id)
                         ->orderBy('created_at', 'desc')->get();
 
         return view('app.entries.read')

@@ -34,8 +34,8 @@
                             <tbody>
                                 <?php $i = 0; ?>
                                 @foreach ($entries as $et)
+                                    @if(Auth::user()->deposit_id == $et->deposit_id)
                                     <tr>
-
                                         <th scope="row"><small><?php $i++;
                                         echo "$i"; ?></small></th>
                                         <td> <strong>{{ $et->product->name }}</strong> </td>
@@ -62,6 +62,7 @@
 
                                         </td>
                                     </tr>
+                                    @endif
                                 @endforeach
                             </tbody>
                         </table>
