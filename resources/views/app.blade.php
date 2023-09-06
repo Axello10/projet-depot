@@ -353,7 +353,7 @@
 
                     {{-- deposit --}}
 
-                    @if (Auth::user()->role_id === 1 || Auth::user()->role_id === 2)
+                    @if (Auth::user()->role_id === 1)
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('deposits.show', auth()->user()->deposit->id) }}">
@@ -368,7 +368,7 @@
                                 </a>
                             </li>
                         </ul>
-                    @else
+                    @elseif(Auth::user()->role_id == 3)
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('deposits.show', Auth::user()->deposit_id) }}">
