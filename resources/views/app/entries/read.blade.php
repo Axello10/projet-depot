@@ -47,17 +47,9 @@
                                         <td>
                                             <a href="{{ route('entries.show', $et->id) }}"
                                                 class="mb-1 btn btn-sm btn btn-primary ">Plus de details</a>
-                                            @if (Auth::user()->role_id === 1 || Auth::user()->role_id === 2 || Auth::user()->id === $et->user_id)
+                                                @if(Auth::user()->role_id == 3)
                                                 <a href="{{ route('entries.edit', $et->id) }}"
                                                     class="mb-1 btn btn-sm btn btn-info ">Modifier</a>
-                                            @endif
-                                            @if (Auth::user()->role_id === 1)
-                                                <form action="{{ route('entries.destroy', $et->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <input type="submit" class="mb-1 btn btn-sm btn btn-danger "
-                                                        value="Supprimer">
-                                                </form>
                                             @endif
 
                                         </td>

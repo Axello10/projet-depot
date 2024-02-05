@@ -45,16 +45,10 @@
                 <td>
                 <a href="{{ route('sorties.show', $st->id) }}"  class="btn btn-sm btn-primary mb-1 " >Plus de details</a>
                 
-                @if(Auth::user()->role_id === 1 || Auth::user()->role_id === 2 || Auth::user()->id === $st->user_id)
+                @if(Auth::user()->role_id == 3)
                     <a href="{{ route('sorties.edit', $st->id) }}"  class="btn btn-sm btn-info  mb-1">Modifier</a>
                 @endif
-                @if(Auth::user()->role_id === 1)
-                    <form action="{{ route('sorties.destroy', $st->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <input type="submit" class="btn btn-sm btn-danger  mb-1" value="Supprimer">
-                    </form>
-                @endif
+                
                 </div>
                 </td>
               </tr>

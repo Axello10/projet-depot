@@ -36,6 +36,7 @@
         @if (Auth::user()->role_id === 1 || Auth::user()->role_id === 2)
             <div class="card mb-3 shadow p-3 brounded">
                 <div class="card-body">
+                    @if(Auth::user()->role_id === 1)
                     <div class="">
                         <a href="{{ route('entries') }}" class="btn btn-primary mb-3">Entree</a>
                         <a href="{{ route('exits') }}" class="btn btn-primary mb-3" type="button">Sortie</a>
@@ -48,6 +49,7 @@
                         <a href="{{ route('depotproducts.index') }}" class="btn btn-primary mb-3" type="button">entree
                             venant de nos depots</a>
                     </div>
+                    @endif
 
                     {{-- <canvas id="myChart" width="400" height="200"></canvas> --}}
 

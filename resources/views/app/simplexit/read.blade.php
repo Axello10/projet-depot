@@ -42,16 +42,9 @@
                 <td> <strong>{{ $st->created_at->format('d M') }} </strong> </td>
                 <td>
                 <a href="{{ route('simplexits.show', $st->id) }}"  class="btn btn-sm btn-primary mb-1 " >Plus de details</a>
-                @if(Auth::user()->role_id === 1 || $st->check($st->id) < 24)
+                @if(Auth::user()->role_id == 3)
                     <a href="{{ route('simplexits.edit', $st->id) }}"  class="btn btn-sm btn-info  mb-1">Modifier</a>
                 @endif
-                @if(Auth::user()->role_id === 1)
-                <form action="{{ route('simplexits.destroy', $st->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <input type="submit" class="btn btn-sm btn-danger  mb-1" value="Supprimer">
-                    </form>
-                    @endif
                 </div>
                 </td>
               </tr>
